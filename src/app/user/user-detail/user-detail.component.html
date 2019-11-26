@@ -1,0 +1,117 @@
+<div class="main-content" *ngIf ="eventDetail">
+  <div class="container-fluid">
+      <div class="row">
+        <div class ="col-md-12">
+          <div class ="header_top col-md-12">
+            <div class ="col-md-6" style ="margin-top: 12px;">
+               <span>User Name:</span> {{eventDetail.name}}  
+            </div>
+            <div class ="col-md-6" > 
+              <div class="col-md-5" style ="float:right">
+                <a  class=" " style="color:white; padding-right: 0px"  (click)="AssignRole(eventDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>Change Password</a>
+
+            </div>
+            </div> 
+          </div> 
+        </div>
+        
+        <div class ="col-md-12 "  >
+          
+          <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
+          padding-right: 0px;">
+              <div class ="header">
+                User DETAILS
+                <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsableHeader" (click) ="collabsableHeader = !collabsableHeader "style="font-size: 16px ;    float: right;"></i>
+                <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsableHeader" (click) ="collabsableHeader = !collabsableHeader "style="font-size: 16px ;    float: right;"></i>
+
+              </div>
+              <div class ="col-md-12 bodyHeader" *ngIf ="collabsableHeader">
+                
+              <div class ="col-md-6 border_top_right" style ="    padding-left: 0;">
+             
+                <div class ="col-md-12">
+                    <div class ="col-md-4 detailheader"   >
+                        <div >User Name</div>
+                    </div>
+                      <div class ="col-md-8 detailKey ">
+                          <div>{{eventDetail.userName}}</div>
+                      </div>
+                </div>
+               
+                <div class ="col-md-12">
+                    <div class ="col-md-4 detailheader"   >
+                        <div >Created Date</div>
+                    </div>
+                      <div class ="col-md-8 detailKey ">
+                          <div>{{eventDetail.createdOn | date:'medium'}}</div>
+                      </div>
+                </div>
+                <div class ="col-md-12">
+                  <div class ="col-md-4 detailheader"   >
+                      <div >Department</div>
+                  </div>
+                    <div class ="col-md-8 detailKey ">
+                        <div>{{eventDetail.department}}</div>
+                    </div>
+              </div>
+              <div class ="col-md-12" *ngIf ="eventDetail.roles">
+                <div class ="col-md-4 detailheader"   >
+                    <div >Role</div>
+                </div>
+                  <div class ="col-md-8 detailKey ">
+                      <div>{{eventDetail.roles[0].name}}</div>
+                  </div>
+            </div>
+               <div class ="col-md-12">
+                <div class ="col-md-4 detailheader"   >
+                    <div >Last Updated Date</div>
+                </div>
+                  <div class ="col-md-8 detailKey ">
+                      <div>{{eventDetail.lastUpdatedOn  |  date:'medium'}}</div>
+                  </div>
+            </div>
+            
+           
+                
+
+              </div>
+             
+            </div>
+
+          </div>
+        </div>
+
+<div class ="col-md-12 "   style ="padding-right: 6px;" >
+  <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
+  padding-right: 0px;">
+      <div class ="header">
+             User Account Details
+             <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsableDetail" (click) ="collabsableDetail = !collabsableDetail "style="font-size: 16px ;    float: right;"></i>
+             <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf ="collabsableDetail" (click) ="collabsableDetail = !collabsableDetail "style="font-size: 16px ;    float: right;"></i>
+
+      </div>
+      <div class ="col-md-6 bodyHeader border_top_right" style ="    padding-left: 0;" *ngIf ="collabsableDetail">
+        
+         <div class ="col-md-12">
+            <div class ="col-md-6 detailheader"   >
+                <div ><strong>Account Name</strong></div>
+
+            </div>
+            <div class ="col-md-6 detailKey"   >
+              <div >{{eventDetail.account.name}}</div>
+          </div>
+          </div>
+
+             
+              
+        </div>
+         
+        
+
+       
+    </div>
+
+  </div>
+</div>
+ 
+        </div></div>

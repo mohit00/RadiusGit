@@ -1,0 +1,156 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Add Things</h4>
+    <button type="button" class="close pull-right" aria-label="Close"  >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form name ="formgr"  #heroForm="ngForm" >
+
+        <tabset type="pills" >
+                
+                    <tab heading="Things Info">
+                        
+         <div class ="row" style ="    padding-top: 10px;">
+                <div class ="col-md-6">
+                    <!-- <div class="form-group">
+                        <label for="lastname" class="control-label">Device Id</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Device Id" [(ngModel)]="data.name" >
+                    </div> -->
+                    <div class="form-group">
+                        <label for="lastname" class="control-label"><span class ="red">*</span> Name</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Name" [(ngModel)]="data.name" name ="name" #name="ngModel"  required> 
+                        <div *ngIf="(name.invalid && (name.dirty || name.touched)) "
+                        class="alert alert-danger">
+                    
+                      <div *ngIf="name.errors.required">
+                        This field is required.
+                      </div>
+                      
+                    
+                    </div>
+                      </div>
+                    <div class="form-group">
+                            <label for="lastname" class="control-label"><span class ="red">*</span> Protocol</label>
+
+                            <select class="form-control" id="sel1" [(ngModel)] ="data.protocol" name ="protocol" #protocol="ngModel"  required>
+               
+                            <option value ="TCP"  >TCP</option>
+                            </select>
+                            <div *ngIf="(protocol.invalid && (protocol.dirty || protocol.touched)) "
+                            class="alert alert-danger">
+                        
+                          <div *ngIf="protocol.errors.required">
+                            This field is required.
+                          </div>
+                          
+                        
+                        </div>
+                           </div> 
+                   
+                </div>
+                <div class ="col-md-6">
+                    <div class="form-group">
+                        <label for="lastname" class="control-label"><span class ="red">*</span> Things Id</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Thing Id" [(ngModel)]="data.thingId" name ="thingId" #thingId="ngModel"  required> 
+                        <div *ngIf="(thingId.invalid && (thingId.dirty || thingId.touched)) "
+                        class="alert alert-danger">
+                    
+                      <div *ngIf="thingId.errors.required">
+                        This field is required.
+                      </div>
+                      
+                    
+                    </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="lastname" class="control-label">Description</label>
+                        <textarea type="text" class="form-control" id="lastname" placeholder="Description" name ="description"  [(ngModel)] ="data.description" rows="2"></textarea>
+                    </div>
+                  </div>
+                  <div class ="col-md-12"  style ="border:1px solid ;margin-top:10px"  *ngIf ="title == 'false'">
+                    <div    *ngFor = "let list of dataList ;let i = index ;"  style ="padding: 13px;"> 
+                     <div class ="{{list.class1}}">
+                       <div class="form-group">
+                           <label for="lastname" class="control-label" *ngIf ="i == 0 ">Metadata Key:</label>
+                           <input type="text" class="form-control" id="lastname" placeholder="Key" [(ngModel)] ="list.name" name="meta" >
+                       </div></div> 
+                      
+                          
+                     <div class ="{{list.class2}}">
+                         <div class="form-group {{list.class3}}">
+                           <div class="form-group">
+                               <label for="sel1" *ngIf ="i == 0 ">Metadata Value:</label>
+                               <input type="text" class="form-control" id="lastname" placeholder="Default value" [(ngModel)] ="list.value" name="value" > 
+                             </div> 
+                         </div> 
+                         <button class="btn col-md-2 theme_table_button {{list.class4}}" (click) ="add()" ><i class="fa fa-plus plusIcon"  ></i></button>
+                         <button class="btn col-md-2 theme_table_button  {{list.class4}}" (click) ="remove(i)" *ngIf ="i != 0 " style ="margin-left: 5%;"><i class="fa fa-minus plusIcon"  ></i></button> 
+                     </div>
+                    
+                   </div> 
+               </div> 
+                  
+              </div>
+                        </tab>
+                        <tab heading="Select Things Template" *ngIf ="title == 'false'">
+                                <div class="row" style="    width: 100%;padding-top:10px;
+                                margin: auto;">
+                                  <div class="card"> 
+                                    <div class="col-md-12">
+                          
+                                      
+                                      
+                                            <div class="content table-responsive table-full-width"style =" max-height: 400px;
+                                            overflow-x: auto;    padding-left: 0;
+    padding-right: 0;">
+                                                  <table class="table table-hover table-striped"  >
+                                                        <thead>
+                                                            <tr>
+                                                                <th  width="20%"   > Action</th>
+                                                                <th    > Things Template</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class ="selecttable"  *ngFor ="let list of eventTemplateList ;" (click)="selectedListdata(list)" style ="cursor: pointer">
+                                                                <td  ><div class="form-check">
+                                                                  <label class ="checkboxnew">
+                                                                    <input type="radio" name="check" [value] ="true"   [(ngModel)]="list.check"  [ngModelOptions]="{standalone: true}"> <span class="label-text"></span>
+                                                                  </label>
+                                                                </div> </td>
+                                                                <td  > {{list.name}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot *ngIf ="pageCount && pageCountArray">
+                                                          <tr  ><td [attr.colspan]="8"> 
+                                                            <div class=" " style="float: left;">
+                                                              <ul class="pagination">
+                                                                <li  >  
+                                                                  <button  (click)="prePage()" [disabled]="preDisabled">« Prev</button>
+                                                                </li>
+                                                                <li   *ngFor = "let list of pageCountArray" [ngClass]="getClass(list)"> 
+                                                                  <a  (click)="Page(list)" >{{list}}</a>
+                                                                </li>
+                                                                <li  >
+                                                                  <button    (click)="nextPage()"   [disabled]="nextDisabled" >Next »</button>
+                                                                </li>
+                                                              </ul>
+                                                            </div>
+                                                          </td>
+                                                        </tr></tfoot>
+                                                  </table>
+                                               </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                            </tab>
+                        </tabset>
+       
+           
+   <div class="modal-footer">
+    <button type="button" class="btn theme_table_button" (click) ="closeDialog()" >Close</button>
+    <button type="button" class="btn theme_table_button"  (click) = "createDevicePro(heroForm)" *ngIf ="title == 'false'">Save</button>
+    <button type="button" class="btn theme_table_button"  (click) = "updateDevicePro(heroForm)" *ngIf ="title != 'false'">Update</button>
+
+  </div>
+  </form>

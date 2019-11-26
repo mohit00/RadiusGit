@@ -1,0 +1,300 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+        <div class ="col-md-12">
+          <div class ="header_top col-md-12">
+            <div class ="col-md-6" style ="margin-top: 12px;">
+               <span>Account Name:</span> {{ComandDetail.name}}  
+            </div>
+            <div class ="col-md-6" >
+              <div class="col-md-3">
+
+              </div>
+              <!-- <div class="col-md-2">
+                  <a  class=" " style="color:white;"  (click)="migrate(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>Migrate</a>
+
+              </div>
+              <div class="col-md-4">
+                  <a   class=" " style="color:white;" (click)="changeStatus(ComandDetail)"> <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Change Status</a> 
+              </div>-->
+              <div class="col-md-3">
+                  <a   class=" " style="color:white;"  (click)="accountTree(ComandDetail)"> <i class="fa fa-plus material-icons" aria-hidden="true"  ></i><br>Account Tree</a> 
+              </div>  
+            </div> 
+          </div> 
+        </div>
+        <div class ="col-md-12 "  >
+          <div class ="col-md-12 dashbox card" style ="margin-top: 23px;padding-left: 0px;
+          padding-right: 0px;">
+              <div class ="header">
+                  Account DETAILS
+                  <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsableHeader" (click) ="collabsableHeader = !collabsableHeader "style="font-size: 16px ;    float: right;"></i>
+                  <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsableHeader" (click) ="collabsableHeader = !collabsableHeader "style="font-size: 16px ;    float: right;"></i>
+
+              </div>
+              <div class ="col-md-12 bodyHeader" *ngIf ="collabsableHeader">
+                
+              <div class ="col-md-6 border_top_right" style ="    padding-left: 0;">
+               
+                <div class ="col-md-12">
+                    <div class ="col-md-4 detailheader"   >
+                        <div >  Name</div>
+                    </div>
+                      <div class ="col-md-8 detailKey ">
+                          <div>{{ComandDetail.name}}</div>
+                      </div>
+                </div>
+                <div class ="col-md-12">
+                    <div class ="col-md-4 detailheader"   >
+                        <div >Created Date</div>
+                    </div>
+                      <div class ="col-md-8 detailKey ">
+                          <div>{{ComandDetail.createdOn | date}}</div>
+                      </div>
+                </div>
+              
+                <div class ="col-md-12">
+                  <div class ="col-md-4 detailheader"   >
+                      <div >  Type</div>
+                  </div>
+                    <div class ="col-md-8 detailKey ">
+                        <div>{{ComandDetail.type}}</div>
+                    </div>
+              </div>
+                
+
+              <div class ="col-md-12">
+                <div class ="col-md-4 detailheader"   >
+                    <div >  status</div>
+                </div>
+                  <div class ="col-md-8 detailKey ">
+                      <div>{{ComandDetail.status}}</div>
+                  </div>
+            </div>
+            <div class ="col-md-12">
+              <div class ="col-md-4 detailheader"   >
+                  <div >  From</div>
+              </div>
+                <div class ="col-md-8 detailKey ">
+                    <div>{{ComandDetail.validityFrom  | date}}</div>
+                </div>
+          </div>
+          <div class ="col-md-12">
+            <div class ="col-md-4 detailheader"   >
+                <div >  To</div>
+            </div>
+              <div class ="col-md-8 detailKey ">
+                  <div>{{ComandDetail.validityTo  | date}}</div>
+              </div>
+        </div>
+        <div class ="col-md-12" *ngIf =" ComandDetail.type != 'OWNER'">
+          <div class ="col-md-4 detailheader"   >
+              <div >  Parent</div>
+          </div>
+            <div class ="col-md-8 detailKey " *ngIf ="ComandDetail.parentAccount">
+                <div>{{ComandDetail.parentAccount.name}}</div>
+            </div>
+      </div>
+      <div class ="col-md-12" >
+        <div class ="col-md-4 detailheader"   >
+            <div >Customer Type</div>
+        </div>
+          <div class ="col-md-8 detailKey ">
+              <div>{{ComandDetail.customerType}}</div>
+          </div>
+    </div>
+      
+              </div>
+              <div class ="col-md-6 border_top" > 
+                  <div class ="col-md-12" style ="margin-top: 10px;">
+                      <div class ="  detailheader"   >
+                       <strong>Description </strong>
+                      </div>
+                      <div class ="  detailheader"   >
+                           {{ComandDetail.description}}
+                         </div> 
+                  </div>
+                 
+                  <div class ="col-md-12"  >
+                    <div class ="col-md-4 detailheader"   >
+                        <div >Account Address1</div>
+                    </div>
+                      <div class ="col-md-8 detailKey ">
+                          <div>{{ComandDetail.accountContact.addressLine1}}</div>
+                      </div>
+                </div>
+                <div class ="col-md-12"  >
+                  <div class ="col-md-4 detailheader"   >
+                      <div > Address2</div>
+                  </div>
+                    <div class ="col-md-8 detailKey ">
+                        <div>{{ComandDetail.accountContact.addressLine2}}</div>
+                    </div>
+              </div>
+
+              <div class ="col-md-12"  >
+                <div class ="col-md-4 detailheader"   >
+                    <div > city</div>
+                </div>
+                  <div class ="col-md-8 detailKey ">
+                      <div>{{ComandDetail.accountContact.city}}</div>
+                  </div>
+            </div>
+            
+            <div class ="col-md-12"  >
+              <div class ="col-md-4 detailheader"   >
+                  <div > state</div>
+              </div>
+                <div class ="col-md-8 detailKey ">
+                    <div>{{ComandDetail.accountContact.state}}</div>
+                </div>
+          </div>
+          <div class ="col-md-12"  >
+            <div class ="col-md-4 detailheader"   >
+                <div > country</div>
+            </div>
+              <div class ="col-md-8 detailKey ">
+                  <div>{{ComandDetail.accountContact.country}}</div>
+              </div>
+        </div>
+        <div class ="col-md-12"  >
+          <div class ="col-md-4 detailheader"   >
+              <div > phoneNumber</div>
+          </div>
+            <div class ="col-md-8 detailKey ">
+                <div>{{ComandDetail.accountContact.phoneNumber}}</div>
+            </div>
+      </div>
+                </div>
+            </div>
+
+          </div>
+        </div>
+        <div class ="col-md-6 "   style ="padding-right: 6px;" >
+              <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
+              padding-right: 0px;">
+                  <div class ="header">
+                      Account  Contacts
+                      <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsablePro" (click) ="collabsablePro = !collabsablePro "style="font-size: 16px ;    float: right;"></i>
+                      <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsablePro" (click) ="collabsablePro = !collabsablePro "style="font-size: 16px ;    float: right;"></i>
+  
+                  </div>
+                  <div class ="col-md-12 bodyHeader border_top_right" style ="    padding-left: 0;" *ngIf ="collabsablePro">
+                    
+                     <div class ="col-md-12" *ngFor ="let list of ComandDetail.userContacts;let index =index">
+                     
+                    <div class ="col-md-12" style ="margin-top: 10px;" >
+                      <div class ="  detailheader"  >
+                       <strong>User Name :-</strong>   {{list.name}}
+                      </div>
+                      <div class ="  detailheader" style ="margin:10px"  >
+                         
+                         </div> 
+                  </div>
+                 
+                  <div class ="col-md-12"  >
+                    <div class ="col-md-4 detailheader"   >
+                        <div >Email</div>
+                    </div>
+                      <div class ="col-md-8 detailKey ">
+                          <div>{{list.email}}</div>
+                      </div>
+                </div>
+                <div class ="col-md-12"  >
+                  <div class ="col-md-4 detailheader"   >
+                      <div >Phone Number</div>
+                  </div>
+                    <div class ="col-md-8 detailKey ">
+                        <div>{{list.phoneNumber}}</div>
+                    </div>
+              </div>
+              <div class ="col-md-12"  >
+                <div class ="col-md-4 detailheader"   >
+                    <div >whatsUp Number</div>
+                </div>
+                  <div class ="col-md-8 detailKey ">
+                      <div>{{list.whatsUpNumber}}</div>
+                  </div>
+            </div>
+              </div>    
+                </div>
+              </div>
+            </div>
+            <div class ="col-md-6 " style ="padding-left: 6px;"  >
+                <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
+                padding-right: 0px;">
+                    <div class ="header">
+                        Account user Info
+                        <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsableIdPro" (click) ="collabsableIdPro = !collabsableIdPro "style="font-size: 16px ;    float: right;"></i>
+                        <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsableIdPro" (click) ="collabsableIdPro = !collabsableIdPro "style="font-size: 16px ;    float: right;"></i>
+
+                    </div>
+                    <div class ="col-md-12 bodyHeader border_top_right" style ="    padding-left: 0;" *ngIf ="collabsableIdPro">
+                      
+                          <div class ="col-md-12" >
+                                  <div class ="col-md-4 detailheader"   >
+                                      <div >Allowed Max User</div>
+                                  </div>
+                                    <div class ="col-md-8 detailKey ">
+                                        <div> {{ComandDetail.userInfo.allowedMaxUsers}}</div>
+                      
+                                      
+                                    </div>
+                              </div>
+                              <div class ="col-md-12" >
+                                <div class ="col-md-4 detailheader"   >
+                                    <div >No. Of Admin</div>
+                                </div>
+                                  <div class ="col-md-8 detailKey ">
+                                      <div> {{ComandDetail.userInfo.numberofAdmin}}</div>
+                    
+                                    
+                                  </div>
+                            </div>
+                            <div class ="col-md-12" >
+                              <div class ="col-md-4 detailheader"   >
+                                  <div >Allowed General User</div>
+                              </div>
+                                <div class ="col-md-8 detailKey ">
+                                    <div> {{ComandDetail.userInfo.allowedNumberOfGeneralUsers}}</div>
+                  
+                                  
+                                </div>
+                          </div>
+            
+                     
+                  </div>
+            
+                </div>
+              </div>
+
+<div class ="col-md-12 " style ="padding-left: 6px;"  >
+    <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
+    padding-right: 0px;">
+        <div class ="header">
+            Account Metadata
+            <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsablemetaStatus" (click) ="collabsablemetaStatus = !collabsablemetaStatus "style="font-size: 16px ;    float: right;"></i>
+            <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsablemetaStatus" (click) ="collabsablemetaStatus = !collabsablemetaStatus "style="font-size: 16px ;    float: right;"></i>
+
+        </div>
+        <div class ="col-md-12 bodyHeader border_top_right" style ="    padding-left: 0;" *ngIf ="collabsablemetaStatus">
+          
+              <div class ="col-md-12" *ngFor ="let list of dataList">
+                      <div class ="col-md-4 detailheader"   >
+                          <div >{{list.name}}</div>
+                      </div>
+                        <div class ="col-md-8 detailKey ">
+                            <div> {{list.value}}</div>
+          
+                          
+                        </div>
+                  </div>
+           
+          
+
+         
+      </div>
+
+    </div>
+  </div>
+        </div></div></div>

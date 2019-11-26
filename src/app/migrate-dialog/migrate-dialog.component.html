@@ -1,0 +1,74 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Migrate Things</h4>
+  <button type="button" class="close pull-right" aria-label="Close"  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+      <tabset type="pills" >
+              
+<tab heading="Select Things Template" *ngIf ="title == 'false'">
+  <div class="row" style="    width: 100%;padding-top:10px;
+  margin: auto;">
+    <div class="card"> 
+      <div class="col-md-12">
+
+        
+        
+              <div class="content table-responsive table-full-width"style =" max-height: 400px;
+              overflow-x: auto;    padding-left: 0;
+padding-right: 0;">
+                    <table class="table table-hover table-striped"  >
+                          <thead>
+                              <tr>
+                                  <th  width="20%"   > Action</th>
+                                  <th    > Things Template</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr class ="selecttable"  *ngFor ="let list of eventTemplateList ;" (click)="selectedListdata(list)" style ="cursor: pointer">
+                                  <td  ><div class="form-check">
+                                    <label class ="checkboxnew">
+                                      <input type="radio" name="check" [value] ="true"   [(ngModel)]="list.check"  [ngModelOptions]="{standalone: true}"> <span class="label-text"></span>
+                                    </label>
+                                  </div> </td>
+                                  <td  > {{list.name}}</td>
+                              </tr>
+                          </tbody>
+                          <tfoot *ngIf ="pageCount && pageCountArray">
+                            <tr  ><td [attr.colspan]="8"> 
+                              <div class=" " style="float: left;">
+                                <ul class="pagination">
+                                  <li  >  
+                                    <button  (click)="prePage()" [disabled]="preDisabled">« Prev</button>
+                                  </li>
+                                  <li   *ngFor = "let list of pageCountArray" [ngClass]="getClass(list)"> 
+                                    <a  (click)="Page(list)" >{{list}}</a>
+                                  </li>
+                                  <li  >
+                                    <button    (click)="nextPage()"   [disabled]="nextDisabled" >Next »</button>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+                          </tr></tfoot>
+                    </table>
+                 </div>
+                 <div class="form-group">
+                    <div class="form-check">
+                     <label class ="checkboxnew">
+                       <input type="checkbox" name="check"  [(ngModel)]="status" > <span class="label-text"></span>
+                     </label><label>Is Acknowledgement Reqiured</label>
+                   </div>
+              </div>
+          </div>
+      </div>
+   </div>
+</tab>
+</tabset>
+       
+<div class="modal-footer">
+  <button type="button" class="btn theme_table_button"  >Close</button>
+  <button type="button" class="btn theme_table_button"  (click) = "createDevicePro()" *ngIf ="title == 'false'">Save</button>
+ 
+</div>

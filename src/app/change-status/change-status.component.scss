@@ -1,0 +1,64 @@
+$theam-color-client:#1C8AD8;
+ 
+$theam-color-client:#1C8AD8;
+
+.modal-header{
+    background-color: $theam-color-client;
+    color:white;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    i{
+        color: white;
+    }
+}
+.modal-body{
+    padding-left: 77px;
+ }
+ .optionFill {
+    fill: rgb(20, 105, 167);
+
+ }
+ #option:hover {
+     fill: rgb(20, 105, 167);
+     cursor: pointer;
+ }
+ #option1:hover {
+    fill: rgb(20, 105, 167);
+    cursor: pointer;
+}
+#option2:hover {
+    fill: rgb(20, 105, 167);
+    cursor: pointer;
+}
+#option3:hover {
+    fill: rgb(20, 105, 167);
+    cursor: pointer;
+}
+#optionope:hover {
+    fill: rgb(20, 105, 167);
+    cursor: pointer;
+}
+#optionope1:hover {
+    fill: rgb(20, 105, 167);
+    cursor: pointer;
+}
+#optionope2:hover {
+    fill: rgb(20, 105, 167);
+    cursor: pointer;
+}
+#optionope3:hover {
+    fill: rgb(20, 105, 167);
+    cursor: pointer;
+}
+#optiontext:hover {
+     cursor: pointer;
+}
+#optiontext1:hover {
+    cursor: pointer;
+}#optiontext2:hover {
+    cursor: pointer;
+}#optiontext3:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,130 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+      <div class ="row">
+     <div *ngIf ="showAccount">
+       <form></form>
+        <div class="form-group col-md-4">
+            <label for="sel1">Select Account:</label>
+            <select class="form-control" id="sel1"  (change)="onAccountChange($event.target.value,'')"  name ="account">
+              <option>Select Account</option>
+              <option *ngFor ="let list of accountLists" [value] = "list.accountId">
+                {{list.name}}
+              </option>
+             </select>
+          </div>
+          {{accountSelected }}
+     </div>
+     <div *ngIf ="!showAccount">
+        <div class ="col-md-2 buttonTheme">
+            <button class="btn   theme_color" type="button" (click) ="toggelSearch()">  Advance Search</button>
+        </div>
+        <div class ="col-md-6 tablebutton">
+          <div class ="col-md-4">
+            <button class="btn   theme_table_button " type="button" (click)="open()" style ="float: right;" > <i class="fa fa-plus" aria-hidden="true"></i>
+              {{title}}</button>
+            </div>
+              <form class="form-horizontal col-md-8" action="/action_page.php">
+                <div class="form-group inner-addon left-addon">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+
+                    <input type="text" class="form-control" id="search"  (input)="onSearchChange($event.target.value,'')" placeholder="Search">
+
+                </div>
+</form>              
+        </div>
+     </div>
+          
+         
+      </div>
+      <div class ="row" *ngIf ="advanceSearch" >
+        <div class ="col-md-12">
+          <div class ="col-md-6">
+               <div class="form-group">
+                 
+                  <input type="text" class="form-control" id="searchName" placeholder="Name" (input)="onSearchChange($event.target.value,'')">
+                 
+              </div>
+              
+              </div>
+              <div class ="col-md-6">
+                <div class="form-group">
+                  
+                   <input type="text" class="form-control" id="searchDescription" placeholder="Description" (input)="onSearchChange('',$event.target.value)">
+                  
+               </div>
+               
+               </div>
+              </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+     
+                    <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of header" width="{{cell.width}}%" (click) = "sortData(cell)">{{ cell.name }} 
+                                          <span *ngIf ="cell.sort" > 
+                                           <i class="fa fa-sort" aria-hidden="true" *ngIf = "cell.sort == '0'" ></i>
+                                          <i class="fa fa-sort-desc" aria-hidden="true" *ngIf = "cell.sort == 1"></i>
+                                          <i class="fa fa-sort-asc" aria-hidden="true" *ngIf = "cell.sort == 2"></i>
+                                        </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of displayList">
+                                        <td *ngFor ="let key of keyData;let i =index" >
+                                        
+                                          <span *ngIf ="key == 'action'">
+
+                                              <i class="fa fa-eye" aria-hidden="true" (click)="detail(row)" ></i>
+                                              <button (click)="edit(row)"  [disabled] = "row.freeze" style ="box-shadow: 0px 0px 0px transparent;
+                                              border: 0px solid transparent;
+                                              text-shadow: 0px 0px 0px transparent;
+                                              background: white;
+                                              padding: 0;">
+                                              <i class="fa fa-pencil" aria-hidden="true"  ></i>
+                                            </button>
+                                            <button  (click)="delete(row)"  [disabled] = "row.freeze"  style ="box-shadow: 0px 0px 0px transparent;
+                                            border: 0px solid transparent;
+                                            text-shadow: 0px 0px 0px transparent;
+                                            background: white;
+                                            padding: 0;">
+                                              </button>
+                                          </span><span *ngIf ="key != 'action'" [innerHTML] = "getData(row,key,i) "> 
+                                          </span>
+                                        
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot *ngIf =" pageCountArray && showpagi">
+                                    <tr  ><td [attr.colspan]="keyData.length"> 
+                                      <div class=" " style="float: left;">
+                                        <ul class="pagination">
+                                          <li  >  
+                                            <button  (click)="prePage()" [disabled]="selectedPage == 1">« Prev</button>
+                                          </li>
+                                          <li   *ngFor = "let list of pageCountArray" [ngClass]="getClass(list)"> 
+                                            <a  (click)="Page(list)" >{{list}}</a>
+                                          </li>
+                                          <li  >
+                                            <button    (click)="nextPage()"   [disabled]="selectedPage == pageCountArray[pageCountArray.length - 1]" >Next »</button>
+                                          </li>
+                                        </ul>
+                                      </div>
+                               
+                                    </td>
+                                  </tr></tfoot>
+                          </table>
+  
+                    </div>
+                </div>
+            </div>
+             
+        </div>
+    </div>
+  </div>
+  

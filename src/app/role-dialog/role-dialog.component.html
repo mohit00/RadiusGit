@@ -1,0 +1,112 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"  >Role Dialog</h4> 
+    <i class="fa fa-info" aria-hidden="true" style ="float: right;
+    font-size: 20px;
+    /* padding: 8px; */
+    padding-top: 10px;
+    cursor: pointer;
+    "></i> 
+  </div>
+  <div class="modal-body">
+    <form name ="formgr"  >
+         <div class ="row">
+          <div class ="col-md-6"> 
+              <div class="form-group">
+                  <label for="lastname" class="control-label"><span class ="red">*</span> Name</label>
+                  <input type="text" class="form-control" id="lastna0me" placeholder="Name"   name ="name" [(ngModel)] ="data.name"  required>   
+                </div> 
+                <div class="form-group">
+                  <label for="lastname" class="control-label"><span class ="red">*</span> roleId</label>
+                  <input type="text" class="form-control" id="roleId" placeholder="roleId"   name ="roleId" [(ngModel)] ="data.roleId"  required>   
+                </div> 
+          </div>
+          <div class ="col-md-6">
+              <div class="form-group">
+                  <label for="lastname" class="control-label"><span class ="red">*</span>Description</label>
+                  <textarea type="text" class="form-control" id="lastname"  name ="Description" placeholder="Description" [(ngModel)] ="data.description"  rows="4" required></textarea>
+                </div>
+            </div> 
+            <div class ="col-md-12">
+                        <div class="card">
+                            <div class="content table-responsive table-full-width"style ="     max-height: 323px;
+                            overflow-x: hidden;
+                            overflow-y: auto;">
+                                  <table class="table table-hover table-striped"  >
+                                        <thead>
+                                            <tr>
+                                                <th  width="50%"   > Access</th>
+                                                <th    > Read</th>
+                                                <th    > All</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor ="let list of AccessServiceData ;let index =index">
+                                            <tr class ="selecttable"    style ="cursor: pointer">
+                                               <td>
+                                                  <i class="fa fa-caret-right" (click) ="list.show = !list.show" *ngIf ="!list.show" aria-hidden="true" style="font-size: 14px ;    float: left;"></i>
+ 
+                                                <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted" *ngIf ="list.show" (click) ="list.show = !list.show" style="font-size: 14px ;    float: left;"></i>{{list.name}}</td>
+                                              
+                                              <td  >
+                                                <!-- <div class="form-check">
+                                                  <label class ="checkboxnew">
+                                                    <input type="radio" [attr.name] ="index" [value]="1"  [ngModel]="list.ch" (click) ="toogle(index,$event)"  [ngModelOptions]="{standalone: true}"> <span class="label-text"></span>
+                                                  </label>
+                                                </div>  -->
+                                                <div class="form-check">
+                                                    <label class ="checkboxnew">
+                                                      <input type="radio" [attr.name]  ="'radio'+index" [value]="false"   
+                                                      (click) ="toggel(index,$event)"> <span class="label-text"></span>
+                                                    </label>
+                                                  </div>
+                                              </td>
+                                                <td  > <div class="form-check">
+                                                    <label class ="checkboxnew">
+                                                      <input type="radio"  [attr.name]  ="'radio'+index" [value]="true"   (click) ="toggel(index,$event)" > <span class="label-text"></span>
+                                                    </label>
+                                                  </div></td>
+                                            </tr>
+                                            <tr *ngIf ="list.show">
+                                              <td colspan="3">
+                                                  <table class="table table-hover table-striped"  >
+                                                      <thead>
+                                                          <tr>
+                                                              <th  width="50%"   > Access Name</th>
+                                                              <th    > Access</th>
+               
+                                                          </tr>
+                                                      </thead>
+                                                      <tr *ngFor ="let list2 of list.ToReject; let index1 = index" >
+                                                          <td>
+                                                          {{list2.name}}
+                                                            </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                 <div class="form-check">
+                                                                  <label class ="checkboxnew">
+                                                                    <input type="checkbox" [attr.name]="'check'+index1" [(ngModel)] ="list2.check"  [ngModelOptions]="{standalone: true}"> <span class="label-text"></span>
+                                                                  </label>
+                                                                </div> 
+                                                              </div>
+                                                        </td>
+                                                      </tr>
+</table>              
+                                              </td>
+                                            </tr>
+                                        </tbody>
+                                       
+                                  </table>
+                               </div>
+                        </div>
+              
+            </div>
+        </div> 
+   <div class="modal-footer">
+    <button type="button" class="btn theme_table_button" (click) ="onCancel();" >Close</button>
+    <button type="button" class="btn theme_table_button"  (click) = "submitCreate();" *ngIf ="title == 'false'">Save
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+     <button type="button" class="btn theme_table_button"  (click) = "submitUpdate()" *ngIf ="title == 'true'">Update</button>
+  </div>
+  </form>
+  </div>

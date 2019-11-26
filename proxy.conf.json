@@ -1,0 +1,66 @@
+
+{
+    "/thing-service/*": {
+      "target": "http://13.126.31.198:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    },"/attributeTemplates/*": {
+      "target": "http://13.126.31.198:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    },"/eventTemplates/*": {
+      "target": "http://13.126.31.198:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    },"/commandTemplates/*": {
+      "target": "http://13.126.31.198:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    },"/thingTemplates/*": {
+      "target": "http://13.126.31.198:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    },"/things/*": {
+      "target": "http://13.126.31.198:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    },"/roles/*":{
+      "target": "http://13.126.31.198:8092",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    
+    },"/authorization-service/*":{
+      "target": "http://13.126.31.198:8092",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    
+    }
+    ,"/user-service/*":{
+      "target": "http://13.126.31.198:8091",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    
+    } ,"/users/*":{
+      "target": "http://13.126.31.198:8091",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true 
+    
+    },"/alerts/*":{
+      "target": "http://13.126.31.198:8094",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    
+    }
+    
+} 

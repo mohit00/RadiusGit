@@ -1,0 +1,104 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left"  >{{headerTitle}}</h4> 
+  <i class="fa fa-info" aria-hidden="true" style ="float: right;
+  font-size: 20px;
+  /* padding: 8px; */
+  padding-top: 10px;
+  cursor: pointer;
+  "></i> 
+</div>
+<div class="modal-body">
+  <form name ="formgr"  #heroForm="ngForm" >
+    <div class ="row">
+        <div class ="col-md-6"> 
+            <div class="form-group">
+                <label for="lastname" class="control-label"><span class ="red">*</span> Name</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Name"   name ="name" [(ngModel)] ="data.name" #name="ngModel"  required  > 
+                <div *ngIf="(name.invalid && (name.dirty || name.touched)) "
+                class="alert alert-danger">
+            
+              <div *ngIf="name.errors.required">
+                This field is required.
+              </div>
+              
+            
+            </div>
+              </div> 
+        </div>
+        <div class ="col-md-6">
+            <div class="form-group">
+                <label for="lastname" class="control-label"><span class ="red">*</span>Description</label>
+                <textarea type="text" class="form-control" id="lastname"  name ="Description" placeholder="Description" #description="ngModel"     [(ngModel)] ="data.description"  rows="1" required></textarea>
+                <div *ngIf="(description.invalid && (description.dirty || description.touched)) "
+                class="alert alert-danger">
+            
+              <div *ngIf="description.errors.required">
+                This field is required.
+              </div>
+              
+            
+            </div>
+              </div>
+          </div> 
+          <div class ="col-md-12" id ="text" style ="     
+          max-height: 300px;
+          overflow-x: auto;" >
+           <span style ="position: absolute;
+           left: 10%;
+           /* top: 32%; */
+           /* bottom: 70%; */
+           background-color: #e9ecef;
+           z-index: 999;">   
+               <label for="text" class="control-label"><span class ="red">*</span>Properties template field</label>
+             </span>
+ <div class ="col-md-12"  style ="border:1px solid ;margin-top:10px">
+             <div    *ngFor = "let list of dataList ;let i = index ;"  style ="padding: 13px;"> 
+              <div class ="{{list.class1}}">
+                 <div class="form-group">
+                    <label for="lastname" class="control-label" *ngIf ="i == 0 ">Name:</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Key"   [name] ="i+'name'" [(ngModel)] ="list.name" >
+                </div></div> 
+                <div class ="{{list.class}}">
+                  <div class="form-group">
+                      <label for="lastname" class="control-label"  *ngIf ="i == 0 ">Type:</label>
+                       <select class="form-control" id="sel1"   [(ngModel)] ="list.type" [name] ="i+'sdtype'">
+                          <option value ="1" selected>Select Type</option> 
+                        <option value ="STRING" >STRING</option>
+                        <option value ="INTEGER">INTEGER</option>
+                        <option value ="DECIMAL">DECIMAL</option>
+                        <option value ="BOOL">BOOL</option>
+                       </select>
+                    </div></div> 
+              <div class ="{{list.class2}}">
+                  <div class="form-group {{list.class3}}">
+                    <div class="form-group">
+                        <label for="sel1" *ngIf ="i == 0 ">Value:</label>
+                        <input type="text" class="form-control" id="valuw"    placeholder="Default value"  [name] ="i+'value'" [(ngModel)] ="list.defaultValue" > 
+                      </div> 
+                  </div> 
+                  <button class="btn col-md-2 theme_table_button {{list.class4}}" (click) ="add()" ><i class="fa fa-plus plusIcon"  ></i></button>
+                  <button class="btn col-md-2 theme_table_button  {{list.class4}}" (click) ="remove(i)" *ngIf ="i != 0 " style ="margin-left: 5%;"><i class="fa fa-minus plusIcon"  ></i></button> 
+              </div>
+              <div class ="{{list.class5}}">
+                <div class="form-group">
+                    <label for="lastname" class="control-label"  *ngIf ="i == 0 ">Is Identifier:</label>
+                    <div class="form-check">
+                      <label class ="checkboxnew">
+                        <input type="checkbox" name="check"    [(ngModel)]="list.isIdentifier"> <span class="label-text"></span>
+                      </label>
+                    </div> 
+                  </div>
+                </div>
+            </div> 
+        </div> 
+            </div>
+      </div> 
+ <div class="modal-footer">
+  <button type="button" class="btn theme_table_button" (click) ="onCancel();" >Close</button>
+  <button type="button" class="btn theme_table_button"  (click) = "submitCreate(heroForm);" *ngIf ="title == 'false'">Save
+    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+  </button>
+   <button type="button" class="btn theme_table_button"  (click) = "submitUpdate(heroForm)" *ngIf ="title == 'true'">Update</button>
+</div>
+</form>
+</div>

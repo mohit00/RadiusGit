@@ -1,0 +1,123 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Add Command</h4>
+  <i class="fa fa-info" aria-hidden="true" style ="float: right;
+  font-size: 20px;
+  /* padding: 8px; */
+  padding-top: 10px;
+  cursor: pointer;
+  "></i>
+</div>
+<div class="modal-body">
+    <form name ="formgr"  #heroForm="ngForm" >
+
+       <div class ="row">
+        <div class ="col-md-6">
+            <div class="form-group">
+                <label for="lastname" class="control-label">Name</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Device Id" [(ngModel)] ="data.name" name ="name"  #name="ngModel"  required>
+                <div *ngIf="(name.invalid && (name.dirty || name.touched)) "
+                class="alert alert-danger">
+            
+              <div *ngIf="name.errors.required">
+                This field is required.
+              </div>
+              
+            
+            </div>
+            </div>
+            <div class="form-group">
+              <select class="form-control" id="sel1" [(ngModel)] ="data.templateType"name ="type">
+                <option value ="schemaDefine" >Schema defined</option>
+              <option value ="Schemafree" selected >Schema free</option>
+              </select>              
+            </div>            
+        </div>
+        <div class ="col-md-6">
+            <div class="form-group">
+                <label for="lastname" class="control-label">Description</label>
+                <textarea type="text" class="form-control" id="lastname" placeholder="Description" [(ngModel)] ="data.description" rows="4" name ="description" #description="ngModel"  required></textarea>
+                <div *ngIf="(description.invalid && (description.dirty || description.touched)) "
+                class="alert alert-danger">
+            
+              <div *ngIf="description.errors.required">
+                This field is required.
+              </div>
+              
+            
+            </div>
+              </div>
+          </div> 
+          <div class ="col-md-6">
+          <div class="form-group">
+             <div class="form-check">
+              <label class ="checkboxnew">
+                <input type="checkbox" name="check"   > <span class="label-text"></span>
+              </label><label>Is Acknowledgement Reqiured</label>
+            </div>
+       </div>
+       </div>
+          <div class ="col-md-12" style ="     padding: 0;
+          "  *ngIf ="data.templateType == 'schemaDefine'">
+                     <hr>
+          <div class ="row" style="    width: 100%;"> 
+              <div class ="col-md-6 tablebutton"> 
+                    <form class="form-horizontal col-md-8" style ="float: right;
+                    margin-right: 15px;">
+                      <!-- <div class="form-group"> 
+                          <input type="text" class="form-control" id="email" placeholder="Search" style ="    height: 35px;">
+                      </div> -->
+      </form>              
+              </div>
+          </div>
+            <div class="row" style="    width: 100%;
+            margin: auto;">
+                <div class="col-md-12">                 
+                    <div class="card">
+                        <div class="content table-responsive table-full-width"style =" max-height: 400px;
+                        overflow-x: auto;">
+                          <table class="table table-hover table-striped"  >
+                            <thead>
+                                <tr>
+                                    <th  width="20%"   > Action</th>
+                                    <th    > Attribute Template</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class ="selecttable"  *ngFor ="let list of displayList ;" (click)="selectedListdata(list)" style ="cursor: pointer">
+                                    <td  ><div class="form-check">
+                                      <label class ="checkboxnew">
+                                        <input  type="radio"  type="radio" name ="radio" [value]="true" [(ngModel)]="list.check"  [ngModelOptions]="{standalone: true}"> <span class="label-text"></span>
+                                      </label>
+                                    </div> </td>
+                                    <td  > {{list.name}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                              <tr  ><td [attr.colspan]="8"> 
+                                <div class=" " style="float: left;">
+                                  <ul class="pagination">
+                                    <li  >   
+                                      <button  (click)="prePage()" [disabled]="selectedPage == 1">« Prev</button>
+                                    </li>
+                                    <li   *ngFor = "let list of pageCountArray" [ngClass]="getClass(list)"> 
+                                      <a  (click)="Page(list)" >{{list}}</a>
+                                    </li>
+                                    <li  >
+                                      <button    (click)="nextPage()"   [disabled]="selectedPage == pageCountArray[pageCountArray.length - 1]" >Next »</button>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr></tfoot>
+                      </table>      
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            </div>
+      </div>
+ <div class="modal-footer">
+  <button type="button" class="btn theme_table_button" (click) ="onCancel();" >Close</button>
+  <button type="button" class="btn theme_table_button"  (click) = "submitCreate(heroForm)" *ngIf ="title == 'false'">Save</button>
+  <button type="button" class="btn theme_table_button"  (click) = "submitUpdate(heroForm)" *ngIf ="title == 'true'">Update</button>
+</div></form>

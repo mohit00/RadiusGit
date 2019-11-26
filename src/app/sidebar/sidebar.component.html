@@ -1,0 +1,30 @@
+
+<div class="sidebar-wrapper">
+     
+    <ul class="nav responsive-nav">
+     
+       
+       
+         
+         <li routerLinkActive="active" *ngFor="let menuItem of menuItems let i =index" class="{{menuItem.class}}" > 
+            <span data-toggle="collapse"  [attr.data-target]="'#side' + i"> 
+            <a  [routerLink]="[menuItem.path]" *ngIf ="menuItem.child.length == 0">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}                 <i class="fa fa-caret-down" *ngIf ="menuItem.child.length>0" style ="font-size: 14px ;    float: right;" ></i>
+                </p>
+            </a>
+            <a  *ngIf ="menuItem.child.length > 0" >
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}  <i class="fa fa-caret-down" *ngIf ="menuItem.child.length>0" style ="font-size: 14px ;    float: right;" ></i>                
+                </p>
+            </a>
+      </span>
+            <div class="collapse" [attr.id]="'side'+i"  *ngIf ="menuItem.child.length>0"  style="  background: rgb(28, 138, 216);  
+            border: 1px solid rgb(28, 138, 216);
+            padding: 4px;
+        ">
+                <a   class="list-group-item"  routerLinkActive="active"  [routerLink]="[newmenu.path]" *ngFor="let newmenu of menuItem.child " > <i class="{{newmenu.icon}}"></i>  <p>{{newmenu.title}}  </p> </a>
+               </div>
+        </li>
+    </ul>
+</div>

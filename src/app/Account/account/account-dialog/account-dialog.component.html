@@ -1,0 +1,345 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left"  >Add New Account</h4> 
+  <i class="fa fa-info" aria-hidden="true" style ="float: right;
+  font-size: 20px;
+  /* padding: 8px; */
+  padding-top: 10px;
+  cursor: pointer;
+  "></i> 
+</div>
+<div class="modal-body">
+    <form name ="formgr"  #heroForm="ngForm" >
+        <div class ="row">
+        
+       
+
+        <div id="stepper1" class="bs-stepper">
+          <div class="bs-stepper-header">
+              <div class="step" data-target="#test-l-1">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">1</span>
+                  <span class="bs-stepper-label">Account Info</span>
+                </button>
+              </div>
+              <div class="line"></div>
+              <div class="step" data-target="#test-l-2">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">2</span>
+                  <span class="bs-stepper-label">Contact Info</span>
+                </button>
+              </div>
+              <div class="line"></div>
+              <div class="step" data-target="#test-l-3">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">3</span>
+                  <span class="bs-stepper-label">user Info</span>
+                </button>
+              </div>
+              <div class="line"></div>
+              <div class="step" data-target="#test-l-4">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">4</span>
+                  <span class="bs-stepper-label">Meta Data</span>
+                </button>
+              </div>
+              <div class="line"></div>
+              <div class="step" data-target="#test-l-5">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">5</span>
+                  <span class="bs-stepper-label">User Contact</span>
+                </button>
+              </div>
+              <div class="line"></div>
+  
+              <div class="step" data-target="#test-l-6">
+                  <button class="step-trigger">
+                    <span class="bs-stepper-circle">6</span>
+                    <span class="bs-stepper-label">Submit</span>
+                  </button>
+                </div>
+            </div>
+          <div class="bs-stepper-content">
+                <div id="test-l-1" class="content">
+               <div class ="row">
+                 <div class ="col-md-12">
+                   <div class ="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Name*</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="name" name ="name" [(ngModel)]="data.name"  #name="ngModel"  required />
+                      <div *ngIf="(name.invalid && (name.dirty || name.touched)) "
+                        class="alert alert-danger">
+                    
+                      <div *ngIf="name.errors.required">
+                        This field is required.
+                      </div>
+                      
+                    
+                    </div>
+                    </div>
+                    <div class="form-group col-md-6 " style ="padding:0px">
+                      <label for="lastname" class="control-label"   >Type*:</label>
+                       <select class="form-control" id="sel1" name ="type" [(ngModel)]="data.type"   #type="ngModel"  required >
+                          <option value ="" selected>Select Type</option> 
+                        <option value ="OWNER" >Owner</option>
+                        <option value ="SITE" >SITE</option>
+                        <option value ="LOCATION" >LOCATION</option>
+                        <option value ="FLAT" >FLAT</option>
+
+                       </select>
+                       <div *ngIf="(type.invalid && (type.dirty || type.touched)) "
+                       class="alert alert-danger">
+                   
+                     <div *ngIf="type.errors.required">
+                       This field is required.
+                     </div>
+                     
+                   
+                   </div>
+                    </div>
+                    <div class="form-group col-md-6 "  style ="padding:0px">
+                        <label for="accId">Account Id*</label>
+                        <input type="text" class="form-control" id="accId" placeholder="Account Id" name ="user name" [(ngModel)]="data.accountId"   #accountId="ngModel"  required />
+                        <div *ngIf="(accountId.invalid && (accountId.dirty || accountId.touched)) "
+                        class="alert alert-danger">
+                    
+                      <div *ngIf="accountId.errors.required">
+                        This field is required.
+                      </div>
+                      
+                    
+                    </div>
+                    </div>
+                    <div class="form-group" *ngIf ="data.type != 'OWNER' && data.type != '1' ">
+                      <label for="lastname" class="control-label"  >Parent Account*:</label>
+                       <select class="form-control" id="sel1"  name ="parent"  [(ngModel)]="data.parentAccount" #parentAccount="ngModel"  required >
+                          <option value ="" selected>Select Parent Account</option> 
+                         <option [value] ="list._links.self.href" *ngFor ="let list of ListSelect">{{list.name}}</option>
+                       </select>
+                       <div *ngIf="(parentAccount.invalid && (parentAccount.dirty || parentAccount.touched)) "
+                        class="alert alert-danger">
+                    
+                      <div *ngIf="parentAccount.errors.required">
+                        This field is required.
+                      </div>
+                    </div>
+                    </div>
+                   </div>
+                   <div class ="col-md-6">
+                    <div class ="col-md-6" style ="padding: 0;">
+                         <div class=" form-group">
+                            <label for="exampleInputPassword1">Start Date</label>
+                            <input type="text" name ="startDate"  [(ngModel)]="data.validityFrom"
+                                 placeholder="Start Date"
+                                 class="form-control"
+                                 bsDatepicker>
+                        </div>
+                    </div>
+                    <div class ="col-md-6" style ="padding: 0;">
+                         <div class=" form-group">
+                            <label for="exampleInputPassword1">End Date</label> 
+                          <input type="text"
+                                 placeholder="End Date"  name ="endDate"
+                                 class="form-control"  [(ngModel)]="data.validityTo"
+                                 bsDatepicker>
+                        </div>
+                      
+                       
+                    
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="lastname" class="control-label"><span class ="red">*</span>Description</label>
+                      <textarea type="text" class="form-control" id="lastname"   [(ngModel)]="data.description" name ="Description" placeholder="Description"   rows="4" required></textarea>
+                     
+                    </div>
+                   </div>
+                 </div>
+               </div>
+                <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+              </div>
+              <div id="test-l-2" class="content">
+                  <div class ="row">
+                      <div class ="col-md-12">
+                          <div class ="col-md-4">
+
+                              <div class="form-group">
+                                  <label for="exampleInputPassword1">Country</label>
+                                  <select class="form-control" id="sel1"   [(ngModel)] ="data.accountContact.country"  name ="country">
+                                    <option value ="1" selected>Select Country</option> 
+                                   <option *ngFor ="let list of getCountryList" [value] = "list.name">{{list.name}}</option>
+                                 </select>
+                                  <!-- <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="data.accountContact.country" name ="contry" placeholder="Country" /> -->
+                                </div>
+                                </div>
+                          <div class ="col-md-4">
+
+                          <div class="form-group">
+                            
+                              <label for="exampleInputPassword1">City</label>
+                              <input type="text" class="form-control"   [(ngModel)]="data.accountContact.city"  id="exampleInputPassword1"  name ="city" placeholder="City" />
+                            </div>
+                            </div>
+                            <div class ="col-md-4">
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">State</label>
+                                    <input type="text" class="form-control"  [(ngModel)]="data.accountContact.state"  id="exampleInputPassword1"  name ="state" placeholder="Password" />
+                                  </div>
+                                  </div>
+                                  <div class ="col-md-4">
+
+                                      <div class="form-group">
+                                          <label for="exampleInputPassword1">Postal Code</label>
+                                          <input type="number" class="form-control"  [(ngModel)]="data.accountContact.postalCode"  name ="pCode" id="exampleInputPassword1" placeholder="Password" />
+                                        </div>
+                                        </div>
+
+
+                                      
+                                              <div class ="col-md-4">
+                  
+                                                  <div class="form-group">
+                                                      <label for="exampleInputPassword1">Phone Number</label>
+                                                      <input type="number" class="form-control"  [(ngModel)]="data.accountContact.phoneNumber"  name ="pNo" id="exampleInputPassword1" placeholder="Password" />
+                                                    </div>
+                                                    </div>
+                                                    <div class ="col-md-4">
+                  
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Fax Number</label>
+                                                            <input type="text" class="form-control" id="exampleInputPassword1"   name ="faxNo" [(ngModel)]="data.accountContact.fax" placeholder="Password" />
+                                                          </div>
+                                                          </div>
+                                                          <div class ="col-md-6">
+                                                              <div class="form-group">
+                                                                  <label for="lastname" class="control-label">Address</label>
+                                                                  <textarea type="text" class="form-control" id="lastname"   name ="add"    [(ngModel)]="data.accountContact.addressLine1" placeholder="Address"   rows="3" ></textarea>
+                                                                 
+                                                                </div>
+                                                          </div>
+                                                          <div class ="col-md-6">
+                                                              <div class="form-group">
+                                                                  <label for="lastname" class="control-label">Address 2 </label>
+                                                                  <textarea type="text" class="form-control" id="lastname"  name ="add2"   [(ngModel)]="data.accountContact.addressLine2" placeholder="Address 2"   rows="3" ></textarea>
+                                                                 
+                                                                </div>
+                                                            </div>
+                                                          
+
+                    </div></div>
+                <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+              </div>
+              <div id="test-l-3" class="content">
+                  <div class ="row">
+                      <div class ="col-md-12">
+                          <div class ="col-md-6">
+                              <div class="form-group">
+                                  <label for="exampleInputPassword1">Max Allowed User</label>
+                                  <input type="number" class="form-control" id="exampleInputPassword1"  name="maxAu"  [(ngModel)]="data.userInfo.allowedMaxUsers" placeholder="Max Allowed User" />
+                                </div>
+                          </div>
+                          <div class ="col-md-6">
+                              <div class="form-group">
+                                  <label for="exampleInputPassword1">Number Of Admin</label>
+                                  <input type="number" class="form-control" id="exampleInputPassword1" name="maxA" [(ngModel)]="data.userInfo.numberofAdmin" placeholder="Password" />
+                                </div>
+                          </div>
+                          <div class ="col-md-6">
+                              <div class="form-group">
+                                  <label for="exampleInputPassword1">Allowed Number Of General Users</label>
+                                  <input type="number" class="form-control" id="exampleInputPassword1" name="maxANGU" [(ngModel)]="data.userInfo.allowedNumberOfGeneralUsers" placeholder="Password" />
+                                </div>
+                          </div>
+                          <div class ="col-md-6">
+                              <div class="form-group">
+                                  <label for="exampleInputPassword1">customer Type</label>
+                                  <select class="form-control" id="sel1" name ="custNumber"  [(ngModel)]="data.customerType" >
+                                      <option value ="1" selected>Select Type</option> 
+                                    <option value ="GOLD" >GOLD</option>                                    
+                                   </select>                            
+                                      </div>
+                          </div>
+                        </div> 
+                             </div>
+                             <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+
+              </div>
+              <div id="test-l-4" class="content ">
+                  <div class ="col-md-12"  style ="border:1px solid ;margin-top:10px" >
+                  <div    *ngFor = "let list of dataList ;let i = index ;"  style ="padding: 13px;"> 
+                   <div class ="{{list.class1}}">
+                     <div class="form-group">
+                         <label for="lastname" class="control-label" *ngIf ="i == 0 ">Metadata Key:</label>
+                         <input type="text" class="form-control" id="lastname" placeholder="Key" name ="meta"  [name] ="i+'mname'" [(ngModel)] ="list.name" >
+                     </div></div> 
+                    
+                        
+                   <div class ="{{list.class2}}">
+                       <div class="form-group {{list.class3}}">
+                         <div class="form-group">
+                             <label for="sel1" *ngIf ="i == 0 ">Metadata Value:</label>
+                             <input type="text" class="form-control" id="lastname" placeholder="Default value"   [name] ="i+'value'"  [(ngModel)] ="list.value" > 
+                           </div> 
+                       </div> 
+                       <button class="btn col-md-2 theme_table_button {{list.class4}}" (click) ="add()" ><i class="fa fa-plus plusIcon"  ></i></button>
+                       <button class="btn col-md-2 theme_table_button  {{list.class4}}" (click) ="remove(i)" *ngIf ="i != 0 " style ="margin-left: 5%;"><i class="fa fa-minus plusIcon"  ></i></button> 
+                   </div>
+                  
+                 </div> 
+             </div>        
+             <button (click)="next(heroForm)" class="btn btn-primary" style="margin-top:10px">Next</button>
+
+                   </div>
+              <div id="test-l-5" class="content  ">
+                <form>
+                  <tabset type="pills" >
+                
+                      <tab *ngFor ="let list of contactUser ; let i = index" heading="{{list.name}}">
+                        <div class ="row">
+                            <div class ="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Name</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.name"  [name] ="i+'uname'" placeholder="Name" />
+                                  </div>
+                          </div>  
+                          <div class ="col-md-6">
+                              <div class="form-group">
+                                  <label for="exampleInputPassword1">Email</label> 
+                                  <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.email" [name] ="i+'uemail'" placeholder="email" />
+                                </div>
+                        </div>  
+                      
+                      <div class ="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">Phone Number</label> 
+                              <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.phoneNumber"  [name] ="i+'uphoneNumber'"  placeholder="Phone Number" />
+                            </div>
+                    </div>  
+                    <div class ="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">What's Up Number</label> 
+                            <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.whatsUpNumber" [name] ="i+'uwhatsUpNumber'"  placeholder="Phone Number" />
+                          </div>
+                  </div>  
+                        </div>
+                         
+</tab>  
+</tabset>
+</form>
+<button (click)="AddUsernext()" class="btn btn-primary" style="margin:10px">Add New User</button>
+<button (click)="RemoveUser(i)"  *ngIf ="contactUser.length >1"class="btn btn-primary" style="margin:10px">Remove User</button>
+
+                  <button (click)="next(heroForm)" class="btn btn-primary" style="margin:10px">Next</button>
+                </div>
+                <div id="test-l-6" class="content  ">
+                    <button class="btn btn-primary" style="margin:10px" (click)="submitData(heroForm)" *ngIf ="title == 'false'">Submit</button>
+                    <button class="btn btn-primary" style="margin:10px" (click)="updateData(heroForm)" *ngIf ="title != 'false'">Update</button>
+
+                </div>
+           </div>
+        </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn theme_table_button" >Close</button>
+</div>
+</form></div>

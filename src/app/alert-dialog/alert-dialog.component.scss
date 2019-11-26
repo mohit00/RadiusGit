@@ -1,0 +1,48 @@
+$theam-color-client:#1C8AD8;
+
+.modal-header{
+    background-color: $theam-color-client;
+    color:white;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.modal-body{
+    background: #E9ECEF;
+}
+input{
+    border-radius: 0;
+}
+.red{
+    color:red;
+}
+.form-group {
+    margin-bottom: 5px !important;
+}
+.plusIcon{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+.plustbutton{
+    margin-top: 28px !important;
+    width: 7% !important;
+    padding: 16px !important;
+}
+.plusbutonafter{
+    margin-top: 2px !important;
+    width: 7% !important;
+    padding: 16px !important;
+    margin-left: 5%  !important;
+}
+#dayselec{
+    width: 98% !important;
+    float: right !important;
+    height: 35px !important;
+}
