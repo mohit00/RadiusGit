@@ -57,7 +57,9 @@ export class LoaderInterceptor implements HttpInterceptor {
            }
         }
       ),  finalize(() => {
-        this.AuthService.loaderCheck.emit('hide');
+        setTimeout(()=>{
+          this.AuthService.loaderCheck.emit('hide');
+        },100)
 
         }),  catchError((error: HttpErrorResponse) => {
            if (error.status == 401) {

@@ -1,300 +1,316 @@
-<div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-        <div class ="col-md-12">
-          <div class ="header_top col-md-12">
-            <div class ="col-md-6" style ="margin-top: 12px;">
-               <span>Account Name:</span> {{ComandDetail.name}}  
-            </div>
-            <div class ="col-md-6" >
-              <div class="col-md-3">
+<div class="modal-header">
+  <h4 class="modal-title pull-left"  >Add Alert</h4> 
+  <i class="fa fa-info" aria-hidden="true" style ="float: right;
+  font-size: 20px;
+  /* padding: 8px; */
+  padding-top: 10px;
+  cursor: pointer;
+  "></i> 
+</div>
+<div class="modal-body">
+    <form name ="formgr"  #heroForm="ngForm" >
+        <div class ="row">
+        
+       
 
+        <div id="stepper1" class="bs-stepper">
+          <div class="bs-stepper-header">
+              <div class="step" data-target="#test-l-1">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">1</span>
+                  <span class="bs-stepper-label">Alert Info</span>
+                </button>
               </div>
-              <!-- <div class="col-md-2">
-                  <a  class=" " style="color:white;"  (click)="migrate(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>Migrate</a>
-
-              </div>
-              <div class="col-md-4">
-                  <a   class=" " style="color:white;" (click)="changeStatus(ComandDetail)"> <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Change Status</a> 
-              </div>-->
-              <div class="col-md-3">
-                  <a   class=" " style="color:white;"  (click)="accountTree(ComandDetail)"> <i class="fa fa-plus material-icons" aria-hidden="true"  ></i><br>Account Tree</a> 
-              </div>  
-            </div> 
-          </div> 
-        </div>
-        <div class ="col-md-12 "  >
-          <div class ="col-md-12 dashbox card" style ="margin-top: 23px;padding-left: 0px;
-          padding-right: 0px;">
-              <div class ="header">
-                  Account DETAILS
-                  <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsableHeader" (click) ="collabsableHeader = !collabsableHeader "style="font-size: 16px ;    float: right;"></i>
-                  <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsableHeader" (click) ="collabsableHeader = !collabsableHeader "style="font-size: 16px ;    float: right;"></i>
-
-              </div>
-              <div class ="col-md-12 bodyHeader" *ngIf ="collabsableHeader">
-                
-              <div class ="col-md-6 border_top_right" style ="    padding-left: 0;">
+              <div class="line"></div>
                
-                <div class ="col-md-12">
-                    <div class ="col-md-4 detailheader"   >
-                        <div >  Name</div>
-                    </div>
-                      <div class ="col-md-8 detailKey ">
-                          <div>{{ComandDetail.name}}</div>
-                      </div>
+              <div class="step" data-target="#test-l-2">
+                  <button class="step-trigger">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label">When To Execute</span>
+                  </button>
                 </div>
-                <div class ="col-md-12">
-                    <div class ="col-md-4 detailheader"   >
-                        <div >Created Date</div>
-                    </div>
-                      <div class ="col-md-8 detailKey ">
-                          <div>{{ComandDetail.createdOn | date}}</div>
-                      </div>
+              <div class="line"></div>
+              <div class="step" data-target="#test-l-3">
+                  <button class="step-trigger">
+                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-label">Trigger Additional Info</span>
+                  </button>
                 </div>
               
-                <div class ="col-md-12">
-                  <div class ="col-md-4 detailheader"   >
-                      <div >  Type</div>
-                  </div>
-                    <div class ="col-md-8 detailKey ">
-                        <div>{{ComandDetail.type}}</div>
-                    </div>
+              <div class="line"></div>
+              <div class="step" data-target="#test-l-4">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">4</span>
+                  <span class="bs-stepper-label">Alert Action</span>
+                </button>
               </div>
-                
-
-              <div class ="col-md-12">
-                <div class ="col-md-4 detailheader"   >
-                    <div >  status</div>
-                </div>
-                  <div class ="col-md-8 detailKey ">
-                      <div>{{ComandDetail.status}}</div>
-                  </div>
-            </div>
-            <div class ="col-md-12">
-              <div class ="col-md-4 detailheader"   >
-                  <div >  From</div>
+              <div class="line"></div>
+              <div class="step" data-target="#test-l-5">
+                <button class="step-trigger">
+                  <span class="bs-stepper-circle">5</span>
+                  <span class="bs-stepper-label">Submit</span>
+                </button>
               </div>
-                <div class ="col-md-8 detailKey ">
-                    <div>{{ComandDetail.validityFrom  | date}}</div>
-                </div>
-          </div>
-          <div class ="col-md-12">
-            <div class ="col-md-4 detailheader"   >
-                <div >  To</div>
-            </div>
-              <div class ="col-md-8 detailKey ">
-                  <div>{{ComandDetail.validityTo  | date}}</div>
-              </div>
-        </div>
-        <div class ="col-md-12" *ngIf =" ComandDetail.type != 'OWNER'">
-          <div class ="col-md-4 detailheader"   >
-              <div >  Parent</div>
-          </div>
-            <div class ="col-md-8 detailKey " *ngIf ="ComandDetail.parentAccount">
-                <div>{{ComandDetail.parentAccount.name}}</div>
-            </div>
-      </div>
-      <div class ="col-md-12" >
-        <div class ="col-md-4 detailheader"   >
-            <div >Customer Type</div>
-        </div>
-          <div class ="col-md-8 detailKey ">
-              <div>{{ComandDetail.customerType}}</div>
-          </div>
-    </div>
-      
-              </div>
-              <div class ="col-md-6 border_top" > 
-                  <div class ="col-md-12" style ="margin-top: 10px;">
-                      <div class ="  detailheader"   >
-                       <strong>Description </strong>
-                      </div>
-                      <div class ="  detailheader"   >
-                           {{ComandDetail.description}}
-                         </div> 
-                  </div>
-                 
-                  <div class ="col-md-12"  >
-                    <div class ="col-md-4 detailheader"   >
-                        <div >Account Address1</div>
-                    </div>
-                      <div class ="col-md-8 detailKey ">
-                          <div>{{ComandDetail.accountContact.addressLine1}}</div>
-                      </div>
-                </div>
-                <div class ="col-md-12"  >
-                  <div class ="col-md-4 detailheader"   >
-                      <div > Address2</div>
-                  </div>
-                    <div class ="col-md-8 detailKey ">
-                        <div>{{ComandDetail.accountContact.addressLine2}}</div>
-                    </div>
-              </div>
-
-              <div class ="col-md-12"  >
-                <div class ="col-md-4 detailheader"   >
-                    <div > city</div>
-                </div>
-                  <div class ="col-md-8 detailKey ">
-                      <div>{{ComandDetail.accountContact.city}}</div>
-                  </div>
-            </div>
-            
-            <div class ="col-md-12"  >
-              <div class ="col-md-4 detailheader"   >
-                  <div > state</div>
-              </div>
-                <div class ="col-md-8 detailKey ">
-                    <div>{{ComandDetail.accountContact.state}}</div>
-                </div>
-          </div>
-          <div class ="col-md-12"  >
-            <div class ="col-md-4 detailheader"   >
-                <div > country</div>
-            </div>
-              <div class ="col-md-8 detailKey ">
-                  <div>{{ComandDetail.accountContact.country}}</div>
-              </div>
-        </div>
-        <div class ="col-md-12"  >
-          <div class ="col-md-4 detailheader"   >
-              <div > phoneNumber</div>
-          </div>
-            <div class ="col-md-8 detailKey ">
-                <div>{{ComandDetail.accountContact.phoneNumber}}</div>
-            </div>
-      </div>
-                </div>
-            </div>
-
-          </div>
-        </div>
-        <div class ="col-md-6 "   style ="padding-right: 6px;" >
-              <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
-              padding-right: 0px;">
-                  <div class ="header">
-                      Account  Contacts
-                      <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsablePro" (click) ="collabsablePro = !collabsablePro "style="font-size: 16px ;    float: right;"></i>
-                      <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsablePro" (click) ="collabsablePro = !collabsablePro "style="font-size: 16px ;    float: right;"></i>
+              <div class="line"></div>
   
-                  </div>
-                  <div class ="col-md-12 bodyHeader border_top_right" style ="    padding-left: 0;" *ngIf ="collabsablePro">
-                    
-                     <div class ="col-md-12" *ngFor ="let list of ComandDetail.userContacts;let index =index">
-                     
-                    <div class ="col-md-12" style ="margin-top: 10px;" >
-                      <div class ="  detailheader"  >
-                       <strong>User Name :-</strong>   {{list.name}}
-                      </div>
-                      <div class ="  detailheader" style ="margin:10px"  >
-                         
-                         </div> 
-                  </div>
-                 
-                  <div class ="col-md-12"  >
-                    <div class ="col-md-4 detailheader"   >
-                        <div >Email</div>
-                    </div>
-                      <div class ="col-md-8 detailKey ">
-                          <div>{{list.email}}</div>
-                      </div>
-                </div>
-                <div class ="col-md-12"  >
-                  <div class ="col-md-4 detailheader"   >
-                      <div >Phone Number</div>
-                  </div>
-                    <div class ="col-md-8 detailKey ">
-                        <div>{{list.phoneNumber}}</div>
-                    </div>
-              </div>
-              <div class ="col-md-12"  >
-                <div class ="col-md-4 detailheader"   >
-                    <div >whatsUp Number</div>
-                </div>
-                  <div class ="col-md-8 detailKey ">
-                      <div>{{list.whatsUpNumber}}</div>
-                  </div>
+               
             </div>
-              </div>    
-                </div>
-              </div>
-            </div>
-            <div class ="col-md-6 " style ="padding-left: 6px;"  >
-                <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
-                padding-right: 0px;">
-                    <div class ="header">
-                        Account user Info
-                        <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsableIdPro" (click) ="collabsableIdPro = !collabsableIdPro "style="font-size: 16px ;    float: right;"></i>
-                        <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsableIdPro" (click) ="collabsableIdPro = !collabsableIdPro "style="font-size: 16px ;    float: right;"></i>
+          <div class="bs-stepper-content">
+                <div id="test-l-1" class="content">
+                    <form name ="formgr"  #heroForm="ngForm" >
+
+               <div class ="row">
+                 <div class ="col-md-12">
+                   <div class ="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Name*</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="name" name ="name" [(ngModel)]="data.name"  #name="ngModel"  required  />
+                      
+                    </div>
+                    <div class="form-group col-md-4 " style ="padding:0px">
+                      <label for="lastname" class="control-label"   >Type*:</label>
+                       <select class="form-control" id="sel1" name ="rulePriority"    [(ngModel)]="data.rulePriority"  required >
+                          <option value ="" selected>Select Priority</option> 
+                        <option value ="High" >High</option>
+                        <option value ="Medium" >Medium</option>
+                        <option value ="Low" >Low</option>
+ 
+                       </select>
+                       
+                    </div>
+
+                    <div class="form-group col-md-4">
+                      <label for="exampleInputPassword1">Alert Id*</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Alert Id" name ="customAlertId" [(ngModel)]="data.customAlertId"   />
+                      
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Alert Per Day*</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Max Alert Per Day" name ="maxAlertPerDay" [(ngModel)]="data.maxAlertPerDay"   />
+                        
+                      </div>
+                    
+                   </div>
+                   <div class ="col-md-6">
+                      <label for="lastname" class="control-label"><span class ="red">*</span>Description</label>
+                      <textarea type="text" class="form-control" id="lastname"   [(ngModel)]="data.description" name ="Description" placeholder="Description"   rows="4" ></textarea>
 
                     </div>
-                    <div class ="col-md-12 bodyHeader border_top_right" style ="    padding-left: 0;" *ngIf ="collabsableIdPro">
-                      
-                          <div class ="col-md-12" >
-                                  <div class ="col-md-4 detailheader"   >
-                                      <div >Allowed Max User</div>
-                                  </div>
-                                    <div class ="col-md-8 detailKey ">
-                                        <div> {{ComandDetail.userInfo.allowedMaxUsers}}</div>
-                      
-                                      
-                                    </div>
-                              </div>
-                              <div class ="col-md-12" >
-                                <div class ="col-md-4 detailheader"   >
-                                    <div >No. Of Admin</div>
-                                </div>
-                                  <div class ="col-md-8 detailKey ">
-                                      <div> {{ComandDetail.userInfo.numberofAdmin}}</div>
-                    
-                                    
-                                  </div>
-                            </div>
-                            <div class ="col-md-12" >
-                              <div class ="col-md-4 detailheader"   >
-                                  <div >Allowed General User</div>
-                              </div>
-                                <div class ="col-md-8 detailKey ">
-                                    <div> {{ComandDetail.userInfo.allowedNumberOfGeneralUsers}}</div>
-                  
-                                  
-                                </div>
-                          </div>
-            
-                     
-                  </div>
-            
-                </div>
+                 </div>
+               </div>
+                <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+                </form>
               </div>
+              <div id="test-l-2" class="content">
+                  <form name ="formgr"  #heroForm="ngForm" >
 
-<div class ="col-md-12 " style ="padding-left: 6px;"  >
-    <div class ="col-md-12 dashbox card" style ="margin-top: 23px;     padding-left: 0px;
-    padding-right: 0px;">
-        <div class ="header">
-            Account Metadata
-            <i class="fa fa-caret-down ng-tns-c2-0 ng-star-inserted"   *ngIf ="!collabsablemetaStatus" (click) ="collabsablemetaStatus = !collabsablemetaStatus "style="font-size: 16px ;    float: right;"></i>
-            <i class="fa fa-caret-up ng-tns-c2-0 ng-star-inserted" *ngIf =" collabsablemetaStatus" (click) ="collabsablemetaStatus = !collabsablemetaStatus "style="font-size: 16px ;    float: right;"></i>
-
-        </div>
-        <div class ="col-md-12 bodyHeader border_top_right" style ="    padding-left: 0;" *ngIf ="collabsablemetaStatus">
-          
-              <div class ="col-md-12" *ngFor ="let list of dataList">
-                      <div class ="col-md-4 detailheader"   >
-                          <div >{{list.name}}</div>
-                      </div>
-                        <div class ="col-md-8 detailKey ">
-                            <div> {{list.value}}</div>
-          
-                          
-                        </div>
-                  </div>
+                      <div class ="row">
+                        <div class ="col-md-12">
+                            <div class="form-group col-md-4 " style ="padding:0px">
+                                <label for="lastname" class="control-label"   >Execute Type*:</label>
+                                 <select class="form-control" id="sel1" name ="rulePriority"    [(ngModel)]="data.whenToExecute2"  required >
+                                    <option value ="" selected>Select Priority</option> 
+                                  <option value ="daysOfMonth" >Day Of Month</option>
+                                  <option value ="always" >Always</option>
+                                  <option value ="daysOfWeek" >Days Of Week</option>
            
-          
+                                 </select>
+                                 
+                              </div>          
+                           </div>
+                          
+                           <div class ="col-md-12" *ngIf ="data.whenToExecute2 == 'always'">
+                              <div class="form-group col-md-6 " style ="padding:0px">
+                                <label for="Start">Start Time</label>
 
-         
-      </div>
+                                <p-calendar id  = "Start" name ="Start" [(ngModel)]="always.startTime" showIcon = "true"  showTime="true" hourFormat="12"></p-calendar>
 
-    </div>
-  </div>
-        </div></div></div>
+                                   
+                         </div>
+                         <div class="form-group col-md-6 " style ="padding:0px">
+                          <label for="End">End Time</label>
+
+                          <p-calendar  name ="End" [(ngModel)]="always.endTime"  id ="End" showIcon = "true" showTime="true" hourFormat="12"></p-calendar>
+
+                             
+                          </div>
+                                  </div>
+                                  <div class ="col-md-12" *ngIf ="data.whenToExecute2 == 'daysOfMonth'">
+                                    <div class="form-group col-md-3 " style ="padding:0px">
+                                      <label for="Start">Start Time</label>
+
+                                      <p-calendar id  ="Start"name ="Start"  [(ngModel)]="daysOfMonth.startTime" showIcon = "true"  showTime="true" hourFormat="12"></p-calendar>
+      
+                                         
+                               </div>
+                               <div class="form-group col-md-3 " style ="padding:0px">
+                                <label for="End">End Time</label>
+
+                                <p-calendar id  ="End"  name ="End" [(ngModel)]="daysOfMonth.endTime" showIcon = "true"  showTime="true" hourFormat="12"></p-calendar>
+
+                                   
+                         </div>
+                               <div class="form-group col-md-3 " style ="padding:0px">
+                                <label for="month">Select Month</label>
+
+                                <ng-multiselect-dropdown
+                                id ="month"
+                                [placeholder]="'Select Month'"
+                                [data]="MonthList"
+                                [(ngModel)]="selectedItems"
+                                [settings]="dropdownSettings"
+                                (onSelect)="onItemSelect($event)"
+                                (onSelectAll)="onSelectAll($event)"
+                                name ="drop"
+                              >
+                              </ng-multiselect-dropdown>
+                                   
+                         </div>
+                         <div class="form-group col-md-3 " style ="padding:0px">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">day</label>
+                            <input type="text" class="form-control" id="dayselec" placeholder="day" name ="day" [(ngModel)]="daysOfMonth.day"    />
+                           
+                          </div>
+                             
+                           </div>
+                                 </div>
+                                    <div class ="col-md-12" *ngIf ="data.whenToExecute2 == 'daysOfWeek'">
+                                      <div class="form-group col-md-4 " style ="padding:0px">
+                                        <label for="Start">Start Time</label>
+  
+                                        <p-calendar id  ="Start" name ="start"  [(ngModel)]="daysOfWeek.startTime" showIcon = "true"  showTime="true" hourFormat="12"></p-calendar>
+        
+                                           
+                                 </div>
+                                 <div class="form-group col-md-4 " style ="padding:0px">
+                                  <label for="End">End Time</label>
+  
+                                  <p-calendar id  ="End" name ="End"  [(ngModel)]="daysOfWeek.endTime" showIcon = "true"  showTime="true" hourFormat="12"></p-calendar>
+  
+                                     
+                           </div>
+                           <div class="form-group col-md-4 " style ="padding:0px">
+
+                           <div class="form-group">
+                            <label for="exampleInputPassword1">Day Of Week</label>
+                            <input type="text" class="form-control" id="dayselec" placeholder="day" name ="day" [(ngModel)]="daysOfWeek.dayOfWeek"    />
+                           
+                          </div>
+                          </div>
+
+                                      </div>
+                          </div>
+                          </form> 
+                <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+              </div>
+              <div id="test-l-3" class="content">
+                <form name ="formgr"  #heroForm="ngForm" >
+                    <div class ="row">
+                        <div class ="col-md-12">
+                    <div class="form-group col-md-3 " style ="padding:0px">
+
+                        <div class="form-group">
+                         <label for="exampleInputPassword1">key</label>
+                         <input type="text" class="form-control" id="dayselec" placeholder="day" name ="day" [(ngModel)]="triggerAdditionalInfo.key"    />
+                        
+                       </div>
+                       </div>
+                       <div class="form-group col-md-3 " style ="padding:0px">
+
+                          <div class="form-group">
+                           <label for="exampleInputPassword1">value</label>
+                           <input type="text" class="form-control" id="dayselec" placeholder="day" name ="day" [(ngModel)]="triggerAdditionalInfo.value"    />
+                          
+                         </div>
+                         </div>
+                         <div class="form-group col-md-3 " style ="padding:0px">
+
+                            <div class="form-group">
+                             <label for="exampleInputPassword1">operator</label>
+                             <input type="text" class="form-control" id="dayselec" placeholder="day" name ="day" [(ngModel)]="triggerAdditionalInfo.operator"    />
+                            
+                           </div>
+                           </div>
+                           <div class="form-group col-md-3 " style ="padding:0px">
+
+                              <div class="form-group">
+                               <label for="exampleInputPassword1">unit</label>
+                               <input type="text" class="form-control" id="dayselec" placeholder="day" name ="day" [(ngModel)]="triggerAdditionalInfo.unit"    />
+                              
+                             </div>
+                             </div>
+                 </div></div>
+                             <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+                             </form>
+                           
+
+              </div>
+              <div id="test-l-4" class="content ">
+                  <form>
+                  <tabset type="pills" >
+                
+                      <tab *ngFor ="let list of alertAction ; let i = index" heading="{{list.to}}">
+                        <div class ="row">
+                            <div class ="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Entity Type</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.entityType"  [name] ="i+'entityType'" placeholder="Entity Type" />
+                                  </div>
+                          </div>  
+                          <div class ="col-md-6">
+                              <div class="form-group">
+                                  <label for="exampleInputPassword1">Entity ID</label> 
+                                  <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.entityID" [name] ="i+'entityID'" placeholder="Entity ID" />
+                                </div>
+                        </div>  
+                        <div class ="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">To</label> 
+                                <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.to"  [name] ="i+'to'"  placeholder="to" />
+                              </div>
+                      </div> 
+                      <div class ="col-md-6">
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">Type</label> 
+                              <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.type"  [name] ="i+'type'"  placeholder="type" />
+                            </div>
+                    </div>  
+                    <div class ="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Message</label> 
+                            <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.message" [name] ="i+'message'"  placeholder="Message" />
+                          </div>
+                  </div>  
+                  <div class ="col-md-6">
+                      <div class="form-group">
+                          <label for="exampleInputPassword1">Template Id</label> 
+                          <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.templateId" [name] ="i+'templateId'"  placeholder="Template Id" />
+                        </div>
+                </div>  
+                        </div>
+                         
+</tab>  
+</tabset>
+</form>
+<button (click)="AddUsernext()" class="btn btn-primary" style="margin:10px">Add New User</button>
+<button (click)="RemoveUser(i)"  *ngIf ="alertAction.length >1"class="btn btn-primary" style="margin:10px">Remove User</button>
+
+             <button (click)="next(heroForm)" class="btn btn-primary" >Next</button>
+
+                   </div>
+              <div id="test-l-5" class="content  ">
+                <form>
+                 
+</form>
+ 
+                  <button (click)="CreateAlert()" class="btn btn-primary" style="margin:10px">Submit</button>
+                </div>
+                
+           </div>
+        </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn theme_table_button" >Close</button>
+</div>
+</form></div>

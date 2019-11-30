@@ -160,8 +160,10 @@ export class AlertDialogComponent implements OnInit {
   }
   CreateAlert(){
     if(this.data.whenToExecute2 == 'daysOfMonth'){
-      this.daysOfMonth.months =  this.selectedItems;
-      this.data.whenToExecute = this.daysOfMonth;
+      for(var i =0 ;i<this.selectedItems.length;i++){
+        this.daysOfMonth.months.push(this.selectedItems[i].item_id);
+      }
+       this.data.whenToExecute = this.daysOfMonth;
     } if(this.data.whenToExecute2 == 'always'){
       this.data.whenToExecute = this.always;
     }
@@ -170,7 +172,7 @@ export class AlertDialogComponent implements OnInit {
     }
     this.data.alertAction = this.alertAction;
     this.data.triggerAdditionalInfo = this.triggerAdditionalInfo;
-    alert(JSON.stringify(this.data))
+    console.log(JSON.stringify(this.data))
     // alert(JSON.stringify(this.daysOfMonth))
     // alert(JSON.stringify(this.always))
 

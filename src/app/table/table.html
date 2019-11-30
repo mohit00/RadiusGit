@@ -107,9 +107,21 @@
                                           <li  >  
                                             <button  (click)="prePage()" [disabled]="selectedPage == 1">« Prev</button>
                                           </li>
-                                          <li   *ngFor = "let list of pageCountArray" [ngClass]="getClass(list)"> 
-                                            <a  (click)="Page(list)" >{{list}}</a>
-                                          </li>
+                                          <ng-container *ngFor = "let list of pageCountArray;let index =index">
+                                            <ng-container  *ngIf ="index + 1 == 1 ||index + 1 == selectedPage || index + 1 == selectedPage + 1 || index + 1 == selectedPage +2 || index + 1 == selectedPage - 1 || index + 1 == selectedPage - 2 || index + 1 ==pageCountArray.length || index + 1 == pageCountArray.length - 1 || index + 1 == pageCountArray.length -2   " >
+                                              <li    [ngClass]="getClass(list)" > 
+                                                <a  (click)="Page(list)" >{{list}}  </a>
+                                              </li>
+                                            </ng-container>
+                                            <ng-container  *ngIf ="index + 1 == selectedPage +3  " >
+                                              <li     > 
+                                                <a   >---  </a>
+                                              </li>
+                                            </ng-container>
+
+                                          </ng-container>
+                                        
+                                          
                                           <li  >
                                             <button    (click)="nextPage()"   [disabled]="selectedPage == pageCountArray[pageCountArray.length - 1]" >Next »</button>
                                           </li>

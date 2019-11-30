@@ -207,7 +207,7 @@ ngOnInit() {
   this.getEventList();
     }
     detail(data) {
-      alert(this.showpagi)
+       
        if(this.showpagi){
      let id =    this.service.getSplitId(data._links.self.href);
  
