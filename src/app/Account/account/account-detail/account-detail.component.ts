@@ -4,6 +4,7 @@ import {AccountService} from '../../account.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { json } from 'body-parser';
 import {AccountTreeComponent} from '../../account-tree/account-tree.component'
+
 @Component({
   selector: 'app-account-detail',
   templateUrl: './account-detail.component.html',

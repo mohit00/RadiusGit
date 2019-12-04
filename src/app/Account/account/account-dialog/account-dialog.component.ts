@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import Stepper from 'bs-stepper';
@@ -6,6 +6,8 @@ import {AccountService} from '../../account.service';
 import { BsModalRef } from 'ngx-bootstrap';
 import { AuthService } from 'src/app/auth.service';
 import {WebserModel} from '../../../Service.model';
+import { ScrollEvent } from 'ngx-scroll-event';
+declare var $: any;
 
 @Component({
   selector: 'app-account-dialog',
@@ -13,6 +15,20 @@ import {WebserModel} from '../../../Service.model';
   styleUrls: ['./account-dialog.component.scss']
 })
 export class AccountDialogComponent implements OnInit {
+  public handleScroll(event: ScrollEvent) {
+    console.log('scroll occurred', event.originalEvent);
+    if (event.isReachingBottom) {
+      console.log(`the user is reaching the bottom`);
+    }
+    if (event.isReachingTop) {
+      console.log(`the user is reaching the bottom`);
+    }
+    if (event.isWindowEvent) {
+      console.log(`This event is fired on Window not on an element.`);
+    }
+ 
+  }
+
   private stepper: Stepper;
    id:any;
   public onClose: Subject<boolean>;
@@ -24,7 +40,6 @@ export class AccountDialogComponent implements OnInit {
     this.getCountryList =   this.AuthService.CountryList;
     this.data  =  {accountContact: {country:'1'}, userInfo: {},
     type: '', parentAccount: ''};
-  
 
    }
   dataList: any;
@@ -48,6 +63,11 @@ export class AccountDialogComponent implements OnInit {
     this.Service.AccountDataGet(this.page, this.size, this.sort).subscribe(res => {
          this.ListSelect = res._embedded.accounts;
          console.log(JSON.stringify(this.ListSelect));
+         document.getElementById("parent").addEventListener("scroll", this.scroll);
+         $('#parent').scroll(function() {
+           console.log("cc")
+          $(window).scroll();
+      });
      });
   }
   remove(index) {
@@ -62,7 +82,12 @@ export class AccountDialogComponent implements OnInit {
     this.contactUser.splice(index, 1);
 
   }
+  scroll() {
+    console.log("dsd")
+     }
   ngOnInit() {
+
+   
     this.getAccountList();
     if (this.title === 'false') {
       this.contactUser = [{

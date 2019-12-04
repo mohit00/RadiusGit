@@ -98,9 +98,39 @@ export class AlertDialogComponent implements OnInit {
   
   
   MonthList:any;
-   ngOnInit() {
+  alertDetail(){
+    this.AuthService.getDetail(  'alerts/' + this.id).subscribe(res => {
+       console.log(JSON.stringify(res))
+       this.data = res;
+       this.triggerAdditionalInfo = res.triggerAdditionalInfo
+       this.alertAction = res.alertAction
+       if(res.whenToExecute.always){
+        this.data.whenToExecute2 = 'always'
+        this.always = res.whenToExecute.always;
+        this.always.startTime = new Date(this.always.startTime);
+        this.always.endTime = new Date(this.always.endTime);
+
+        }if(res.whenToExecute.daysOfMonth){
+        this.data.whenToExecute2 = 'daysOfMonth'
+        this.daysOfMonth = res.whenToExecute.daysOfMonth;
+        this.daysOfMonth.startTime = new Date(this.daysOfMonth.startTime);
+        this.daysOfMonth.endTime = new Date(this.daysOfMonth.endTime);
+
+        }if(res.whenToExecute.daysOfWeek){
+          this.data.whenToExecute2 = 'daysOfWeek'
+          this.daysOfWeek = res.whenToExecute.daysOfWeek;
+          this.daysOfWeek.startTime = new Date(this.daysOfWeek.startTime);
+          this.daysOfWeek.endTime = new Date(this.daysOfWeek.endTime); 
+          }
+
+
+    });
+
+  }
+    ngOnInit() {
      if (this.title === 'false') { 
     }else{ 
+this.alertDetail();
     }
 
     this.onClose = new Subject();
@@ -159,33 +189,85 @@ export class AlertDialogComponent implements OnInit {
 
   }
   CreateAlert(){
+    this.data.whenToExecute ={};
     if(this.data.whenToExecute2 == 'daysOfMonth'){
       for(var i =0 ;i<this.selectedItems.length;i++){
         this.daysOfMonth.months.push(this.selectedItems[i].item_id);
       }
-       this.data.whenToExecute = this.daysOfMonth;
+       this.data.whenToExecute.daysOfMonth = this.daysOfMonth;
+        
+       this.data.whenToExecute.daysOfMonth.startTime =this.data.whenToExecute.daysOfMonth.startTime.toISOString().replace('.000Z', '');
+       ;
+       this.data.whenToExecute.daysOfMonth.endTime = this.data.whenToExecute.daysOfMonth.endTime.toISOString().replace('.000Z', '')
+
     } if(this.data.whenToExecute2 == 'always'){
-      this.data.whenToExecute = this.always;
+      this.data.whenToExecute.always = this.always;
+      this.data.whenToExecute.always.startTime =this.data.whenToExecute.always.startTime.toISOString().replace('.000Z', '');
+      ;
+      this.data.whenToExecute.always.endTime = this.data.whenToExecute.always.endTime.toISOString().replace('.000Z', '')
+
     }
     if(this.data.whenToExecute2 == 'daysOfWeek'){
-      this.data.whenToExecute = this.daysOfWeek;
+
+      this.data.whenToExecute.daysOfWeek = this.daysOfWeek;
+      this.data.whenToExecute.daysOfWeek.startTime =this.data.whenToExecute.daysOfWeek.startTime.toISOString().replace('.000Z', '');
+      ;
+      this.data.whenToExecute.daysOfWeek.endTime = this.data.whenToExecute.daysOfWeek.endTime.toISOString().replace('.000Z', '')
+
     }
     this.data.alertAction = this.alertAction;
     this.data.triggerAdditionalInfo = this.triggerAdditionalInfo;
     console.log(JSON.stringify(this.data))
-    // alert(JSON.stringify(this.daysOfMonth))
-    // alert(JSON.stringify(this.always))
-
-    // alert(JSON.stringify(this.daysOfWeek))
-    // alert(JSON.stringify(this.triggerAdditionalInfo))
-    // alert(JSON.stringify(this.triggerAdditionalInfo))
-    // alert(JSON.stringify(this.alertAction))
-    // alert(JSON.stringify(this.data))
+  
     this.AuthService.createAlert(this.data).subscribe(res=>{
-      alert(JSON.stringify(res))
+       this.onClose.next(true);
+
+      this._bsModalRef.hide();
+      this.AuthService.suceesAlertDialog('Alert has been successfully Updated.' );
+
 
     })
      
   }
+  UpdateAlert(){
+    this.data.whenToExecute ={};
+    if(this.data.whenToExecute2 == 'daysOfMonth'){
+      for(var i =0 ;i<this.selectedItems.length;i++){
+        this.daysOfMonth.months.push(this.selectedItems[i].item_id);
+      }
+       this.data.whenToExecute.daysOfMonth = this.daysOfMonth;
+        
+       this.data.whenToExecute.daysOfMonth.startTime =this.data.whenToExecute.daysOfMonth.startTime.toISOString().replace('.000Z', '');
+       ;
+       this.data.whenToExecute.daysOfMonth.endTime = this.data.whenToExecute.daysOfMonth.endTime.toISOString().replace('.000Z', '')
+
+    } if(this.data.whenToExecute2 == 'always'){
+      this.data.whenToExecute.always = this.always;
+      this.data.whenToExecute.always.startTime =this.data.whenToExecute.always.startTime.toISOString().replace('.000Z', '');
+      ;
+      this.data.whenToExecute.always.endTime = this.data.whenToExecute.always.endTime.toISOString().replace('.000Z', '')
+
+    }
+    if(this.data.whenToExecute2 == 'daysOfWeek'){
+
+      this.data.whenToExecute.daysOfWeek = this.daysOfWeek;
+      this.data.whenToExecute.daysOfWeek.startTime =this.data.whenToExecute.daysOfWeek.startTime.toISOString().replace('.000Z', '');
+      ;
+      this.data.whenToExecute.daysOfWeek.endTime = this.data.whenToExecute.daysOfWeek.endTime.toISOString().replace('.000Z', '')
+
+    }
+    this.data.alertAction = this.alertAction;
+    this.data.triggerAdditionalInfo = this.triggerAdditionalInfo;
+    console.log(JSON.stringify(this.data))
   
+    this.AuthService.createAlert(this.data).subscribe(res=>{
+       this.onClose.next(true);
+
+      this._bsModalRef.hide();
+      this.AuthService.suceesAlertDialog('Alert has been successfully Updated.' );
+
+
+    })
+     
+  }
 }

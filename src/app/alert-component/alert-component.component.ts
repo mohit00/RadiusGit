@@ -218,19 +218,22 @@ ngOnInit() {
       }
     }
     edit(data) {
+      console.log(JSON.stringify(data))
+      let id ;
       if(this.showpagi){
-        let id =    this.service.getSplitId(data._links.self.href);
-
-        this.service.setId(this.WebserModel.Sevice.BASE_URL+'attributeTemplates/'+id , 'Properties/Prototype');
-
+        
+       
+ 
+         id=   this.service.getSplitId(data._links.self.href)
+  
       }else{
-        this.service.setId(this.WebserModel.Sevice.BASE_URL+'attributeTemplates/'+data.id , 'Properties/Prototype');
-
+  id =data.id;
       }
        const initialState = {
         title: 'true',
-        id: this.service.getId
+        id: id
       };
+      alert(JSON.stringify(initialState))
       this.bsModalRef = this.modalService.show(AlertDialogComponent,  {initialState, class: 'gray modal-lg' });
 
       this.bsModalRef.content.onCloseEdit.subscribe((result: any) => {

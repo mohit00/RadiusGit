@@ -68,7 +68,7 @@
                       
                     </div>
                     <div class="form-group col-md-4 " style ="padding:0px">
-                      <label for="lastname" class="control-label"   >Type*:</label>
+                      <label for="lastname" class="control-label"   >Priority Type*:</label>
                        <select class="form-control" id="sel1" name ="rulePriority"    [(ngModel)]="data.rulePriority"  required >
                           <option value ="" selected>Select Priority</option> 
                         <option value ="High" >High</option>
@@ -225,13 +225,20 @@
                          </div>
                          </div>
                          <div class="form-group col-md-3 " style ="padding:0px">
+                              <label for="exampleInputPassword1">operator</label>
+                               <select class="form-control" id="sel1" name ="operator"    [(ngModel)]="triggerAdditionalInfo.operator"  required >
+                                <option value ="" selected>Select operator</option> 
+                              <option value ="NOTEQUAL" >Not Equal</option>
+                              <option value ="EQUAL" >Equal</option>
+                              <option value ="IN" >In</option>
+                              <option value ="LESSTHEN" >Less Than</option>
+                              <option value ="GREATERTHEN" >Greated Than</option>
+                              <option value ="NOTIN" >Not In</option>
+                              <option value ="GREATERTHENEQUAL" >Greater Than Equal</option>
+                              <option value ="Low" >Less Than Equal</option>
 
-                            <div class="form-group">
-                             <label for="exampleInputPassword1">operator</label>
-                             <input type="text" class="form-control" id="dayselec" placeholder="day" name ="day" [(ngModel)]="triggerAdditionalInfo.operator"    />
-                            
-                           </div>
-                           </div>
+                             </select>
+                            </div>
                            <div class="form-group col-md-3 " style ="padding:0px">
 
                               <div class="form-group">
@@ -254,9 +261,13 @@
                         <div class ="row">
                             <div class ="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Entity Type</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="list.entityType"  [name] ="i+'entityType'" placeholder="Entity Type" />
-                                  </div>
+                                  <label for="exampleInputPassword1">Entity Type</label>
+                                  <select class="form-control" id="sel1" name ="i+'Entity'"    [(ngModel)]="list.entityType"  required >
+                                    <option value ="" selected>Entity Type</option> 
+                                  <option value ="USER" >USER</option>
+            
+                                 </select>                                 
+                                 </div>
                           </div>  
                           <div class ="col-md-6">
                               <div class="form-group">
@@ -304,7 +315,9 @@
                  
 </form>
  
-                  <button (click)="CreateAlert()" class="btn btn-primary" style="margin:10px">Submit</button>
+                  <button (click)="CreateAlert()" class="btn btn-primary" style="margin:10px" *ngIf ="!title">Submit</button>
+                  <button (click)="UpdateAlert()" class="btn btn-primary" style="margin:10px" *ngIf ="title">Submit</button>
+
                 </div>
                 
            </div>

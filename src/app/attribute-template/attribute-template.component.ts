@@ -77,9 +77,9 @@ preDisabled: any;
     advanceSearch = false;
 open() {
     const initialState = {
-      title: 'false',
+      title: 'false' 
     };
-    this.bsModalRef = this.modalService.show(AttributeDialogComponent,  {initialState, class: 'gray modal-lg' });
+    this.bsModalRef = this.modalService.show(AttributeDialogComponent,  {initialState, class: 'gray modal-lg',backdrop: 'static' });
 
     this.bsModalRef.content.onClose.subscribe(result => {
      this.getEventList();

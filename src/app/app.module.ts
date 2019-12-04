@@ -16,6 +16,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ModalModule, AlertModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 import { DeviceProvisioningDialogComponent } from './device-provisioning/device-provisioning-dialog/device-provisioning-dialog.component';
 import { LoginComponent } from './login/login.component';
@@ -52,7 +53,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     SidebarModule, TabsModule.forRoot(),CalendarModule,  // <--- Determines the data type of the model
      
     NgMultiSelectDropDownModule.forRoot(),
-    AppRoutingModule,
+    AppRoutingModule,ScrollEventModule, 
   ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ModalModule.forRoot(), AlertModule.forRoot(), BsDatepickerModule.forRoot()
   ],
