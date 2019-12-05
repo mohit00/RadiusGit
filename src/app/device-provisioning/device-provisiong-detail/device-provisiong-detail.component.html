@@ -3,12 +3,12 @@
         <div class="row">
           <div class ="col-md-12">
             <div class ="header_top col-md-12">
-              <div class ="col-md-6" style ="margin-top: 12px;">
+              <div class ="col-md-5" style ="margin-top: 12px;">
                  <span>Things Name:</span> {{ComandDetail.name}}  
               </div>
-              <div class ="col-md-6" >
+              <div class ="col-md-7" >
             
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <a  class=" " style="color:white; padding-right: 0px"  (click)="migrate2Account(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>To Account</a>
 
                 </div>
@@ -16,11 +16,14 @@
                     <a  class=" " style="color:white;padding-left: 0px"  (click)="migrate(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>Migrate</a>
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <a   class=" " style="color:white;" (click)="changeStatus(ComandDetail)"> <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Change Status</a> 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <a   class=" " style="color:white;"  (click)="addField(ComandDetail)"> <i class="fa fa-plus material-icons" aria-hidden="true"  ></i><br>Add Field</a> 
+                </div> 
+                <div class="col-md-4">
+                    <a   class=" " style="color:white;"  (click)="assignUnassignAlert(ComandDetail)">  <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Assign/Un Assign Alert</a> 
                 </div> 
               </div> 
             </div> 

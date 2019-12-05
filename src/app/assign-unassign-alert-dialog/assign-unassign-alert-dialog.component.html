@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left"  >Assign Alert</h4> 
+  <i class="fa fa-info" aria-hidden="true" style ="float: right;
+  font-size: 20px;
+  /* padding: 8px; */
+  padding-top: 10px;
+  cursor: pointer;
+  "></i> 
+</div>
+<div class="modal-body">
+  <form name ="formgr"  >
+       <div class ="row">
+        
+          <div class ="col-md-12">
+                      <div class="card">
+                          <div class="content table-responsive table-full-width"style ="     max-height: 323px;
+                          overflow-x: hidden;
+                          overflow-y: auto;">
+                                <table class="table table-hover table-striped"  >
+                                      <thead>
+                                          <tr>
+                                              <th  width="50%"   > Alert</th>
+                                              <th    > Assign</th>
+                                              <th    > Un Assign</th>
+
+                                          </tr>
+                                      </thead>
+                                      <tbody *ngFor ="let list of AlertDisplay ;let index =index">
+                                          <tr class ="selecttable"    style ="cursor: pointer">
+                                             <td>
+ 
+                                             {{list.name}}</td>
+                                            
+                                            <td  >
+                                            
+                                              <div class="form-check">
+                                                  <label class ="checkboxnew">
+                                                    <input type="radio" [attr.name]  ="'radio'+index" [value]="true"   
+                                                    (click) ="toggel(list,'Assign')"  [(ngModel)] = "list.check"  [ngModelOptions]="{standalone: true}"> <span class="label-text"  ></span>
+                                                  </label>
+                                                </div>
+                                            </td>
+                                              <td  > <div class="form-check">
+                                                  <label class ="checkboxnew">
+                                                    <input type="radio"  [attr.name]  ="'radio'+index" [value]="false"  [(ngModel)] = "list.check" (click) ="toggel(list,'UnAssign')"  [ngModelOptions]="{standalone: true}"> <span class="label-text"></span>
+                                                  </label>
+                                                </div></td>
+                                          </tr>
+                                          
+                                      </tbody>
+                                     
+                                </table>
+                             </div>
+                      </div>
+            
+          </div>
+      </div> 
+ <div class="modal-footer">
+  <button type="button" class="btn theme_table_button" (click) ="onCancel();" >Close</button>
+  <button type="button" class="btn theme_table_button"  (click) = "submitCreate();" *ngIf ="title == 'false'">Save
+    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+  </button>
+   <button type="button" class="btn theme_table_button"  (click) = "submitUpdate()" *ngIf ="title == 'true'">Update</button>
+</div>
+</form>
+</div>

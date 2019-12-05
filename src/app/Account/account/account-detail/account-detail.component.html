@@ -3,12 +3,13 @@
         <div class="row">
           <div class ="col-md-12">
             <div class ="header_top col-md-12">
-              <div class ="col-md-6" style ="margin-top: 12px;">
+              <div class ="col-md-6" style ="margin-top: 12px;" *ngIf ="ComandDetail">
                  <span>Account Name:</span> {{ComandDetail.name}}  
               </div>
               <div class ="col-md-6" >
-                <div class="col-md-3">
- 
+                <div class="col-md-6">
+                  <a   class=" " style="color:white;"  (click)="assignUnassignAlert(ComandDetail)">  <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Assign/Un Assign Alert</a> 
+
                 </div>
                 <!-- <div class="col-md-2">
                     <a  class=" " style="color:white;"  (click)="migrate(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>Migrate</a>
@@ -17,9 +18,10 @@
                 <div class="col-md-4">
                     <a   class=" " style="color:white;" (click)="changeStatus(ComandDetail)"> <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Change Status</a> 
                 </div>-->
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <a   class=" " style="color:white;"  (click)="accountTree(ComandDetail)"> <i class="fa fa-plus material-icons" aria-hidden="true"  ></i><br>Account Tree</a> 
                 </div>  
+
               </div> 
             </div> 
           </div>
@@ -119,8 +121,8 @@
                       <div class ="col-md-4 detailheader"   >
                           <div >Account Address1</div>
                       </div>
-                        <div class ="col-md-8 detailKey ">
-                            <div>{{ComandDetail.accountContact.addressLine1}}</div>
+                        <div class ="col-md-8 detailKey " >
+                            <div *ngIf ="ComandDetail.accountContact">{{ComandDetail.accountContact.addressLine1}}</div>
                         </div>
                   </div>
                   <div class ="col-md-12"  >
@@ -128,7 +130,7 @@
                         <div > Address2</div>
                     </div>
                       <div class ="col-md-8 detailKey ">
-                          <div>{{ComandDetail.accountContact.addressLine2}}</div>
+                          <div *ngIf ="ComandDetail.accountContact">{{ComandDetail.accountContact.addressLine2}}</div>
                       </div>
                 </div>
 
@@ -137,7 +139,7 @@
                       <div > city</div>
                   </div>
                     <div class ="col-md-8 detailKey ">
-                        <div>{{ComandDetail.accountContact.city}}</div>
+                        <div *ngIf ="ComandDetail.accountContact">{{ComandDetail.accountContact.city}}</div>
                     </div>
               </div>
               
@@ -146,7 +148,7 @@
                     <div > state</div>
                 </div>
                   <div class ="col-md-8 detailKey ">
-                      <div>{{ComandDetail.accountContact.state}}</div>
+                      <div *ngIf ="ComandDetail.accountContact">{{ComandDetail.accountContact.state}}</div>
                   </div>
             </div>
             <div class ="col-md-12"  >
@@ -154,7 +156,7 @@
                   <div > country</div>
               </div>
                 <div class ="col-md-8 detailKey ">
-                    <div>{{ComandDetail.accountContact.country}}</div>
+                    <div *ngIf ="ComandDetail.accountContact">{{ComandDetail.accountContact.country}}</div>
                 </div>
           </div>
           <div class ="col-md-12"  >
@@ -162,7 +164,7 @@
                 <div > phoneNumber</div>
             </div>
               <div class ="col-md-8 detailKey ">
-                  <div>{{ComandDetail.accountContact.phoneNumber}}</div>
+                  <div *ngIf ="ComandDetail.accountContact">{{ComandDetail.accountContact.phoneNumber}}</div>
               </div>
         </div>
                   </div>

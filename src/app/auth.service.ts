@@ -405,6 +405,41 @@ export class AuthService {
         .map(res => res as any)
         .catch(this.handleError);
        }
+       updateAlert(data,id) {
+        return this._http.put(  'alerts'+'/'+id ,data )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       AssignThingAlert(customAlertId,thingId) {
+        return this._http.post(  'alert-service/alert/'+customAlertId+'/assignAlertToThing/'+thingId ,{} )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       unAssignThingAlert(customAlertId,thingId) {
+        return this._http.post(  'alert-service/alert/'+customAlertId+'/unAssignAlertToThing/'+thingId ,{} )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getAlertMappedToThing(thingId) {
+        return this._http.get(  'alert-service/alert/assignTo/Thing/'+thingId   )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getAlertMappedToAccount(AccountId) {
+        return this._http.get(  'alert-service/alert/assignTo/Account/'+AccountId  )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       AssignAccountAlert(customAlertId,thingId) {
+        return this._http.post(  'alert-service/alert/'+customAlertId+'/assignAlertToAccount/'+thingId ,{} )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       unAssignAccountAlert(customAlertId,thingId) {
+        return this._http.post(  'alert-service/alert/'+customAlertId+'/unAssignAlertToAccount/'+thingId ,{} )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
        private handleError(error: Response) {
          
         console.log(error);

@@ -16,6 +16,8 @@ export class AlertDialogComponent implements OnInit {
   private stepper: Stepper;
    id:any;
   public onClose: Subject<boolean>;
+  public onCloseEdit: Subject<boolean>;
+
   daysOfMonth:any={
     startTime:'',endTime:'',
     day:'',months:[]
@@ -134,8 +136,9 @@ this.alertDetail();
     }
 
     this.onClose = new Subject();
+    this.onCloseEdit = new Subject();
 
-   
+    
     this.stepper = new Stepper(document.querySelector('#stepper1'), {
       linear: false,
       animation: true
@@ -258,10 +261,10 @@ this.alertDetail();
     }
     this.data.alertAction = this.alertAction;
     this.data.triggerAdditionalInfo = this.triggerAdditionalInfo;
-    console.log(JSON.stringify(this.data))
-  
-    this.AuthService.createAlert(this.data).subscribe(res=>{
-       this.onClose.next(true);
+   console.log(     (JSON.stringify(this.data))
+  )
+    this.AuthService.updateAlert(this.data,this.id).subscribe(res=>{
+       this.onCloseEdit.next(true);
 
       this._bsModalRef.hide();
       this.AuthService.suceesAlertDialog('Alert has been successfully Updated.' );

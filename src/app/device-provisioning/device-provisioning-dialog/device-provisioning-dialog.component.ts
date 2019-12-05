@@ -44,6 +44,7 @@ title: any;
 
  geteventTemplate() {
    this.Service.getdeviceTemplate(this.page, this.size, this.sort).subscribe(res => {
+     console.log(JSON.stringify(res))
      this.eventTemplateList = res._embedded.thingTemplates;
      this.pageCount =  res.page.totalPages;
 
@@ -63,10 +64,14 @@ title: any;
      for (let i = 0 ; i < this.pageCount; i++) {
      this.pageCountArray.push(i + 1);
    }
-     if (this.selectedList.length > 0) {
-    const indexselected =   this.eventTemplateList.findIndex( record => record._links.self.href === this.selectedList[0]._links.self.href );
-    this.eventTemplateList[indexselected].check = true;
-   }
+   this.selectedList.push(this.eventTemplateList[0])
+  //    if (this.selectedList.length > 0) {
+  //   const indexselected =   this.eventTemplateList.findIndex( record =>{
+  //     alert(record._links.self.href)
+  //     return record._links.self.href === this.selectedList[0]._links.self.href
+  //   }  );
+  //   this.eventTemplateList[indexselected].check = true;
+  //  }
    });
  }
  updateDevicePro(form) {
@@ -79,8 +84,7 @@ title: any;
   
    return false;}
   if (this.selectedList.length > 0 ) {
-    this.Service.updateThing( this.selectedList[0].
-      _links.self.href.substr(this.selectedList[0]._links.self.href.length - 2), this.data).subscribe(res => {
+    this.Service.updateThing( this.selectedList[0]._links.self.href.split("/")[4], this.data).subscribe(res => {
       this.onCloseEdit.next(true);
       this._bsModalRef.hide();
       this.Service.suceesAlertDialog('Things/Provisioning');
@@ -114,8 +118,9 @@ console.log(JSON.stringify(this.data));
  
 
   if (this.selectedList.length > 0 ) {
-     this.Service.addThing( this.selectedList[0]._links.self.href
-        .substr(this.selectedList[0]._links.self.href.length - 2), this.data).subscribe(res => {
+ 
+     this.Service.addThing( this.selectedList[0]._links.self.href.split("/")[4]
+         , this.data).subscribe(res => {
        this.onClose.next(true);
        this._bsModalRef.hide();
        this.Service.suceesAlertDialog('Device/Provisioning');
@@ -220,7 +225,7 @@ remove(index) {
 selectedListdata(data: { check: boolean; _links: { self: { href: any; }; }; }) {
 // tslint:disable-next-line: prefer-for-of
   for (let i = 0 ; i < this.eventTemplateList.length; i++) {
-    if (this.eventTemplateList[i]._links.self.href !== data._links.self.href) {
+    if (this.eventTemplateList[i]._links.self.href != data._links.self.href) {
       this.eventTemplateList[i].check =  false;
       }
      }

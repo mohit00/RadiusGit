@@ -233,7 +233,7 @@ ngOnInit() {
         title: 'true',
         id: id
       };
-      alert(JSON.stringify(initialState))
+       
       this.bsModalRef = this.modalService.show(AlertDialogComponent,  {initialState, class: 'gray modal-lg' });
 
       this.bsModalRef.content.onCloseEdit.subscribe((result: any) => {

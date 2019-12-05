@@ -4,6 +4,7 @@ import {AccountService} from '../../account.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { json } from 'body-parser';
 import {AccountTreeComponent} from '../../account-tree/account-tree.component'
+import { AssignUnassignAlertDialogComponent } from 'src/app/assign-unassign-alert-dialog/assign-unassign-alert-dialog.component';
 
 @Component({
   selector: 'app-account-detail',
@@ -110,5 +111,17 @@ export class AccountDetailComponent implements OnInit {
  
     this.getDetailEvent();
   }
+  assignUnassignAlert(data){
+    
+    const initialState = {
+      title: 'Account',
+      data
+    };
+    this.bsModalRef = this.modalService.show(AssignUnassignAlertDialogComponent,  {initialState, class: 'gray modal-lg' });
 
+    this.bsModalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+      this.getDetailEvent();
+});
+  }
 }

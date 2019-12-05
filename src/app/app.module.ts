@@ -41,6 +41,7 @@ import { AccountTreeComponent } from './Account/account-tree/account-tree.compon
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
  import {CalendarModule} from 'primeng/calendar';
  import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AssignUnassignAlertDialogComponent } from './assign-unassign-alert-dialog/assign-unassign-alert-dialog.component';
 
 @NgModule({
   imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -67,10 +68,10 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     CommandDialogComponent,
     DeviceDialogComponent,
     SuccessDialogComponent,
-    ArrtibuteSelectComponent, ChangeStatusComponent, MigrateDialogComponent, AddFieldDialogComponent, MigrateAccountComponent, RoleDialogComponent, UserAddDialogComponent, AssignDialogComponent, AccountTreeComponent, AlertDialogComponent 
+    ArrtibuteSelectComponent, ChangeStatusComponent, MigrateDialogComponent, AddFieldDialogComponent, MigrateAccountComponent, RoleDialogComponent, UserAddDialogComponent, AssignDialogComponent, AccountTreeComponent, AlertDialogComponent, AssignUnassignAlertDialogComponent 
 
   ],
-  entryComponents: [RoleDialogComponent, UserAddDialogComponent,AlertDialogComponent,
+  entryComponents: [RoleDialogComponent, UserAddDialogComponent,AlertDialogComponent,AssignUnassignAlertDialogComponent,
     DeviceDialogComponent, AccountDialogComponent, AccountTreeComponent,
     DeviceProvisioningDialogComponent, AttributeDialogComponent,
     EventDialogComponent, CommandDialogComponent,
