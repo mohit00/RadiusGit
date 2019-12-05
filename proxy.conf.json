@@ -67,6 +67,18 @@
       "logLevel": "debug",
       "changeOrigin": true
     
+    },"/preferences/*":{
+      "target": "http://13.126.31.198:8095",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    
+    },"/account-preference/*":{
+      "target": "http://13.126.31.198:8095",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    
     }
     
     

@@ -42,7 +42,9 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
  import {CalendarModule} from 'primeng/calendar';
  import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AssignUnassignAlertDialogComponent } from './assign-unassign-alert-dialog/assign-unassign-alert-dialog.component';
-
+import { PreferencesThingsDialogComponent } from './preferences/preferences-things/preferences-things-dialog/preferences-things-dialog.component';
+import { PreferencesAccountDialogComponent } from './preferences/preferences-account/preferences-account-dialog/preferences-account-dialog.component';
+ 
 @NgModule({
   imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
@@ -68,10 +70,15 @@ import { AssignUnassignAlertDialogComponent } from './assign-unassign-alert-dial
     CommandDialogComponent,
     DeviceDialogComponent,
     SuccessDialogComponent,
-    ArrtibuteSelectComponent, ChangeStatusComponent, MigrateDialogComponent, AddFieldDialogComponent, MigrateAccountComponent, RoleDialogComponent, UserAddDialogComponent, AssignDialogComponent, AccountTreeComponent, AlertDialogComponent, AssignUnassignAlertDialogComponent 
+    ArrtibuteSelectComponent, ChangeStatusComponent,
+     MigrateDialogComponent, AddFieldDialogComponent,
+      MigrateAccountComponent, RoleDialogComponent,
+       UserAddDialogComponent, AssignDialogComponent, 
+       AccountTreeComponent, AlertDialogComponent, AssignUnassignAlertDialogComponent, 
+       PreferencesThingsDialogComponent, PreferencesAccountDialogComponent 
 
   ],
-  entryComponents: [RoleDialogComponent, UserAddDialogComponent,AlertDialogComponent,AssignUnassignAlertDialogComponent,
+  entryComponents: [PreferencesThingsDialogComponent,PreferencesAccountDialogComponent,RoleDialogComponent, UserAddDialogComponent,AlertDialogComponent,AssignUnassignAlertDialogComponent,
     DeviceDialogComponent, AccountDialogComponent, AccountTreeComponent,
     DeviceProvisioningDialogComponent, AttributeDialogComponent,
     EventDialogComponent, CommandDialogComponent,

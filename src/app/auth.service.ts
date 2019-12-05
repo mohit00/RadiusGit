@@ -440,6 +440,33 @@ export class AuthService {
         .map(res => res as any)
         .catch(this.handleError);
        }
+       // preference
+       preferenceCount() {
+        return this._http.get(  'account-preference/preference/count')
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       preferenceGET(page,size,sort) {
+        return this._http.get(  'preferences?page=' + page + '&size=' + size + '&sort=' + sort)
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       preferenceCreate(data) {
+        return this._http.post(  'preferences',data)
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getSearchPreference(data, des): Observable<any> {
+
+        return this._http.get('account-preference/preference/search?name=' + data + '*' )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getPreferencedescript(data, des) {
+        return this._http.get(  'account-preference/preference/search?description=' + des + '*' )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
        private handleError(error: Response) {
          
         console.log(error);

@@ -76,7 +76,7 @@ export class AccountService {
             .map(res => res as any)
             .catch(this.handleError);
            }
-           getSearchAccount(data, name): Observable<any> {
+           getSearchAccount(name): Observable<any> {
 
             return this._http.get( this.BASE_URL + 'account-service/account/search?name=' + name + '*'  )
             .map(res => res as any)

@@ -55,5 +55,8 @@ export const AdminLayoutRoutes: Routes = [
       },{
         path:'quickHelp',
         component:QuickHelpComponent
+      },{
+        path:'preference',
+        loadChildren: '../../preferences/preferences.module#PreferencesModule'
       }
 ];

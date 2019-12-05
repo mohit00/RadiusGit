@@ -253,13 +253,14 @@ export class AccountComponent implements OnInit {
         }
         // tslint:disable-next-line: ban-types
         searchresult(name: String, description: String) {
+          
           if (description) {
             this.service.getSearchAccountdesc(name, description).subscribe(res => {
               this.displayList = res;
               this.showpagi = false;
                  });
           } else {
-          this.service.getSearchAccount(name , description).subscribe(res => {
+          this.service.getSearchAccount(name ).subscribe(res => {
             console.log(JSON.stringify(res));
             this.displayList = res;
             this.showpagi = false;
