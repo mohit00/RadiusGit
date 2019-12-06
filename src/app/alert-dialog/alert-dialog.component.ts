@@ -130,9 +130,9 @@ export class AlertDialogComponent implements OnInit {
 
   }
     ngOnInit() {
-     if (this.title === 'false') { 
+      if (this.title) { 
+        this.alertDetail();
     }else{ 
-this.alertDetail();
     }
 
     this.onClose = new Subject();

@@ -32,7 +32,7 @@ export class DeviceProvisiongDetailComponent implements OnInit {
     this.dataList = [];
     this.thingsPropertiesIdentifier = [];
     this.thingsProperties = [];
-    this.ComandId  =  this.Service.getSplitId(this.Service.getId);
+    this.ComandId  =  this.Service.getId;
      this.Service.getDetail('things/'+this.ComandId).subscribe(res => {
        this.ComandDetail = res;
 

@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeviceProvisioningComponent } from './device-provisioning.component';
 import { DeviceProvisioningRoutes } from './device-provisioning.routing';
 import { DeviceProvisiongDetailComponent } from './device-provisiong-detail/device-provisiong-detail.component';
+ 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(DeviceProvisioningRoutes),
-    FormsModule,
+    FormsModule, 
 
    ],
   declarations: [  DeviceProvisioningComponent, DeviceProvisiongDetailComponent,  

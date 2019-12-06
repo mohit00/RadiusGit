@@ -5,26 +5,52 @@
      <div *ngIf ="showAccount">
        <form></form>
         <div class="form-group col-md-4">
-            <label for="sel1">Select Account:</label>
-            <select class="form-control" id="sel1"  (change)="onAccountChange($event.target.value,'')"  name ="account">
-              <option>Select Account</option>
-              <option *ngFor ="let list of accountLists" [value] = "list.accountId">
-                {{list.name}}
-              </option>
-             </select>
+         
+             <div class="dropdown" style="float: right;">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{accountSelect}}
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" (scroll)="scrollHandler($event)">
+ 
+                  <li  *ngFor ="let list of accountLists let i= index;"  (click)="onAccountChange(list.accountId,list.name)" ><a >  {{list.name}}</a></li>
+                  
+                </ul>
+              </div>
           </div>
-          {{accountSelected }}
-     </div>
+      </div>
+      
      <div *ngIf ="!showAccount">
+
         <div class ="col-md-2 buttonTheme">
             <button class="btn   theme_color" type="button" (click) ="toggelSearch()">  Advance Search</button>
         </div>
+        <div class ="col-md-4 buttonTheme">
+          
+            <div class="form-group " *ngIf="accountShowThing" style="width:100%;" >
+                 <!-- <select class="form-control" id="sel1"  (change)="onAccountChange($event.target.value,'')"  name ="account">
+                  <option>Select Account</option>
+                  <option *ngFor ="let list of accountLists" [value] = "list.accountId">
+                    {{list.name}}
+                  </option>
+                 </select> -->
+                 <div class="dropdown" style="float: right;">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{accountSelect}}
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" (scroll)="scrollHandler($event)">
+                        <li     (click)="onAccountChange('','select')"><a  >Select Account</a></li>
+
+                      <li  *ngFor ="let list of accountLists let i= index;"  (click)="onAccountChange(list.accountId,list.name)" ><a >  {{list.name}}</a></li>
+                      
+                    </ul>
+                  </div>
+              </div>        </div>
         <div class ="col-md-6 tablebutton">
-          <div class ="col-md-4">
+         
+          <div class ="col-md-2">
             <button class="btn   theme_table_button " type="button" (click)="open()" style ="float: right;" > <i class="fa fa-plus" aria-hidden="true"></i>
               {{title}}</button>
             </div>
-              <form class="form-horizontal col-md-8" action="/action_page.php">
+           
+              <form class="form-horizontal col-md-10" action="/action_page.php">
                 <div class="form-group inner-addon left-addon">
                   <i class="fa fa-search" aria-hidden="true"></i>
 

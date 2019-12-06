@@ -26,6 +26,7 @@ export class AccountService {
   public loading = false;
   CREATE_ATTRIBUTE_TEMPLATE = this.WebserModel.Sevice.CREATE_ATTRIBUTE_TEMPLATE;
   firstHeaders: any;
+  headerJson: { 'x-account': string; 'x-user': string; };
   get sizetable() {
     return 10;
   }
@@ -33,6 +34,10 @@ export class AccountService {
   constructor(private _http: HttpClient, private router: Router, private modalService: BsModalService
 // tslint:disable-next-line: no-shadowed-variable
     ,         private WebserModel: WebserModel) {
+      this.headerJson ={
+        'x-account': 'Radius-PF',
+        'x-user':'admin'
+      };
  // tslint:disable-next-line: deprecation
       this.firstHeaders = new Headers();
       this.firstHeaders.append('Content-Type', 'application/json');
@@ -55,42 +60,56 @@ export class AccountService {
     }
     migrateThing( id1: any, id2: any, data: any): Observable < any > {
 // alert('/thing-service/thing/' + id1 + '/moveThingToAccount/' + id2 )
-      return this._http.post( '/thing-service/thing/' + id1 + '/moveThingToAccount/' + id2 , {} )
+      return this._http.post( '/thing-service/thing/' + id1 + '/moveThingToAccount/' + id2 , {},{
+        headers:this.headerJson
+     } )
      .map(res => res as any)
      .catch(this.handleError);
      }
          AccountDataGet(page, size, sort): Observable < any > {
               
-            return this._http.get( this.BASE_URL + 'accounts' + '?page=' + page + '&size=' + size + '&sort=' + sort)
+            return this._http.get( this.BASE_URL + 'accounts' + '?page=' + page + '&size=' + size + '&sort=' + sort,{
+              headers:this.headerJson
+           })
            .map(res => res as any)
            .catch(this.handleError);
            }
            AccountDataGetCount(): Observable < any > {
-            return this._http.get( this.BASE_URL + 'account-service/account/count')
+            return this._http.get( this.BASE_URL + 'account-service/account/count',{
+              headers:this.headerJson
+           })
            .map(res => res as any)
            .catch(this.handleError);
            }
            getSearchAccountdesc(data, des): Observable<any> {
 
-            return this._http.get( this.BASE_URL + 'account-service/account/search?description=' + des + '*'  )
+            return this._http.get( this.BASE_URL + 'account-service/account/search?description=' + des + '*' ,{
+              headers:this.headerJson
+           } )
             .map(res => res as any)
             .catch(this.handleError);
            }
            getSearchAccount(name): Observable<any> {
 
-            return this._http.get( this.BASE_URL + 'account-service/account/search?name=' + name + '*'  )
+            return this._http.get( this.BASE_URL + 'account-service/account/search?name=' + name + '*'  ,{
+              headers:this.headerJson
+           })
             .map(res => res as any)
             .catch(this.handleError);
            }
            addAccount(data): Observable<any> {
 
-            return this._http.post( this.BASE_URL + 'accounts',data )
+            return this._http.post( this.BASE_URL + 'accounts',data ,{
+              headers:this.headerJson
+           })
                         .map(res => res as any)
             .catch(this.handleError);
            }
           updateAccount(data,accountId): Observable<any> {
 
-            return this._http.patch( this.BASE_URL + 'accounts'+'/'+accountId,data )
+            return this._http.patch( this.BASE_URL + 'accounts'+'/'+accountId,data ,{
+              headers:this.headerJson
+           })
                         .map(res => res as any)
             .catch(this.handleError);
            }
@@ -101,8 +120,14 @@ export class AccountService {
            .catch(this.handleError);
            }
            getAccountByUser(  data ): Observable < any > {
-
-            return this._http.get( 'user-service/account/'+data )
+            
+            let headerjson = {
+              'x-account': sessionStorage.getItem('setUserAccount'),
+              'x-user':'admin'
+            }
+            return this._http.get( 'user-service/account/'+data ,{
+              headers:headerjson
+           })
            .map(res => res as any)
            .catch(this.handleError);
            }

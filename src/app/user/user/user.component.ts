@@ -1,4 +1,4 @@
-import { Component, OnInit, SecurityContext  } from '@angular/core';
+import { Component, OnInit, SecurityContext, HostListener  } from '@angular/core';
  import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
  import {AuthService} from '../../auth.service';
 import { DatePipe } from '@angular/common';
@@ -10,30 +10,55 @@ declare interface TableData {
 }
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
+templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  accountPage:any = 0;
+  @HostListener('scroll', ['$event']) 
+  scrollHandler(event) {
+     if (event.target.offsetHeight + event.target.scrollTop > event.target.scrollHeight) {
+      console.log("End");
+      this.accountPage = this.accountPage+1;
+      this.accountList();
+
+    }
+  }
   showAccount:boolean = false;
-  accountLists:any;
+  accountLists:any =[];;
   accountSelected:any;
-  onAccountChange(data){
+  // onAccountChange(data){
+  //   this.showAccount = true;
+  //   this.accountSelected = data
+  //   // alert(data);
+  //   sessionStorage.setItem('setUserAccount',data)
+  //   this.AccountService.getAccountByUser(data).subscribe(res=>{
+  //     console.log(JSON.stringify(res))
+  //     // this.displayList = res;
+  //     this.displayList = res;
+  //    })
+    
+  // }
+  onAccountChange(id,name){
+    this.accountSelect = name;
     this.showAccount = true;
-    this.accountSelected = data
+    this.accountSelected = id
     // alert(data);
-    sessionStorage.setItem('setUserAccount',data)
-    this.AccountService.getAccountByUser(data).subscribe(res=>{
+    sessionStorage.setItem('setUserAccount',id)
+    this.AccountService.getAccountByUser(id).subscribe(res=>{
       console.log(JSON.stringify(res))
       // this.displayList = res;
       this.displayList = res;
      })
-    
+
   }
+  accountSelect:any = 'Select Account'
+
 accountList(){
-  this.AccountService.AccountDataGet(0,10000,'createdOn,Desc').subscribe(res=>{
+  this.AccountService.AccountDataGet(this.accountPage,100,'createdOn,Desc').subscribe(res=>{
       console.log(JSON.stringify(res))
-       this.accountLists = res._embedded.accounts;
-  })
+      this.accountLists = this.accountLists.concat(res._embedded.accounts)
+    })
 }
   constructor(private modalService: BsModalService, private service: AuthService,private AccountService: AccountService) {
     this.pageCountArray = [];
@@ -103,7 +128,7 @@ accountList(){
   
        this.bsModalRef.content.onClose.subscribe(result => {
          console.log('results', result);
-         this.onAccountChange(this.accountSelected);
+         this.onAccountChange(this.accountSelected,this.accountSelect);
          
    });
   }
@@ -303,7 +328,7 @@ accountList(){
           this.searchresult(searchValue, serchdescription);
         } else {
           // this.getEventList();
-          this.onAccountChange(this.accountSelected);
+          this.onAccountChange(this.accountSelected,this.accountSelect);
         }
       }
       toggelSearch() {

@@ -115,9 +115,11 @@ export class AccountComponent implements OnInit {
       };
       this.bsModalRef = this.modalService.show(AccountDialogComponent,  { initialState, class: 'gray modal-lg' });
 
-    //   this.bsModalRef.content.onCloseEdit.subscribe((result: any) => {
-    //      console.log('results', result);
-    //  });
+      this.bsModalRef.content.onCloseEdit.subscribe((result: any) => {
+        this.getAccountList();
+
+         console.log('results', result);
+     });
     }
     delete(data: any) {
       alert('ds');

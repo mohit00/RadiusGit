@@ -21,7 +21,12 @@ export class AssignUnassignAlertDialogComponent implements OnInit {
    getAssignThing(){
     
     this.Service.getAlertMappedToThing(this.data.thingId).subscribe(res=>{
-      alert(JSON.stringify(res))
+      for(var i=0;i<res.length;i++){
+        let index =   this.AlertDisplay.findIndex( record => record.customAlertId === res[i].customAlertId );
+         if(index == -1){}else{
+         this.AlertDisplay[index].check = true;
+        }
+         }
     })
    }
    getAssignAccount(){
@@ -48,8 +53,9 @@ alertGet(){
   });
 }
 toggel(data,event){
-console.log(JSON.stringify(data.customAlertId))
-if(this.title == 'thing'){
+ if(this.title == 'thing'){
+   sessionStorage.setItem('setUserAccount',this.data.account.accountId);
+
   if(event == 'Assign'){
     this.Service.AssignThingAlert(data.customAlertId,this.data.thingId).subscribe(res=>{
      })

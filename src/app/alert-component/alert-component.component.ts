@@ -75,7 +75,7 @@ preDisabled: any;
     advanceSearch = false;
 open() {
     const initialState = {
-      title: 'false',
+      title: false,
     };
     this.bsModalRef = this.modalService.show( AlertDialogComponent,  {initialState, class: 'gray modal-lg' });
 
@@ -207,14 +207,15 @@ ngOnInit() {
   this.getEventList();
     }
     detail(data) {
-       
-       if(this.showpagi){
+        if(this.showpagi){
      let id =    this.service.getSplitId(data._links.self.href);
  
      this.service.setId(id, 'Alert/management/detail');
         
       }else{
- 
+  
+        this.service.setId(data.id, 'Alert/management/detail');
+   
       }
     }
     edit(data) {

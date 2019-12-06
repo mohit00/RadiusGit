@@ -1,20 +1,60 @@
-import { Component, OnInit, SecurityContext  } from '@angular/core';
+import { Component, OnInit, SecurityContext, HostListener  } from '@angular/core';
 import {DeviceProvisioningDialogComponent} from './device-provisioning-dialog/device-provisioning-dialog.component';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DomSanitizer } from '@angular/platform-browser';
 import {AuthService} from '../auth.service';
 import { DatePipe } from '@angular/common';
+import { AccountService } from '../Account/account.service';
+import { ScrollEvent } from 'ngx-scroll-event';
+
 declare interface TableData {
   headerRow: any ;
   dataRows: string[][];
 }
+
 @Component({
   selector: 'app-device-provisioning',
   templateUrl: '../table/table.html',
   styleUrls: ['../table/table.scss']
 })
 export class DeviceProvisioningComponent implements OnInit {
-constructor(private modalService: BsModalService, private service: AuthService) {
+  accountShowThing:any;
+  @HostListener('scroll', ['$event']) 
+  scrollHandler(event) {
+     if (event.target.offsetHeight + event.target.scrollTop > event.target.scrollHeight) {
+      console.log("End");
+      this.accountPage = this.accountPage+1;
+      this.accountList();
+
+    }
+  }
+  accountLists:any =[];
+  accountPage:any=0
+  accountList(){
+    this.AccountService.AccountDataGet(this.accountPage,100,'createdOn,Desc').subscribe(res=>{
+        console.log(JSON.stringify(res))
+         this.accountLists = this.accountLists.concat(res._embedded.accounts)
+
+         
+    })
+  }
+  accountSelect:any = 'Select Account'
+  onAccountChange(id,name){
+     this.accountSelect = name;
+    if(name != 'select'){
+      this.showpagi = false;
+      sessionStorage.setItem('setUserAccount',id)
+      this.service.getThingsbyAccount(0,100).subscribe(res=>{
+      console.log(res)
+      this.displayList = res;
+      });
+    }else{
+      this.showpagi = true;
+        this.getEventList();
+    }
+  }
+constructor(private modalService: BsModalService, private service: AuthService,private AccountService:AccountService) {
+  this.accountShowThing = true;
   this.pageCountArray = [];
   this.selectedPage = 1;
   this.page = 0;
@@ -31,10 +71,6 @@ constructor(private modalService: BsModalService, private service: AuthService) 
     name: 'Things DESCRIPTION',
     width: 10,
     sort: '0'
-  },  {
-    name: 'Things Type',
-    width: 10,
-    sort: '0'
   },   {
     name: 'DATE',
     width: 10,
@@ -46,8 +82,10 @@ constructor(private modalService: BsModalService, private service: AuthService) 
   }
  ];
 
-  this.keyData = [  'name', 'description', 'deviceType',  'lastUpdatedOn', 'action'];
+  this.keyData = [  'name', 'description',  'lastUpdatedOn', 'action'];
  }
+ 
+
   page: any;
    pageCountArray: any;
    last: any;
@@ -199,13 +237,28 @@ ngOnInit() {
   this.title = 'Add';
   this.getCountDevice();
   this.getEventList();
+  this.accountList();
     }
+
+ 
+
     detail(data: any) {
-      this.service.setId(data._links.self.href , 'Things/Detail');
+       if(this.showpagi){
+        this.service.setId(this.service.getSplitId(data._links.self.href) , 'Things/Detail');
+      }else{
+        this.service.setId(data.id , 'Things/Detail');
+
+      }
     }
     edit(data ) {
-      
+      console.log(data)
+      if(this.showpagi){
+
       this.service.setId(this.service.getSplitId(data._links.self.href)   , 'Things');
+      }else{
+        this.service.setId(data.id   , 'Things');
+
+      }
       const initialState = {
         title: 'true',
         id: this.service.getId

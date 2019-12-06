@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group col-md-6 "  style ="padding:0px">
                         <label for="accId">Account Id*</label>
-                        <input type="text" class="form-control" id="accId" placeholder="Account Id" name ="user name" [(ngModel)]="data.accountId"   #accountId="ngModel"  required />
+                        <input type="text" class="form-control" id="accId" placeholder="Account Id"  name ="user name" [(ngModel)]="data.accountId"  [disabled]="title != 'false'"  #accountId="ngModel"  required />
                         <div *ngIf="(accountId.invalid && (accountId.dirty || accountId.touched)) "
                         class="alert alert-danger">
                     
@@ -108,21 +108,40 @@
                       
                     
                     </div>
-                    </div>
-                    <div class="form-group" *ngIf ="data.type != 'OWNER' && data.type != '1' ">
-                      <label for="lastname" class="control-label"  >Parent Account*:</label>
-                       <select class="form-control"    id="parent"  name ="parent"  [(ngModel)]="data.parentAccount" #parentAccount="ngModel"  required  detect-scroll (onScroll)="handleScroll($event)" >
+                    </div> 
+                    <div class="form-group" *ngIf ="data.type != 'OWNER' && data.type != ''  && title == 'false'">
+                      <label for="lastname" class="control-label"  style="width: 100%;float: right;"  >Parent Account*:</label>
+                       <!-- <select class="form-control"    id="parent"  name ="parent"  [(ngModel)]="data.parentAccount" #parentAccount="ngModel"  required  detect-scroll (onScroll)="handleScroll($event)" >
                           <option value ="" selected>Select Parent Account</option> 
                          <option [value] ="list._links.self.href"  *ngFor ="let list of ListSelect">{{list.name}}</option>
-                       </select>
-                       <div *ngIf="(parentAccount.invalid && (parentAccount.dirty || parentAccount.touched)) "
+                       </select> -->
+                       <!-- <div *ngIf="(parentAccount.invalid && (parentAccount.dirty || parentAccount.touched)) "
                         class="alert alert-danger">
                     
                       <div *ngIf="parentAccount.errors.required">
                         This field is required.
                       </div>
+                    </div> -->
+                    <div class="form-group col-md-4" style="float: left;
+                    padding-left: 0;" >
+         
+                        <div class="dropdown" style="float: left;" >
+                           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{accountSelect}}
+                           <span class="caret"></span></button>
+                           <ul class="dropdown-menu" (scroll)="scrollHandler($event)">
+            
+                             <li  *ngFor ="let list of ListSelect let i= index;"  (click)="onAccountChange(list,list.name)" ><a >  {{list.name}}</a></li>
+                             
+                           </ul>
+                         </div>
+                     </div>
                     </div>
-                    </div>
+                    <div class="form-group" *ngIf ="data.type != 'OWNER' && data.type != ''  && title != 'false'">
+                        <label for="lastname" class="control-label"  style="width: 100%;float: right;"  >Parent Account*:</label>
+
+                        <input type="text" class="form-control" id="accId" placeholder="Parent Account Id" name ="Parent" [(ngModel)]="data.parentAccount2.name"   [disabled]="true" />
+
+                              </div>
                    </div>
                    <div class ="col-md-6">
                     <div class ="col-md-6" style ="padding: 0;">
@@ -154,8 +173,11 @@
                     </div>
                    </div>
                  </div>
+                 <div class= 'col-md-4' style="margin-left: 16px;
+                 margin-top: 10px;">
+                 <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+                </div>
                </div>
-                <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
               </div>
               <div id="test-l-2" class="content">
                   <div class ="row">

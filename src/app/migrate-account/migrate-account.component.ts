@@ -163,4 +163,7 @@ Page(data: any) {
       return '';
     }
   }
+  close(){
+    this._bsModalRef.hide();
+  }
 }

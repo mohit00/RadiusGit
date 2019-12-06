@@ -15,6 +15,9 @@ export class AddFieldDialogComponent implements OnInit {
     this.onClose = new Subject();
 
    }
+   close(){
+     this._bsModalRef.hide();
+   }
   dataList: any;
   id: any;
   data: any;

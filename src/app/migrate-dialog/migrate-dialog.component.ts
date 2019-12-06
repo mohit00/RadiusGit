@@ -22,6 +22,9 @@ export class MigrateDialogComponent implements OnInit {
 ;
     this.selectedPage = 1;
    }
+   close(){
+     this._bsModalRef.hide();
+   }
   public onClose: Subject<boolean>;
   public onCloseEdit: Subject<boolean>;
 

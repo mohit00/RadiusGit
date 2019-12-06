@@ -32,6 +32,7 @@ export class AccountDialogComponent implements OnInit {
   private stepper: Stepper;
    id:any;
   public onClose: Subject<boolean>;
+  public onCloseEdit: Subject<boolean>;
   data: any = {accountContact: {country:'1'}, userInfo: {},
   type: '', parentAccount: ''};
   getCountryList:any;
@@ -47,7 +48,7 @@ export class AccountDialogComponent implements OnInit {
   page: any;
   size: any;
   sort: any;
-  ListSelect: any;
+  ListSelect: any =[];
   add() {
     this.dataList.push({
       type: '1',
@@ -59,16 +60,26 @@ export class AccountDialogComponent implements OnInit {
       class5: 'col-md-2',
      } );
    }
-   getAccountList() {
-    this.Service.AccountDataGet(this.page, this.size, this.sort).subscribe(res => {
-         this.ListSelect = res._embedded.accounts;
-         console.log(JSON.stringify(this.ListSelect));
-         document.getElementById("parent").addEventListener("scroll", this.scroll);
-         $('#parent').scroll(function() {
-           console.log("cc")
-          $(window).scroll();
-      });
-     });
+   accountPage :any = 0;
+   @HostListener('scroll', ['$event']) 
+   scrollHandler(event) {
+      if (event.target.offsetHeight + event.target.scrollTop > event.target.scrollHeight) {
+       console.log("End");
+       this.accountPage = this.accountPage+1;
+       this.getAccountList();
+ 
+     }
+   }
+   accountSelect:any = 'Select Account'
+   onAccountChange(id,name){
+     this.accountSelect = name;
+      this.data.parentAccount =id._links.self.href;
+  }
+  getAccountList() {
+    this.Service.AccountDataGet(this.accountPage, 100, this.sort).subscribe(res => {
+          this.ListSelect = this.ListSelect.concat(res._embedded.accounts)
+
+       });
   }
   remove(index) {
     this.dataList.splice(index, 1);
@@ -115,6 +126,7 @@ export class AccountDialogComponent implements OnInit {
        this.data.validityFrom = new Date(this.data.validityFrom);
       this.data.validityTo = new Date(this.data.validityTo);
       if(res2.parentAccount){
+        this.data.parentAccount2= res2.parentAccount;
       this.data.parentAccount = "http://13.126.31.198:8090/accounts/"+res2.parentAccount.id
       
       }
@@ -141,7 +153,9 @@ export class AccountDialogComponent implements OnInit {
     }
 
     this.onClose = new Subject();
+    this.onCloseEdit = new Subject();
 
+    
     this.stepper = new Stepper(document.querySelector('#stepper1'), {
         linear: false,
         animation: true
@@ -223,7 +237,7 @@ export class AccountDialogComponent implements OnInit {
     console.log(JSON.stringify(this.data));
      this.Service.updateAccount(this.data,this.data.id).subscribe(res => {
       this._bsModalRef.hide();
-      this.onClose.next(true);
+      this.onCloseEdit.next(true);
       this.Service.suceesAlertDialog('Account Successfully Updated');
     });
   }

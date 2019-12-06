@@ -20,31 +20,33 @@ export class LoaderInterceptor implements HttpInterceptor {
       setTimeout(()=>{
         this.AuthService.loaderCheck.emit('show');
       },10)
-      if(req.url !='Login'){
-          if(req.url.split("/")[0] == 'user-service'){
-          this.authReq = req.clone({
-            setHeaders: {
-              'x-account': sessionStorage.getItem('setUserAccount'),
-              'x-user':'admin'
-            }
-          });
+      // if(req.url !='Login'){
+      //     if(req.url.split("/")[0] == 'user-service'){
+      //     this.authReq = req.clone({
+      //       setHeaders: {
+      //         'x-account': sessionStorage.getItem('setUserAccount'),
+      //         'x-user':'admin'
+      //       }
+      //     });
 
-        }else {
-          this.authReq = req.clone({
-            setHeaders: {
-              'x-account': 'Radius-PF',
-              'x-user':'admin'
-            }
-          });
-        }
+      //   }else {
+      //     this.authReq = req.clone({
+      //       setHeaders: {
+      //         'x-account': 'Radius-PF',
+      //         'x-user':'admin'
+      //       }
+      //     });
+      //   }
         // if(req.url !='user/management'){
 
         // }else{
        
       // }
-      }else{
-        this.authReq = req;
-      }
+      // }else{
+      //   this.authReq = req;
+      // }
+      this.authReq = req;
+
       return next.handle(this.authReq).pipe(
         
         tap(

@@ -18,7 +18,10 @@ $theam-color-client:#1C8AD8;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
-
+.dropdown-menu{
+    height: 400px;
+    overflow-y: auto;
+}
 .pagination>li>button, .pagination>li>span {
     position: relative;
     float: left;

@@ -44,15 +44,16 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { AssignUnassignAlertDialogComponent } from './assign-unassign-alert-dialog/assign-unassign-alert-dialog.component';
 import { PreferencesThingsDialogComponent } from './preferences/preferences-things/preferences-things-dialog/preferences-things-dialog.component';
 import { PreferencesAccountDialogComponent } from './preferences/preferences-account/preferences-account-dialog/preferences-account-dialog.component';
- 
+import {MatSelectModule,MatFormFieldModule  } from '@angular/material';
+
 @NgModule({
   imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     FormsModule,
     RouterModule,
-    HttpClientModule,
+    HttpClientModule,MatSelectModule,MatFormFieldModule,
     NavbarModule, 
-    FooterModule,
+    FooterModule,ScrollEventModule,
     SidebarModule, TabsModule.forRoot(),CalendarModule,  // <--- Determines the data type of the model
      
     NgMultiSelectDropDownModule.forRoot(),
