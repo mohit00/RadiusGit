@@ -96,6 +96,9 @@ export class AccountDialogComponent implements OnInit {
   scroll() {
     console.log("dsd")
      }
+     close(){
+       this._bsModalRef.hide();
+     }
   ngOnInit() {
 
    
@@ -130,7 +133,18 @@ export class AccountDialogComponent implements OnInit {
       this.data.parentAccount = "http://13.126.31.198:8090/accounts/"+res2.parentAccount.id
       
       }
-      this.dataList =[];
+      if(this.data.accountContact){
+        
+      }else{
+        this.data.accountContact = {};
+      }
+      if(this.data.userInfo){
+        
+      }else{
+        this.data.userInfo = {};
+      }
+      
+       this.dataList =[];
       for(let i in  res2.metadata){
       
         // value:this.data.metadata[i]
