@@ -1,30 +1,30 @@
 <div class="main-content">
-    <div class="container-fluid">
+    <div class="container-fluid" *ngIf="ComandDetail">
         <div class="row">
           <div class ="col-md-12">
             <div class ="header_top col-md-12">
-              <div class ="col-md-5" style ="margin-top: 12px;">
+              <div class ="col-md-4" style ="margin-top: 12px;" *ngIf ="ComandDetail">
                  <span>Things Name:</span> {{ComandDetail.name}}  
               </div>
-              <div class ="col-md-7" >
-            
-                <div class="col-md-2">
-                    <a  class=" " style="color:white; padding-right: 0px"  (click)="migrate2Account(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>To Account</a>
+              <div class ="col-md-8" >
+                <div class="col-md-3"  style="float: right;">
+                    <a   class=" " style="color:white;"  (click)="assignUnassignAlert(ComandDetail)">  <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  style="margin-left: 38%;"></i><br>Assign/Un Assign Alert</a> 
+                </div> 
+                <div class="col-md-2"  style="float: right;width: 13%;">
+                    <a   class=" " style="color:white;"  (click)="addField(ComandDetail)"> <i class="fa fa-plus material-iconsnew" aria-hidden="true"  ></i><br>Add Field</a> 
+                </div> 
+               
+                <div class="col-md-2" style="width: 17%;float: right;">
+                    <a   class=" " style="color:white; " (click)="changeStatus(ComandDetail)" > <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Change Status</a> 
+                </div>
+                <div class="col-md-2" style="width: 10%; float: right;">
+                    <a  class=" " style="color:white;padding-left: 0px ;"  (click)="migrate(ComandDetail)" > <i class="fa fa-cloud-upload material-iconsnew" aria-hidden="true"  style ="margin-left:23%"  ></i><br>Migrate</a>
 
                 </div>
-                <div class="col-md-2">
-                    <a  class=" " style="color:white;padding-left: 0px"  (click)="migrate(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"  style ="margin-left:36%"  ></i><br>Migrate</a>
+                <div class="col-md-2" style="float: right;">
+                    <a  class=" " style="color:white; padding-right: 0px"  (click)="migrate2Account(ComandDetail)"> <i class="fa  fa-cloud-upload  material-iconsnew" aria-hidden="true"  style="margin-left: 37%;" ></i><br>To Account</a>
 
                 </div>
-                <div class="col-md-2">
-                    <a   class=" " style="color:white;" (click)="changeStatus(ComandDetail)"> <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Change Status</a> 
-                </div>
-                <div class="col-md-2">
-                    <a   class=" " style="color:white;"  (click)="addField(ComandDetail)"> <i class="fa fa-plus material-icons" aria-hidden="true"  ></i><br>Add Field</a> 
-                </div> 
-                <div class="col-md-4">
-                    <a   class=" " style="color:white;"  (click)="assignUnassignAlert(ComandDetail)">  <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Assign/Un Assign Alert</a> 
-                </div> 
               </div> 
             </div> 
           </div>
@@ -45,7 +45,7 @@
                       <div class ="col-md-4 detailheader"   >
                           <div >Things Name</div>
                       </div>
-                        <div class ="col-md-8 detailKey ">
+                        <div class ="col-md-8 detailKey " >
                             <div>{{ComandDetail.name}}</div>
                         </div>
                   </div>
