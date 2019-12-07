@@ -3,10 +3,29 @@
             <div id="output"></div>
             <div class="avatar"><img  class ="avatar"  src ="https://myxenius.com/app_images/header_logo.png"></div>
             <div class="form-box">
-                <form action="" method="">
-                    <input name="user" type="text" placeholder="username">
-                    <input type="password" placeholder="password">
-                    <button class="btn btn-info btn-block login" type="submit" (click) ="login()" >Login</button>
+                <div                class="alert alert-danger" *ngIf ="message">{{message}} </div>
+                <form name ="formgr"  #heroForm="ngForm" >
+                    <input name="user" type="text" placeholder="username*" [(ngModel)] ="data.name" #name="ngModel"  required  >
+                    <div *ngIf="(name.invalid && (name.dirty || name.touched)) "
+                class="alert alert-danger">
+            
+              <div *ngIf="name.errors.required">
+                This field is required.
+              </div>
+              
+            
+            </div>
+                    <input type="password" placeholder="password" name ="password*" [(ngModel)] ="data.password" #password="ngModel"  required >
+                    <div *ngIf="(password.invalid && (password.dirty || password.touched)) "
+                class="alert alert-danger">
+            
+              <div *ngIf="name.errors.required">
+                This field is required.
+              </div>
+              
+            
+            </div>
+                    <button class="btn btn-info btn-block login" type="submit" (click) ="login(heroForm)" >Login</button>
                 </form>
             </div>
         </div>
