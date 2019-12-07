@@ -39,7 +39,7 @@
                                                 </div><div class="col-md-12 smallbox"  >
                                                         <i class="fa fa-microchip" aria-hidden="true"  ></i>
                                                         <span style ="margin-left: 10px;">Things Template</span>   
-                                                        <i class="fa fa-bars" aria-hidden="true" style ="float:right; " (click)="listFunction('Device/Template');"></i>
+                                                        <i class="fa fa-bars" aria-hidden="true" style ="float:right; " (click)="listFunction('Template/Things');"></i>
                                                         <i class="fa fa-plus" aria-hidden="true" style ="float:right;margin-right: 15px;"  (click)="addFunction(4);" ></i>
                                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                                     </div></div>
                      </div>
                 </div>
-                <div class="card dashbox col-md-6">
+                <!-- <div class="card dashbox col-md-6">
                         <div class ="header">
                            Location
                             <i class="fa fa-compass  " ></i>
@@ -95,8 +95,8 @@
                                                     </div> 
                                         </div></div>
                          </div>
-                    </div>
-                    <div class="card dashbox col-md-6">
+                    </div> -->
+                    <div class="card dashbox col-md-12">
                             <div class ="header">
                                User Management
                                 <i class="fa fa-user-o  " ></i>
@@ -109,7 +109,7 @@
                                                                 <i class="fa fa-user-o" aria-hidden="true"  ></i>
         
                                                                 <span style ="margin-left: 10px;">Users</span>   
-                                                                <i class="fa fa-bars" aria-hidden="true" style ="float:right; "></i>
+                                                                <i class="fa fa-bars" aria-hidden="true" style ="float:right; " (click)="listFunction('user/management');" ></i>
                                                                 <i class="fa fa-plus" aria-hidden="true" style ="float:right;margin-right: 15px;"></i>
                      
                                                             </div>
@@ -168,7 +168,7 @@
             <div class="col-md-3" style ="    padding-left: 0px;">
                     <div class="card dashbox">
                         <div class ="header">
-                                Device 
+                                Things 
                             <i class="fa fa-microchip  " ></i>
                         </div>
                         <div class="bodyHeader" >
@@ -177,9 +177,9 @@
                                                 <div class="col-md-12 smallbox"  >
                                                         <i class="fa fa-mobile" aria-hidden="true"  ></i>
     
-                                               <span style ="margin-left: 10px;">Device</span>     
+                                               <span style ="margin-left: 10px;">Things</span>     
                                                
-                                               <i class="fa fa-bars" aria-hidden="true" style ="float:right; "></i>
+                                               <i class="fa fa-bars" aria-hidden="true" style ="float:right; "  (click)="listFunction('Things');"></i>
                                                <i class="fa fa-plus" aria-hidden="true" style ="float:right; margin-right: 15px;"></i>
     
                                                     </div> 
@@ -190,7 +190,7 @@
     </div>
     <div class="card dashbox">
             <div class ="header">
-                    Rules 
+                    Roles 
                 <i class="fa fa-gavel  " ></i>
             </div>
             <div class="bodyHeader" >
@@ -199,7 +199,7 @@
                                     <div class="col-md-12 smallbox"  >
                                             <i class="fa fa-gavel" aria-hidden="true"  ></i>
 
-                                   <span style ="margin-left: 10px;">Rules</span>     
+                                   <span style ="margin-left: 10px;">Roles</span>     
                                    
                                    <i class="fa fa-bars" aria-hidden="true" style ="float:right; "></i>
                                    <i class="fa fa-plus" aria-hidden="true" style ="float:right; margin-right: 15px;"></i>

@@ -99,9 +99,7 @@ export class AccountDialogComponent implements OnInit {
      close(){
        this._bsModalRef.hide();
      }
-  ngOnInit() {
-
-   
+  ngOnInit() {   
     this.getAccountList();
     if (this.title === 'false') {
       this.contactUser = [{
@@ -111,16 +109,13 @@ export class AccountDialogComponent implements OnInit {
         class : 'col-md-6',
         class1: 'col-md-6',
         class5: 'col-md-2',
-
         type: '1',
         class2: 'col-md-6',
         class3: 'col-md-10',
         class4: 'plustbutton'
          }
     ];
-
     }else{
-  
       this.Service.getDetail(this.WebserModel.Sevice.BASENEWURL + 'account-service/account/' + this.id).subscribe(res2 => {
         this.data  =  {accountContact: {country:'1'}, userInfo: {},
         type: '1', parentAccount: '1'};

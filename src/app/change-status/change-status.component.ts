@@ -15,7 +15,9 @@ export class ChangeStatusComponent implements OnInit {
   public onClose: Subject<boolean>;
   selectedStatus: any;
   selectedStatusOpp: any;
-
+  close(){
+    this._bsModalRef.hide()
+  }
   ngOnInit() {
     this.onClose = new Subject();
 
