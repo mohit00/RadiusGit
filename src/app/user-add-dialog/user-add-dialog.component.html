@@ -52,11 +52,20 @@
                       <input type="text" class="form-control" id="exampleInputPassword1" placeholder="User Name" name ="user name" [(ngModel)]="data.lastName"/>
                     </div>
                     <div class="form-group col-md-6" style="padding-left: 0">
-                      <label for="exampleInputPassword1">Select Account </label>
-                      <select class="form-control" id="sel1"   [(ngModel)] ="data.accountId"  name ="account">
+                      <label for="exampleInputPassword1" style="width: 100%;">Select Account </label>
+                      <!-- <select class="form-control" id="sel1"   [(ngModel)] ="data.accountId"  name ="account">
                         <option value ="1" selected>Select Account</option> 
                        <option *ngFor ="let list of accountList" [value] = "list.accountId">{{list.name}}</option>
-                     </select>
+                     </select> -->
+                     <div class="dropdown" style="float: left;" >
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{accountSelect}}
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu" (scroll)="scrollHandler($event)">
+         
+                          <li  *ngFor ="let list of accountList let i= index;"  (click)="onAccountChange(list.accountId,list.name)" ><a >  {{list.name}}</a></li>
+                          
+                        </ul>
+                      </div>
                      </div>
                      <div class="form-group col-md-6">
                       <label for="exampleInputPassword1">Select Role</label>

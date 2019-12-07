@@ -89,6 +89,8 @@ thingsTemplateDetail(){
   status:any = false;
  createDevicePro() {
   if (this.selectedList.length > 0 ) {
+    sessionStorage.setItem("setUserAccount",this.data.account.accountId);
+
      this.Service.migrateThing(  this.dataDetail.templateDetailId,
       this.selectedList[0]._links.thingTemplate.href.split('/')[4],this.status ).subscribe(res => { 
        this.onClose.next(true);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
   import { Subject } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { BsModalRef } from 'ngx-bootstrap';
@@ -23,6 +23,23 @@ export class UserAddDialogComponent implements OnInit {
     accountId:''
   }; 
   title:any;
+  accountSelect:any = 'Select Account'
+  onAccountChange(id,name){
+    this.data.accountId = id;
+    this.accountSelect = name;
+
+  }
+  accountPage:any=0;
+  @HostListener('scroll', ['$event']) 
+  scrollHandler(event) {
+     if (event.target.offsetHeight + event.target.scrollTop > event.target.scrollHeight) {
+      console.log("End");
+      this.accountPage = this.accountPage+1;
+      this.getAccountList();
+
+    }
+  }
+
   constructor(private AuthService:AuthService, private _bsModalRef: BsModalRef,private AccountService:AccountService) {
     }
   public onClose: Subject<boolean>;
@@ -71,11 +88,13 @@ next() {
 onSubmit() {
   return false;
 }
-accountList :any ;
+accountList :any =[];
 getAccountList(){
 
-    this.AccountService.AccountDataGet(0,10000,'createdOn,Desc').subscribe(res=>{
-     this.accountList=  res._embedded.accounts;
+    this.AccountService.AccountDataGet(this.accountPage,100,'createdOn,Desc').subscribe(res=>{
+    //  this.accountList=  res._embedded.accounts;
+     this.accountList = this.accountList.concat(res._embedded.accounts)
+
     })
 }
 rolesList :any ;

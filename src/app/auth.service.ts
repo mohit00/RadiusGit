@@ -59,6 +59,15 @@ headerJson:any;
  
     
   }
+  login(data): Observable < any > {
+    
+    return this._http.post(  'authenticate', data,{
+      headers:this.headerJson
+
+    })
+   .map(res => res as any)
+   .catch(this.handleError);
+   }
     getSplitId(data) {
     return data.split('/')[4];
   }
@@ -70,17 +79,25 @@ headerJson:any;
 
     }
     deviceLifestateChange(data, state): Observable < any > {
-  
- 
+      let customheader ={
+        'x-account':sessionStorage.getItem("setUserAccount"),
+        'x-user':'admin'
+
+      }
       return this._http.post(  'thing-service/thing/' + data + '/changeDeviceLifeCycleState/' + state, {},{
-        headers:this.headerJson
+        headers:customheader
      })
      .map(res => res as any)
      .catch(this.handleError);
      }
      deviceOperationstateChange(data, state): Observable < any > {
+      let customheader ={
+        'x-account':sessionStorage.getItem("setUserAccount"),
+        'x-user':'admin'
+
+      }
       return this._http.post(  'thing-service/thing/' + data + '/changeDeviceOperationalState/' + state, {},{
-        headers:this.headerJson
+        headers:customheader
      })
      .map(res => res as any)
      .catch(this.handleError);
@@ -317,9 +334,12 @@ headerJson:any;
        .catch(this.handleError);
        }
       migrateThing( id1: any, id2: any, data: any): Observable < any > {
-
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
         return this._http.post(  'thing-service/thing/' + id1 + '/migrateThingToNewThingTemplate/' + id2 + '/retainMetaData=' + data, {} ,{
-          headers:this.headerJson
+          headers:customheader
        })
        .map(res => res as any)
        .catch(this.handleError);
@@ -449,9 +469,12 @@ headerJson:any;
         .catch(this.handleError);
        }
        addMetaData(id, data): Observable<any> {
-
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
         return this._http.post(  'thing-service/thing/' + id + '/metadata' , data ,{
-          headers:this.headerJson
+          headers:customheader
        })
         .map(res => res as any)
         .catch(this.handleError);

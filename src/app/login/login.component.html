@@ -5,7 +5,7 @@
             <div class="form-box">
                 <div                class="alert alert-danger" *ngIf ="message">{{message}} </div>
                 <form name ="formgr"  #heroForm="ngForm" >
-                    <input name="user" type="text" placeholder="username*" [(ngModel)] ="data.name" #name="ngModel"  required  >
+                    <input name="user" type="text" placeholder="username*" [(ngModel)] ="data.userName" #name="ngModel"  required  >
                     <div *ngIf="(name.invalid && (name.dirty || name.touched)) "
                 class="alert alert-danger">
             

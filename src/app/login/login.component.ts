@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
    }
     
      return false;}
-     if(this.data.name.toLowerCase() == 'admin'.toLowerCase() || this.data.password.toLowerCase() == 'admin' ){
-      this.router1.navigate(['dashboard']); 
 
-     }else{
-      this.message = 'Invalid User Name or password';
-     }
+    this.AuthService1.login(this.data).subscribe(res=>{
+      // alert(JSON.stringify(res))
+        this.router1.navigate(['dashboard']); 
+
+    })
   }
   ngOnInit() {
   }

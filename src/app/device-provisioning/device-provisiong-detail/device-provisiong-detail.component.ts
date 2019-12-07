@@ -35,6 +35,7 @@ export class DeviceProvisiongDetailComponent implements OnInit {
     this.ComandId  =  this.Service.getId;
      this.Service.getDetail('things/'+this.ComandId).subscribe(res => {
        this.ComandDetail = res;
+       sessionStorage.setItem("setUserAccount",this.ComandDetail.account.accountId);
 
 // tslint:disable-next-line: forin
       for (const i in this.ComandDetail.metadata) {
