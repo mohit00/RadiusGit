@@ -40,8 +40,13 @@ export const ROUTES: RouteInfo[] = [
       path: '/preference/Account', title: 'Account',  icon:'fa fa-wrench',HeaderTitle:'Account Preferences'
     } ,{
       path: '/preference/Things', title: 'Things',  icon:'fa fa-wrench',HeaderTitle:'Things Preferences'
-    }]
-  }
+    },]
+  }, { path: '/Login', title: 'Setting',  icon:'fa fa-cog', class: 'text-black', HeaderTitle:'Logout', child:[ {
+    path: '/Login', title: 'Logout',  icon:'fa fa-sign-out',HeaderTitle:'Logout'
+  } ,{
+    path: '/Login', title: 'Change Password',  icon:'fa fa-wrench',HeaderTitle:'Logout'
+  }]
+}
 ];
 
 @Component({
