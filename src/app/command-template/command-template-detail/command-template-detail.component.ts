@@ -18,6 +18,10 @@ export class CommandTemplateDetailComponent implements OnInit {
    this.ComandId  =  this.Service.getId;
    this.Service.getDetail(this.WebserModel.Sevice.BASE_URL+'thing-service/commandTemplates/' + this.ComandId).subscribe(res=>{
       this.ComandDetail = res;
+      console.log(JSON.stringify(res));
+       
+      this.data.check = this.ComandDetail.freeze;
+
    });
     }
     
