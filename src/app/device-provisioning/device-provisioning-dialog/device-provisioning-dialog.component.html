@@ -73,7 +73,7 @@
                      <div class ="{{list.class1}}">
                        <div class="form-group">
                            <label for="lastname" class="control-label" *ngIf ="i == 0 ">Metadata Key:</label>
-                           <input type="text" class="form-control" id="lastname" placeholder="Key" [(ngModel)] ="list.name" name="meta" >
+                           <input type="text" class="form-control" id="lastname" placeholder="Key" [(ngModel)] ="list.name" [attr.name]="'meta'+i" [ngModelOptions]="{standalone: true}" >
                        </div></div> 
                       
                           
@@ -81,7 +81,7 @@
                          <div class="form-group {{list.class3}}">
                            <div class="form-group">
                                <label for="sel1" *ngIf ="i == 0 ">Metadata Value:</label>
-                               <input type="text" class="form-control" id="lastname" placeholder="Default value" [(ngModel)] ="list.value" name="value" > 
+                               <input type="text" class="form-control" id="lastname" placeholder="Default value" [(ngModel)] ="list.value" [attr.name]="'value'+i" [ngModelOptions]="{standalone: true}"  > 
                              </div> 
                          </div> 
                          <button class="btn col-md-2 theme_table_button {{list.class4}}" (click) ="add()" ><i class="fa fa-plus plusIcon"  ></i></button>

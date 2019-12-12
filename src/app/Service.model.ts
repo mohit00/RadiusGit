@@ -8,6 +8,7 @@ public countryList:any;
                 BASE_URL2: 'http://13.126.31.198:8091/',
                 BASE_URL3: 'http://13.126.31.198:8092/',
                 BASE_URL4:'http://13.126.31.198:8080/',
+                BASE_URL5:'http://13.126.31.198:8095/',
 
                 CREATE_ATTRIBUTE_TEMPLATE: '/attributeTemplates'
             };

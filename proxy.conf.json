@@ -82,6 +82,24 @@
       "secure": false,
       "logLevel": "debug",
       "changeOrigin": true
+    },"/accountpreferences/*":{
+      "target": "http://13.126.31.198:8095",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    
+    },"/thingpreferences/*":{
+      "target": "http://13.126.31.198:8095",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    
+    },"/thing-preference/*":{
+      "target": "http://13.126.31.198:8095",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    
     }
     
 } 

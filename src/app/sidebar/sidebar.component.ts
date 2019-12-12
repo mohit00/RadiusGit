@@ -37,9 +37,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/user/management', title: 'USER MANAGEMENT',  icon:'fa fa-user', class: 'text-black' ,HeaderTitle:'USERMANAGEMENT',child:[  ]},
     { path: '/Alert/management', title: 'Alert MANAGEMENT',  icon:'fa fa-exclamation-circle', class: 'text-black' ,HeaderTitle:'Alertmanagement',child:[  ]},
     { path: '/preference', title: 'Preferences',  icon:'fa-files-o', class: 'text-black', HeaderTitle:'DASHBOARD', child:[ {
-      path: '/preference/Account', title: 'Account',  icon:'fa fa-wrench',HeaderTitle:'Account Preferences'
+      path: '/preference/Account', title: 'Account',  icon:'fa fa-cog',HeaderTitle:'Account Preferences'
     } ,{
-      path: '/preference/Things', title: 'Things',  icon:'fa fa-wrench',HeaderTitle:'Things Preferences'
+      path: '/preference/Things', title: 'Things',  icon:'fa fa-microchip',HeaderTitle:'Things Preferences'
     },]
   }, { path: '/Login', title: 'Setting',  icon:'fa fa-cog', class: 'text-black', HeaderTitle:'Logout', child:[ {
     path: '/Login', title: 'Logout',  icon:'fa fa-sign-out',HeaderTitle:'Logout'

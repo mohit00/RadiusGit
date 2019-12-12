@@ -634,7 +634,7 @@ headerJson:any;
         .map(res => res as any)
         .catch(this.handleError);
        }
-       preferenceCreate(data) {
+       preferenceAccountCreate(data) {
         return this._http.post(  'preferences',data,{
           headers:this.headerJson
        })
@@ -651,6 +651,50 @@ headerJson:any;
        }
        getPreferencedescript(data, des) {
         return this._http.get(  'account-preference/preference/search?description=' + des + '*' ,{
+          headers:this.headerJson
+       })
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+
+       preferenceThingCount() {
+        return this._http.get(  'thing-preference/preference/count',{
+          headers:this.headerJson
+       })
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       preferenceThingGET(page,size,sort) {
+        return this._http.get(  'thingpreferences?page=' + page + '&size=' + size + '&sort=' + sort,{
+          headers:this.headerJson
+       })
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       preferenceThingCreate(data) {
+        return this._http.post(  'thingpreferences',data,{
+          headers:this.headerJson
+       })
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       preferenceThingUpdate(data,id) {
+        return this._http.put(  'thingpreferences/'+id,data,{
+          headers:this.headerJson
+       })
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getSearchThingPreference(data, des): Observable<any> {
+
+        return this._http.get('thing-preference/preference/search?name=' + data + '*' ,{
+          headers:this.headerJson
+       })
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getPreferenceThingdescript(data, des) {
+        return this._http.get(  'thing-preference/preference/search?description=' + des + '*' ,{
           headers:this.headerJson
        })
         .map(res => res as any)

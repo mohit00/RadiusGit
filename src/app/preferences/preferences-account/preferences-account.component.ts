@@ -213,10 +213,10 @@ export class PreferencesAccountComponent implements OnInit {
         if(this.showpagi){
           let id =    this.service.getSplitId(data._links.self.href);
   
-          this.service.setId(this.WebserModel.Sevice.BASE_URL+'attributeTemplates/'+id , 'Properties/Prototype');
+          this.service.setId(id , 'preference/Account');
   
         }else{
-          this.service.setId(this.WebserModel.Sevice.BASE_URL+'attributeTemplates/'+data.id , 'Properties/Prototype');
+          this.service.setId(data.id , 'preference/Account');
   
         }
          const initialState = {

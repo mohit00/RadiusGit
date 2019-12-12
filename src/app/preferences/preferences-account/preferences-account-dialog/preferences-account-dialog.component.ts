@@ -2,9 +2,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import Stepper from 'bs-stepper';
- import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap';
 import { AuthService } from 'src/app/auth.service';
-import {WebserModel} from '../../../Service.model';
+import { WebserModel } from '../../../Service.model';
 import { ScrollEvent } from 'ngx-scroll-event';
 declare var $: any;
 
@@ -25,158 +25,117 @@ export class PreferencesAccountDialogComponent implements OnInit {
     if (event.isWindowEvent) {
       console.log(`This event is fired on Window not on an element.`);
     }
- 
+
   }
 
   private stepper: Stepper;
-   id:any;
+  id: any;
   public onClose: Subject<boolean>;
-  data: any = {accountContact: {country:'1'}, userInfo: {},
-  type: '', parentAccount: ''};
-  getCountryList:any;
+  data: any = { propertyMap: {} };
+  getCountryList: any;
   contactUser: any = [];
-  constructor(private WebserModel:WebserModel ,private AuthService:AuthService, private _bsModalRef: BsModalRef) {
-    this.getCountryList =   this.AuthService.CountryList;
-    this.data  =  {accountContact: {country:'1'}, userInfo: {},
-    type: '', parentAccount: ''};
+  constructor(private WebserModel: WebserModel, private AuthService: AuthService, private _bsModalRef: BsModalRef) {
+    this.data = { propertyMap: {} };
 
-   }
+  }
   dataList: any;
   title: any;
   page: any;
   size: any;
   sort: any;
   ListSelect: any;
-  add() {
-    this.dataList.push({
-      type: '1',
-      class : 'col-md-6',
-      class1: 'col-md-6',
-      class2: 'col-md-6',
-      class3: 'col-md-8' ,
-      class4: 'plusbutonafter',
-      class5: 'col-md-2',
-     } );
-   }
-   getAccountList() {
-   }
-  remove(index) {
-    this.dataList.splice(index, 1);
-  }
-  AddUsernext() {
-    this.contactUser.push({
-      name: 'User'
-    });
-  }
-  RemoveUser(index) {
-    this.contactUser.splice(index, 1);
+  preferenceDetail() {
+    this.AuthService.getDetail('preferences/' + this.id).subscribe(res => {
+      console.log(JSON.stringify(res))
+      this.data = {
+        "preferenceId": res.preferenceId,
+        "createdBy": res.createdBy,
+        "lastUpdatedBy": res.lastUpdatedBy,
+        "name": res.name,
+        "description": res.description,
+
+        propertyMap: {
+          "sms_alert_message_enabled": res.sms_alert_message_enabled,
+          "sms_alert_time_from": res.sms_alert_time_from,
+          "sms_alert_time_to": res.sms_alert_time_to,
+          "sms_report_message_enabled": res.sms_report_message_enabled,
+          "sms_reporting_time": res.sms_reporting_time,
+          "email_enabled": res.email_enabled,
+          "reading_validator_mf": res.reading_validator_mf,
+          "absolute_consumption": res.absolute_consumption,
+          "max_allowed_reading": res.max_allowed_reading,
+          "alert_enable": res.alert_enable,
+
+        }
+      }
+    })
 
   }
-  scroll() {
-    console.log("dsd")
-     }
   ngOnInit() {
 
-   
-    this.getAccountList();
+
     if (this.title === 'false') {
-      this.contactUser = [{
-        name: 'User'
-      }];
-      this.dataList = [{
-        class : 'col-md-6',
-        class1: 'col-md-6',
-        class5: 'col-md-2',
 
-        type: '1',
-        class2: 'col-md-6',
-        class3: 'col-md-10',
-        class4: 'plustbutton'
-         }
-    ];
 
-    }else{
-  
- 
-    //   this.dataList = [
-    // ];
+    } else {
+      this.preferenceDetail();
+
+      //   this.dataList = [
+      // ];
     }
 
     this.onClose = new Subject();
 
     this.stepper = new Stepper(document.querySelector('#stepper1'), {
-        linear: false,
-        animation: true
-      });
+      linear: false,
+      animation: true
+    });
   }
   next(form) {
-     if(form.valid){
+    if (form.valid) {
 
-    }else {
-     for (let inner in form.controls) {
-       form.controls[inner].markAsTouched()
-   }
-    
-     return false;}
+    } else {
+      for (let inner in form.controls) {
+        form.controls[inner].markAsTouched()
+      }
+
+      return false;
+    }
     this.stepper.next();
   }
-  onSubmit() {
-    return false;
-  }
+
   submitData(form) {
-    if(form.valid){
+    if (form.valid) {
 
-    }else {
-     for (let inner in form.controls) {
-       form.controls[inner].markAsTouched()
-   }
-    
-     return false;}
-    this.data.metadata = {};
-    if (this.dataList.length > 0 ) {
-  // tslint:disable-next-line: prefer-for-of
-    for (let i = 0 ; i < this.dataList.length ; i++) {
-      if (this.dataList[i].name) {
-         this.data.metadata[this.dataList[i].name] = this.dataList[i].value;
-       }
+    } else {
+      for (let inner in form.controls) {
+        form.controls[inner].markAsTouched()
+      }
+
+      return false;
     }
-    
-    // this.data.parentAccount
-    this.data.createdBy = 'admin';
-     this.data.status = 'ACTIVE';
+    if (this.data.propertyMap.absolute_consumption) {
+      this.data.propertyMap.absolute_consumption = "true"
+    } else {
+      this.data.propertyMap.absolute_consumption = "false"
+
+    }
+    this.AuthService.preferenceAccountCreate(this.data).subscribe(res => {
+      alert(JSON.stringify(res));
+    })
   }
-  if(this.data.parentAccount == '1'){
-    this.data.parentAccount = "";
+  close() {
+    this._bsModalRef.hide();
   }
-    this.data.userContacts = this.contactUser;
-    console.log(JSON.stringify(this.data));
-   }
   updateData(form) {
-     if(form.valid){
+    if (form.valid) {
 
-    }else {
-     for (let inner in form.controls) {
-       form.controls[inner].markAsTouched()
-   }
-    
-     return false;}
-    this.data.metadata = {};
-    if (this.dataList.length > 0 ) {
-  // tslint:disable-next-line: prefer-for-of
-    for (let i = 0 ; i < this.dataList.length ; i++) {
-      if (this.dataList[i].name) {
-         this.data.metadata[this.dataList[i].name] = this.dataList[i].value;
-       }
+    } else {
+      for (let inner in form.controls) {
+        form.controls[inner].markAsTouched()
+      }
     }
-    
-    // this.data.parentAccount
-    this.data.createdBy = 'admin';
-     this.data.status = 'ACTIVE';
-  }
-  if(this.data.parentAccount == '1'){
-    this.data.parentAccount = "";
-  }
-    this.data.userContacts = this.contactUser;
+
     console.log(JSON.stringify(this.data));
-   }
+  }
 }

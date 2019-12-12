@@ -1,175 +1,196 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left"  >Add New Preferences</h4> 
-  <i class="fa fa-info" aria-hidden="true" style ="float: right;
+  <h4 class="modal-title pull-left">Add New Preferences</h4>
+  <i class="fa fa-info" aria-hidden="true" style="float: right;
   font-size: 20px;
   /* padding: 8px; */
   padding-top: 10px;
   cursor: pointer;
-  "></i> 
+  "></i>
 </div>
 <div class="modal-body">
-    <form name ="formgr"  #heroForm="ngForm" >
-        <div class ="row">
-        
-       
+  <form name="formgr" #heroForm="ngForm">
+    <div class="row">
 
-        <div id="stepper1" class="bs-stepper">
-          <div class="bs-stepper-header">
-              <div class="step" data-target="#test-l-1">
-                <button class="step-trigger">
-                  <span class="bs-stepper-circle">1</span>
-                  <span class="bs-stepper-label">Preference Info</span>
-                </button>
-              </div>
-              <div class="line"></div>
-              <div class="step" data-target="#test-l-2">
-                <button class="step-trigger">
-                  <span class="bs-stepper-circle">2</span>
-                  <span class="bs-stepper-label">Property Map Info</span>
-                </button>
-              </div>
-               
-              <div class="line"></div>
-               
-  
-              <div class="step" data-target="#test-l-3">
-                  <button class="step-trigger">
-                    <span class="bs-stepper-circle">3</span>
-                    <span class="bs-stepper-label">Submit</span>
-                  </button>
-                </div>
-            </div>
-          <div class="bs-stepper-content">
-                <div id="test-l-1" class="content">
-               <div class ="row">
-                 <div class ="col-md-12">
-                   <div class ="col-md-6">
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Name*</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="name" name ="name" [(ngModel)]="data.name"  #name="ngModel"  required />
-                      <div *ngIf="(name.invalid && (name.dirty || name.touched)) "
-                        class="alert alert-danger">
-                    
+
+
+      <div id="stepper1" class="bs-stepper">
+        <div class="bs-stepper-header">
+          <div class="step" data-target="#test-l-1">
+            <button class="step-trigger">
+              <span class="bs-stepper-circle">1</span>
+              <span class="bs-stepper-label">Preference Info</span>
+            </button>
+          </div>
+          <div class="line"></div>
+          <div class="step" data-target="#test-l-2">
+            <button class="step-trigger">
+              <span class="bs-stepper-circle">2</span>
+              <span class="bs-stepper-label">Property Map Info</span>
+            </button>
+          </div>
+
+          <div class="line"></div>
+
+
+          <div class="step" data-target="#test-l-3">
+            <button class="step-trigger">
+              <span class="bs-stepper-circle">3</span>
+              <span class="bs-stepper-label">Submit</span>
+            </button>
+          </div>
+        </div>
+        <div class="bs-stepper-content">
+          <div id="test-l-1" class="content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Name*</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="name" name="name"
+                      [(ngModel)]="data.name" #name="ngModel" required />
+                    <div *ngIf="(name.invalid && (name.dirty || name.touched)) " class="alert alert-danger">
+
                       <div *ngIf="name.errors.required">
                         This field is required.
                       </div>
-                      
-                    
+
+
                     </div>
-                    </div>
-                     
-                    <div class="form-group col-md-12 "  style ="padding:0px">
-                        <label for="accId">Preference Id*</label>
-                        <input type="text" class="form-control" id="accId" placeholder="Preference Id" name ="user name" [(ngModel)]="data.accountId"   #accountId="ngModel"  required />
-                        <div *ngIf="(accountId.invalid && (accountId.dirty || accountId.touched)) "
-                        class="alert alert-danger">
-                    
-                      <div *ngIf="accountId.errors.required">
+                  </div>
+
+                  <div class="form-group col-md-12 " style="padding:0px">
+                    <label for="accId">Preference Id*</label>
+                    <input type="text" class="form-control" id="accId" placeholder="Preference Id" name="user name"
+                      [(ngModel)]="data.preferenceId" #preferenceId="ngModel" required />
+                    <div *ngIf="(preferenceId.invalid && (preferenceId.dirty || preferenceId.touched)) "
+                      class="alert alert-danger">
+
+                      <div *ngIf="preferenceId.errors.required">
                         This field is required.
                       </div>
-                      
-                    
+
+
                     </div>
-                    </div>
-                    
-                   </div>
-                   <div class ="col-md-6">
-                    
-                   
-                    
-                    <div class="form-group">
-                      <label for="lastname" class="control-label"><span class ="red">*</span>Description</label>
-                      <textarea type="text" class="form-control" id="lastname"   [(ngModel)]="data.description" name ="Description" placeholder="Description"   rows="4" required></textarea>
-                     
-                    </div>
-                   </div>
-                 </div>
-               </div>
-                <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
-              </div>
-              <div id="test-l-2" class="content">
-                  <div class ="row">
-                      <div class ="col-md-12">
-                          <div class ="col-md-4">
-
-                              <div class="form-group">
-                                  <label for="exampleInputPassword1">Country</label>
-                                  <select class="form-control" id="sel1"   [(ngModel)] ="data.accountContact.country"  name ="country">
-                                    <option value ="1" selected>Select Country</option> 
-                                   <option *ngFor ="let list of getCountryList" [value] = "list.name">{{list.name}}</option>
-                                 </select>
-                                  <!-- <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="data.accountContact.country" name ="contry" placeholder="Country" /> -->
-                                </div>
-                                </div>
-                          <div class ="col-md-4">
-
-                          <div class="form-group">
-                            
-                              <label for="exampleInputPassword1">City</label>
-                              <input type="text" class="form-control"   [(ngModel)]="data.accountContact.city"  id="exampleInputPassword1"  name ="city" placeholder="City" />
-                            </div>
-                            </div>
-                            <div class ="col-md-4">
-
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">State</label>
-                                    <input type="text" class="form-control"  [(ngModel)]="data.accountContact.state"  id="exampleInputPassword1"  name ="state" placeholder="Password" />
-                                  </div>
-                                  </div>
-                                  <div class ="col-md-4">
-
-                                      <div class="form-group">
-                                          <label for="exampleInputPassword1">Postal Code</label>
-                                          <input type="number" class="form-control"  [(ngModel)]="data.accountContact.postalCode"  name ="pCode" id="exampleInputPassword1" placeholder="Password" />
-                                        </div>
-                                        </div>
-
-
-                                      
-                                              <div class ="col-md-4">
-                  
-                                                  <div class="form-group">
-                                                      <label for="exampleInputPassword1">Phone Number</label>
-                                                      <input type="number" class="form-control"  [(ngModel)]="data.accountContact.phoneNumber"  name ="pNo" id="exampleInputPassword1" placeholder="Password" />
-                                                    </div>
-                                                    </div>
-                                                    <div class ="col-md-4">
-                  
-                                                        <div class="form-group">
-                                                            <label for="exampleInputPassword1">Fax Number</label>
-                                                            <input type="text" class="form-control" id="exampleInputPassword1"   name ="faxNo" [(ngModel)]="data.accountContact.fax" placeholder="Password" />
-                                                          </div>
-                                                          </div>
-                                                          <div class ="col-md-6">
-                                                              <div class="form-group">
-                                                                  <label for="lastname" class="control-label">Address</label>
-                                                                  <textarea type="text" class="form-control" id="lastname"   name ="add"    [(ngModel)]="data.accountContact.addressLine1" placeholder="Address"   rows="3" ></textarea>
-                                                                 
-                                                                </div>
-                                                          </div>
-                                                          <div class ="col-md-6">
-                                                              <div class="form-group">
-                                                                  <label for="lastname" class="control-label">Address 2 </label>
-                                                                  <textarea type="text" class="form-control" id="lastname"  name ="add2"   [(ngModel)]="data.accountContact.addressLine2" placeholder="Address 2"   rows="3" ></textarea>
-                                                                 
-                                                                </div>
-                                                            </div>
-                                                          
-
-                    </div></div>
-                <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
-              </div>
-              
-               
-                <div id="test-l-3" class="content  ">
-                    <button class="btn btn-primary" style="margin:10px" (click)="submitData(heroForm)" *ngIf ="title == 'false'">Submit</button>
-                    <button class="btn btn-primary" style="margin:10px" (click)="updateData(heroForm)" *ngIf ="title != 'false'">Update</button>
+                  </div>
 
                 </div>
-           </div>
+                <div class="col-md-6">
+
+
+
+                  <div class="form-group">
+                    <label for="lastname" class="control-label">Description</label>
+                    <textarea type="text" class="form-control" id="lastname" [(ngModel)]="data.description"
+                      name="Description" placeholder="Description" rows="4"></textarea>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+          </div>
+          <div id="test-l-2" class="content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class ="col-md-3">
+                  <div class="form-check">
+                    <label class ="checkboxnew">
+                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.sms_alert_message_enabled"> <span class="label-text"  ><span style="font-size: 14px;"> Enable Alert </span></span>
+                    </label>
+                  </div>
+                 
+                </div>
+                <div class ="col-md-3">
+                  <div class="form-check">
+                    <label class ="checkboxnew">
+                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.sms_report_message_enabled"> <span class="label-text"  ><span style="font-size: 14px;"> Enable SMS Report</span></span>
+                    </label>
+                  </div> 
+                </div>
+                <div class ="col-md-3">
+                  <div class="form-check">
+                    <label class ="checkboxnew">
+                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.email_enabled"> <span class="label-text"  ><span style="font-size: 14px;"> Email Enabled</span></span>
+                    </label>
+                  </div> 
+                </div>
+                <div class ="col-md-3">
+                  <div class="form-check">
+                    <label class ="checkboxnew">
+                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.absolute_consumption"> <span class="label-text"  ><span style="font-size: 14px;"> Absolute Consumption</span></span>
+                    </label>
+                  </div> 
+                </div>
+              </div>
+            </div>
+            <div class ="row">
+                <div class ="col-md-6">
+                    <div class="form-group col-md-6" style="    margin-top: 20px;" >
+                        <div class="form-check">
+                            <label class ="checkboxnew">
+                              <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.alert_enable"> <span class="label-text"  ><span style="font-size: 14px;"> Alert Enabled</span></span>
+                            </label>
+                          </div> 
+                      </div>
+                    <div class="form-group col-md-6" >
+                        <label for="exampleInputPassword1">Max Allowed Reading</label>
+                        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Reading Validator" name="Reading"
+                          [(ngModel)]="data.propertyMap.max_allowed_reading"   />
+                        
+                      </div>
+                  </div>
+            
+              <div class ="col-md-6">
+                  <div class="form-group col-md-6" >
+                      <label for="exampleInputPassword1">Reading Validator</label>
+                      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Reading Validator" name="Reading"
+                        [(ngModel)]="data.propertyMap.reading_validator_mf"   />
+                      
+                    </div>
+                <div class="form-group col-md-6"  *ngIf ="data.propertyMap.sms_report_message_enabled">
+                  <label for="exampleInputPassword1">SMS Report Time</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Report To" name="Report"
+                    [(ngModel)]="data.propertyMap.sms_reporting_time"   />
+                  
+                </div>
+              
+
+              </div>
+            </div> 
+            <div class ="row">
+                <div class ="col-md-6" *ngIf ="data.propertyMap.sms_alert_message_enabled">
+                    <div class="form-group col-md-6">
+                      <label for="exampleInputPassword1">Alert From*</label>
+                      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Alert From" name="Alert"
+                        [(ngModel)]="data.propertyMap.sms_alert_time_from"   />
+                      
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="exampleInputPassword1">Alert To*</label>
+                      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Alert To" name="AlertTo"
+                        [(ngModel)]="data.propertyMap.sms_alert_time_to"   />
+                      
+                    </div>
+                    
+                  </div>
+                
+              </div>
+            <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
+          </div>
+
+
+          <div id="test-l-3" class="content  ">
+            <button class="btn btn-primary" style="margin:10px" (click)="submitData(heroForm)"
+              *ngIf="title == 'false'">Submit</button>
+            <button class="btn btn-primary" style="margin:10px" (click)="updateData(heroForm)"
+              *ngIf="title != 'false'">Update</button>
+
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn theme_table_button" (click) ="close()">Close</button>
+    </div>
+  </form>
 </div>
-<div class="modal-footer">
-  <button type="button" class="btn theme_table_button" >Close</button>
-</div>
-</form></div>
