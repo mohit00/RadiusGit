@@ -7,6 +7,10 @@
                  <span>Account Name:</span> {{ComandDetail.name}}  
               </div>
               <div class ="col-md-9" >
+                <div class="col-md-2" style="float: right;width: 22%;">
+
+                <a   class=" " style="color:white;"  (click)="accountTree(ComandDetail)"> <i class="fa fa-plus material-icons" aria-hidden="true"  ></i><br>Account Tree</a> 
+                </div>
                 <div class="col-md-3" style="float: right;width: 22%;">
                   <a   class=" " style="color:white;float: right"  (click)="assignUnassignAlert(ComandDetail)">  <i class="fa fa-check-square-o  " style="vertical-align: middle;
    
@@ -15,7 +19,7 @@
                     margin-left: 46%;;" aria-hidden="true"  ></i><br>Assign/Un Assign Alert</a> 
  
                 </div>
-                <div class="col-md-5" style="float: right;     width: 34%;">
+                <div class="col-md-3" style="float: right;     width: 34%;">
                  
 <a   class=" " style="color:white;float: right"  (click)="assignAccountUnassignPreference(ComandDetail)">  <i class="fa fa-check-square-o  " style="vertical-align: middle;
    
@@ -38,10 +42,7 @@
                 <div class="col-md-4">
                     <a   class=" " style="color:white;" (click)="changeStatus(ComandDetail)"> <i class="fa fa-check-square-o material-iconsnew" aria-hidden="true"  ></i><br>Change Status</a> 
                 </div>-->
-                <!-- <div class="col-md-6">
-                    <a   class=" " style="color:white;"  (click)="accountTree(ComandDetail)"> <i class="fa fa-plus material-icons" aria-hidden="true"  ></i><br>Account Tree</a> 
-                </div>   -->
-
+                
               </div> 
             </div> 
           </div>

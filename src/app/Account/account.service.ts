@@ -25,6 +25,7 @@ export class AccountService {
   BASE_URL = this.WebserModel.Sevice.BASENEWURL;
   public loading = false;
   CREATE_ATTRIBUTE_TEMPLATE = this.WebserModel.Sevice.CREATE_ATTRIBUTE_TEMPLATE;
+  ACCOUNT_TREE = 'account-service/account/search?'
   firstHeaders: any;
   headerJson: { 'x-account': string; 'x-user': string; };
   get sizetable() {
@@ -57,6 +58,18 @@ export class AccountService {
     }
   get  getId() {
           return localStorage.getItem('Id');
+    }
+    getAccountTree(accountId){
+      let headerjson = {
+        'x-account':     accountId
+        ,
+        'x-user':'admin'
+      }
+            return this._http.get(this.BASE_URL + this.ACCOUNT_TREE +'accountId='+ accountId+'&isSubAccount=false' ,{
+              headers:headerjson
+           } )
+           .map(res => res as any)
+           .catch(this.handleError);
     }
     migrateThing( id1: any, id2: any, data: any): Observable < any > {
 // alert('/thing-service/thing/' + id1 + '/moveThingToAccount/' + id2 )

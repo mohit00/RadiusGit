@@ -29,6 +29,8 @@ export class AccountDetailComponent implements OnInit {
     this.dataList = [];
   }
   accountTree(data: any) {
+
+    alert(JSON.stringify(data))
     let initialState = { data };
     this.bsModalRef = this.modalService.show(AccountTreeComponent, { initialState, class: 'gray modal-lg' });
     this.bsModalRef.content.onClose.subscribe(result => {

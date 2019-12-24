@@ -1,1 +1,165 @@
-<div id ="chart"></div>
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Account ({{accountName}}) Tree</h4>
+    <i class="fa fa-info" aria-hidden="true" style ="float: right;
+    font-size: 20px;
+    /* padding: 8px; */
+    padding-top: 10px;
+    cursor: pointer;
+    "></i>
+  </div>
+  <div class="modal-body" style ="    padding-top: 5px;">
+
+    <table class="table table-hover table-striped"  >
+        <thead>
+            <tr>
+                <th  width="20%"   > Account Name</th>
+                <th    > Account Type</th>
+                <th    > Status</th>
+              
+            </tr>
+        </thead>
+        <tbody *ngFor ="let list of accountList">
+            <tr class ="selecttable" (click) ="subAccount(list);"  ><td> <i  *ngIf ="!list.check"class="fa fa-angle-right" aria-hidden="true"></i>
+
+                <i class="fa fa-angle-down" aria-hidden="true" *ngIf ="list.check"></i>
+
+                {{list.name}}</td>
+                <td>{{list.type}}</td>
+                <td>{{list.status}}</td>
+
+            </tr>
+<tr  *ngIf ="list.check">
+<td colSpan ="3">
+    <table class="table table-hover table-striped"  >
+        <thead>
+            <tr>
+                <th  width="20%"   > Account Name</th>
+                <th    > Account Type</th>
+                <th    > Status</th>
+              
+            </tr>
+        </thead>
+        <tbody *ngFor ="let list1 of list.sub">
+            <tr class ="selecttable"   (click) ="subAccount(list1);"  ><td> <i class="fa fa-angle-right" *ngIf ="!list1.check" aria-hidden="true"></i>
+                <i class="fa fa-angle-down"  *ngIf ="list1.check" aria-hidden="true"></i>
+
+                {{list1.name}}</td>
+                <td>{{list1.type}}</td>
+                <td>{{list1.status}}</td>
+            </tr>
+
+<!-- second level -->
+<tr  *ngIf ="list1.check">
+    <td colSpan ="3">
+        <table class="table table-hover table-striped"  >
+            <thead>
+                <tr>
+                    <th  width="20%"   > Account Name</th>
+                    <th    > Account Type</th>
+                    <th    > Status</th>
+                  
+                </tr>
+            </thead>
+            <tbody *ngFor ="let list2 of list1.sub">
+                <tr class ="selecttable"   (click) ="subAccount(list2);"  ><td> <i class="fa fa-angle-right" *ngIf ="!list2.check" aria-hidden="true"></i>
+                    <i class="fa fa-angle-down"  *ngIf ="list2.check" aria-hidden="true"></i>
+    
+                    {{list2.name}}</td>
+                    <td>{{list2.type}}</td>
+                    <td>{{list2.status}}</td>
+                </tr>
+                <!-- Third Level -->
+
+                <tr  *ngIf ="list2.check">
+                    <td colSpan ="3">
+                        <table class="table table-hover table-striped"  >
+                            <thead>
+                                <tr>
+                                    <th  width="20%"   > Account Name</th>
+                                    <th    > Account Type</th>
+                                    <th    > Status</th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody *ngFor ="let list3 of list2.sub">
+                                <tr class ="selecttable"   (click) ="subAccount(list3);"  ><td> <i class="fa fa-angle-right" *ngIf ="!list3.check" aria-hidden="true"></i>
+                                    <i class="fa fa-angle-down"  *ngIf ="list3.check" aria-hidden="true"></i>
+                    
+                                    {{list3.name}}</td>
+                                    <td>{{list3.type}}</td>
+                                    <td>{{list3.status}}</td>
+                                </tr>
+
+                                <!-- Forth Level -->
+
+                    <tr  *ngIf ="list3.check">
+                        <td colSpan ="3">
+                            <table class="table table-hover table-striped"  >
+                                <thead>
+                                    <tr>
+                                        <th  width="20%"   > Account Name</th>
+                                        <th    > Account Type</th>
+                                        <th    > Status</th>
+                                      
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor ="let list4 of list3.sub">
+                                    <tr class ="selecttable"   (click) ="subAccount(list4);"  ><td> <i class="fa fa-angle-right" *ngIf ="!list4.check" aria-hidden="true"></i>
+                                        <i class="fa fa-angle-down"  *ngIf ="list4.check" aria-hidden="true"></i>
+                        
+                                        {{list4.name}}</td>
+                                        <td>{{list4.type}}</td>
+                                        <td>{{list4.status}}</td>
+                                    </tr>
+
+                                      <!-- Fifth Level -->
+
+                    <tr  *ngIf ="list4.check">
+                        <td colSpan ="3">
+                            <table class="table table-hover table-striped"  >
+                                <thead>
+                                    <tr>
+                                        <th  width="20%"   > Account Name</th>
+                                        <th    > Account Type</th>
+                                        <th    > Status</th>
+                                      
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor ="let list5 of list4.sub">
+                                    <tr class ="selecttable"   (click) ="subAccount(list5);"  ><td> <i class="fa fa-angle-right" *ngIf ="!list5.check" aria-hidden="true"></i>
+                                        <i class="fa fa-angle-down"  *ngIf ="list5.check" aria-hidden="true"></i>
+                        
+                                        {{list5.name}}</td>
+                                        <td>{{list5.type}}</td>
+                                        <td>{{list5.status}}</td>
+                                    </tr>
+                                      </tbody>
+                         </table>
+                        
+                        </td>
+                        </tr>
+                                      </tbody>
+                         </table>
+                        
+                        </td>
+                        </tr>
+                                  </tbody>
+                     </table>
+                    
+                    </td>
+                    </tr>
+                    
+
+                        
+                  </tbody>
+     </table>
+    
+    </td>
+    </tr>
+              </tbody>
+ </table>
+
+</td>
+</tr>
+            </tbody></table>
+    </div>

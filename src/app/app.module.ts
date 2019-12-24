@@ -46,6 +46,8 @@ import { PreferencesThingsDialogComponent } from './preferences/preferences-thin
 import { PreferencesAccountDialogComponent } from './preferences/preferences-account/preferences-account-dialog/preferences-account-dialog.component';
   import { AssignAccountPreferenceDialogComponent } from './assign-account-preference-dialog/assign-account-preference-dialog.component';
 import { AssignThingPreferenceDialogComponent } from './assign-thing-preference-dialog/assign-thing-preference-dialog.component';
+import {TreeTableModule} from "ng-treetable";
+
 import {
   MatCardModule,
   MatStepperModule,
@@ -91,7 +93,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 @NgModule({
   imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,TreeTableModule,
     FormsModule, 
     RouterModule,
     HttpClientModule,  
