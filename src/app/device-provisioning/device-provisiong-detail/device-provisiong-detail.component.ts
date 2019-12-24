@@ -8,6 +8,7 @@ import {MigrateAccountComponent} from '../../migrate-account/migrate-account.com
 
 import {AddFieldDialogComponent } from '../../add-field-dialog/add-field-dialog.component';
 import {AssignUnassignAlertDialogComponent} from '../../assign-unassign-alert-dialog/assign-unassign-alert-dialog.component'
+import { AssignThingPreferenceDialogComponent } from 'src/app/assign-thing-preference-dialog/assign-thing-preference-dialog.component';
 @Component({
   selector: 'app-device-provisiong-detail',
   templateUrl: './device-provisiong-detail.component.html',
@@ -28,6 +29,18 @@ export class DeviceProvisiongDetailComponent implements OnInit {
   constructor(private modalService: BsModalService, private WebserModel: WebserModel, private Service: AuthService) {
     this.dataList = [];
    }
+   assignThingUnassignPreference(data) { 
+    const initialState = {
+      title: 'thing',
+      data
+    };
+    this.bsModalRef = this.modalService.show(AssignThingPreferenceDialogComponent, { initialState, class: 'gray modal-lg' });
+
+    this.bsModalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+      this.getDetailEvent();
+    });
+  }
   getDetailEvent() {
     this.dataList = [];
     this.thingsPropertiesIdentifier = [];

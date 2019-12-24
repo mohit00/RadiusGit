@@ -3,18 +3,34 @@
         <div class="row">
           <div class ="col-md-12">
             <div class ="header_top col-md-12">
-              <div class ="col-md-6" style ="margin-top: 12px;" *ngIf ="ComandDetail">
+              <div class ="col-md-3" style ="margin-top: 12px;" *ngIf ="ComandDetail">
                  <span>Account Name:</span> {{ComandDetail.name}}  
               </div>
-              <div class ="col-md-6" >
-                <div class="col-md-6" style="float: right;">
+              <div class ="col-md-9" >
+                <div class="col-md-3" style="float: right;width: 22%;">
                   <a   class=" " style="color:white;float: right"  (click)="assignUnassignAlert(ComandDetail)">  <i class="fa fa-check-square-o  " style="vertical-align: middle;
    
                     color: white;
                     margin: auto;
                     margin-left: 46%;;" aria-hidden="true"  ></i><br>Assign/Un Assign Alert</a> 
-
+ 
                 </div>
+                <div class="col-md-5" style="float: right;     width: 34%;">
+                 
+<a   class=" " style="color:white;float: right"  (click)="assignAccountUnassignPreference(ComandDetail)">  <i class="fa fa-check-square-o  " style="vertical-align: middle;
+   
+  color: white;
+  margin: auto;
+  margin-left: 46%;    width: 12%;;" aria-hidden="true"  ></i><br>Assign/Un Assign Account Preference</a> 
+                </div>
+                <div class="col-md-4" style="float: right;">
+                 
+                  <a   class=" " style="color:white;float: right"  (click)="assignThingUnassignPreference(ComandDetail)">  <i class="fa fa-check-square-o  " style="vertical-align: middle;
+                     
+                    color: white;
+                    margin: auto;
+                    margin-left: 46%;;" aria-hidden="true"  ></i><br>Assign/Un Assign Thing Preference</a> 
+                                  </div>
                 <!-- <div class="col-md-2">
                     <a  class=" " style="color:white;"  (click)="migrate(ComandDetail)"> <i class="fa fa-cloud-upload material-icons" aria-hidden="true"   ></i><br>Migrate</a>
 

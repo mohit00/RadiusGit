@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PreferencesAccountComponent } from './preferences-account/preferences-account.component';
 import { PreferencesThingsComponent } from './preferences-things/preferences-things.component';
-import { PreferencesThingsDetailComponent } from './preferences-account/preferences-things-detail/preferences-things-detail.component';
+import { PreferencesThingsDetailComponent } from './preferences-things/preferences-things-detail/preferences-things-detail.component';
 import { PreferencesAccountDetailComponent } from './preferences-account/preferences-account-detail/preferences-account-detail.component';
 
 const routes: Routes = [ 

@@ -1,0 +1,95 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left"  >Assign Thing Preference</h4> 
+  <i class="fa fa-info" aria-hidden="true" style ="float: right;
+  font-size: 20px;
+  /* padding: 8px; */
+  padding-top: 10px;
+  cursor: pointer;
+  "></i> 
+</div>
+<div class="modal-body">
+  <form name ="formgr"  >
+       <div class ="row">
+        
+          <div class ="col-md-12">
+                      <div class="card">
+                          <div class="content table-responsive table-full-width"style ="     max-height: 323px;
+                          overflow-x: hidden;
+                          overflow-y: auto;">
+                                <table class="table table-hover table-striped"  >
+                                      <thead>
+                                          <tr>
+                                              <th  width="50%"   > Thing Preference</th>
+                                              <th    > Assign</th>
+                                              <th    > Un Assign</th>
+
+                                          </tr>
+                                      </thead>
+                                      <tbody *ngFor ="let list of displayList ;let index =index">
+                                          <tr class ="selecttable"    style ="cursor: pointer">
+                                             <td>
+ 
+                                             {{list.name}}</td>
+                                            
+                                            <td  >
+                                            
+                                              <div class="form-check">
+                                                  <label class ="checkboxnew">
+                                                    <input type="checkbox"[value]="true"   
+                                                    (click) ="toggel(list,'Assign')"  [(ngModel)] = "list.assign"  [ngModelOptions]="{standalone: true}"> <span class="label-text"  ></span>
+                                                  </label>
+                                                </div>
+                                            </td>
+                                              <td  > <div class="form-check">
+                                                  <label class ="checkboxnew">
+                                                    <input type="checkbox"  [value]="false"  [(ngModel)] = "list.unassign" (click) ="toggel(list,'UnAssign')"  [ngModelOptions]="{standalone: true}"> <span class="label-text"></span>
+                                                  </label>
+                                                </div></td>
+                                          </tr>
+                                          
+                                      </tbody>
+                                      <tfoot *ngIf =" pageCountArray.length >0">
+                                        <tr  ><td [attr.colspan]="keyData.length"> 
+                                          <div class=" " style="float: left;">
+                                            <ul class="pagination">
+                                              <li  >  
+                                                <button  (click)="prePage()" [disabled]="selectedPage == 1">« Prev</button>
+                                              </li>
+                                              <ng-container *ngFor = "let list of pageCountArray;let index =index">
+                                                <ng-container  *ngIf ="index + 1 == 1 ||index + 1 == selectedPage || index + 1 == selectedPage + 1 || index + 1 == selectedPage +2 || index + 1 == selectedPage - 1 || index + 1 == selectedPage - 2 || index + 1 ==pageCountArray.length || index + 1 == pageCountArray.length - 1 || index + 1 == pageCountArray.length -2   " >
+                                                  <li    [ngClass]="getClass(list)" > 
+                                                    <a  (click)="Page(list)" >{{list}}  </a>
+                                                  </li>
+                                                </ng-container>
+                                                <ng-container  *ngIf ="index + 1 == selectedPage +3  " >
+                                                  <li     > 
+                                                    <a   >---  </a>
+                                                  </li>
+                                                </ng-container>
+    
+                                              </ng-container>
+                                            
+                                              
+                                              <li  >
+                                                <button    (click)="nextPage()"   [disabled]="selectedPage == pageCountArray[pageCountArray.length - 1]" >Next »</button>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                   
+                                        </td>
+                                      </tr></tfoot>
+                                </table>
+                             </div>
+                      </div>
+            
+          </div>
+      </div> 
+ <div class="modal-footer">
+  <button type="button" class="btn theme_table_button" (click) ="onCancel();" >Close</button>
+  <button type="button" class="btn theme_table_button"  (click) = "submitCreate();" *ngIf ="title == 'false'">Save
+    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+  </button>
+   <button type="button" class="btn theme_table_button"  (click) = "submitUpdate()" *ngIf ="title == 'true'">Update</button>
+</div>
+</form>
+</div>

@@ -65,7 +65,7 @@
       </div>
       <div class ="row" *ngIf ="advanceSearch" >
         <div class ="col-md-12">
-          <div class ="col-md-6">
+          <div class ="col-md-4">
                <div class="form-group">
                  
                   <input type="text" class="form-control" id="searchName" placeholder="Name" (input)="onSearchChange($event.target.value,'')">
@@ -73,12 +73,23 @@
               </div>
               
               </div>
-              <div class ="col-md-6">
+            
+              <div class ="col-md-4">
                 <div class="form-group">
                   
                    <input type="text" class="form-control" id="searchDescription" placeholder="Description" (input)="onSearchChange('',$event.target.value)">
                   
                </div>
+               
+               </div>
+               
+               <div class ="col-md-4"  *ngIf ="accountShowThing">
+                <div class="form-check">
+                  <label class ="checkboxnew">
+                    <input type="checkbox" [value]="true"   [(ngModel)]="test" 
+                    (click) ="toggel(test)"  name ="check"  > <span class="label-text"  ><span style="font-size: 15px;">Search Across Account</span></span>
+                  </label>
+                </div>
                
                </div>
               </div>

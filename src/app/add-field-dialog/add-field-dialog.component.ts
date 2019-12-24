@@ -67,7 +67,8 @@ export class AddFieldDialogComponent implements OnInit {
         this.metadata[this.dataList[i].name] = this.dataList[i].value;
        }
     }
-  }
+  } 
+  console.log(JSON.stringify(this.data))
   sessionStorage.setItem("setUserAccount",this.data.account.accountId);
 
   

@@ -73,7 +73,10 @@ thingsTemplateDetail(){
  createDevicePro() {
    console.log(JSON.stringify( this.Service.getSplitId(this.dataDetail._links.self.href)))
    if (this.selectedList.length > 0 ) {
-     this.Service.migrateThing(  this.Service.getSplitId(this.dataDetail._links.self.href),
+      console.log(JSON.stringify(this.dataDetail))
+    sessionStorage.setItem('setUserAccount',this.dataDetail.account.accountId)
+
+      this.Service.migrateThing( this.dataDetail.thingId,
       this.selectedList[0].accountId,this.status ).subscribe(res => { 
        this.onClose.next(true);
        this._bsModalRef.hide();

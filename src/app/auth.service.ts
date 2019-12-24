@@ -316,9 +316,9 @@ headerJson:any;
        .map(res => res as any)
        .catch(this.handleError);
        }
-       getthingList( page: string, size: string, sort: string ): Observable < any > {
-
-        return this._http.get(  'things?page=' + page + '&size=' + size + '&sort=' + sort,{
+       getthingList( page: string, size: string, sort: string,thingAccrossAccount ): Observable < any > {
+     
+        return this._http.get(  'things?page=' + page + '&size=' + size + '&sort=' + sort+'&acrossAllAccount='+thingAccrossAccount,{
           headers:this.headerJson
        } )
        .map(res => res as any)
@@ -444,10 +444,14 @@ headerJson:any;
         .map(res => res as any)
         .catch(this.handleError);
        }
-       getSearchThings(data, des): Observable<any> {
-
-        return this._http.get(  'thing-service/things/search?name=' + data + '*',{
-          headers:this.headerJson
+       getSearchThings(data, des,thingAccrossAccount): Observable<any> {
+        let customheader ={
+          'x-account':sessionStorage.getItem("setUserAccount"),
+          'x-user':'admin'
+  
+        }
+        return this._http.get(  'thing-service/things/search?name=' + data + '*'+'&acrossAllAccount='+thingAccrossAccount,{
+          headers:customheader
        }  )
         .map(res => res as any)
         .catch(this.handleError);
@@ -460,10 +464,14 @@ headerJson:any;
         .map(res => res as any)
         .catch(this.handleError);
        }
-       getSearchThingsdesc(data, des): Observable<any> {
-
-        return this._http.get(  'thing-service/things/search?description=' + des + '*',{
-          headers:this.headerJson
+       getSearchThingsdesc(data, des,thingAccrossAccount): Observable<any> {
+        let customheader ={
+          'x-account':sessionStorage.getItem("setUserAccount"),
+          'x-user':'admin'
+  
+        }
+        return this._http.get(  'thing-service/things/search?description=' + des + '*'+'&acrossAllAccount='+thingAccrossAccount ,{
+          headers:customheader
        }  )
         .map(res => res as any)
         .catch(this.handleError);
@@ -641,6 +649,13 @@ headerJson:any;
         .map(res => res as any)
         .catch(this.handleError);
        }
+       preferenceAccountUpdate(data,id) {
+        return this._http.put(  'preferences/'+ id,data,{
+          headers:this.headerJson
+       })
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
        getSearchPreference(data, des): Observable<any> {
 
         return this._http.get('account-preference/preference/search?name=' + data + '*' ,{
@@ -656,7 +671,35 @@ headerJson:any;
         .map(res => res as any)
         .catch(this.handleError);
        }
-
+       assignAccountPreferanceAccount(preferenceId, accountId) {
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
+         return this._http.post(  'account-preference/preference/'+preferenceId+'/assignPreferenceToAccount/'+accountId ,{},{
+          headers:customheader
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+      unAssignAccountPreferanceAccount(preferenceId, accountId) {
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
+        return this._http.post(  'account-preference/preference/'+preferenceId+'/unAssignPreferenceToAccount/'+accountId ,{},{
+          headers:customheader
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getAccountPreferenceMappedToAccount(AccountId) {
+        return this._http.get(  'account-preference/preference/assignTo/Account/'+AccountId ,{
+          headers:this.headerJson
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
        preferenceThingCount() {
         return this._http.get(  'thing-preference/preference/count',{
           headers:this.headerJson
@@ -700,17 +743,78 @@ headerJson:any;
         .map(res => res as any)
         .catch(this.handleError);
        }
-       getThingsbyAccount(page,size) {
+       getThingsbyAccount(page,size,searchAccrossAccount) {
         let customheader = {
           'x-account': sessionStorage.getItem('setUserAccount'),
           'x-user':'admin'
         }
-        return this._http.get(  'thing-service/thing/?paze='+page+'&size='+size ,{
+        return this._http.get(  'thing-service/thing/?paze='+page+'&size='+size+'&acrossAllAccount='+searchAccrossAccount ,{
           headers:customheader
        })
         .map(res => res as any)
         .catch(this.handleError);
        }
+       getThingPreferenceMappedToAccount(AccountId) {
+        return this._http.get(  'thing-preference/preference/assignTo/Account/'+AccountId ,{
+          headers:this.headerJson
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+
+       assignThingPreferanceAccount(preferenceId, accountId) {
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
+         return this._http.post(  'thing-preference/preference/'+preferenceId+'/assignPreferenceToAccount/'+accountId ,{},{
+          headers:customheader
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+      unAssignThingPreferanceAccount(preferenceId, accountId) {
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
+        return this._http.post(  'thing-preference/preference/'+preferenceId+'/unAssignPreferenceToAccount/'+accountId ,{},{
+          headers:customheader
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+
+       assignThingPreferanceThing(preferenceId, accountId) {
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
+         return this._http.post(  'thing-preference/preference/'+preferenceId+'/assignPreferenceToThing/'+accountId ,{},{
+          headers:customheader
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+      unAssignThingPreferanceThing(preferenceId, accountId) {
+        let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
+        return this._http.post(  'thing-preference/preference/'+preferenceId+'/unAssignPreferenceToThing/'+accountId ,{},{
+          headers:customheader
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+       getThingPreferenceMappedToThing(thingId) {
+        return this._http.get(  'thing-preference/preference/assignTo/Thing/'+thingId ,{
+          headers:this.headerJson
+       } )
+        .map(res => res as any)
+        .catch(this.handleError);
+       }
+     
        private handleError(error: Response) {
          
         console.log(error);

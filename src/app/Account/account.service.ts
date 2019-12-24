@@ -60,8 +60,13 @@ export class AccountService {
     }
     migrateThing( id1: any, id2: any, data: any): Observable < any > {
 // alert('/thing-service/thing/' + id1 + '/moveThingToAccount/' + id2 )
+let headerjson = {
+  'x-account':     sessionStorage.getItem('setUserAccount')
+  ,
+  'x-user':'admin'
+}
       return this._http.post( '/thing-service/thing/' + id1 + '/moveThingToAccount/' + id2 , {},{
-        headers:this.headerJson
+        headers:headerjson
      } )
      .map(res => res as any)
      .catch(this.handleError);

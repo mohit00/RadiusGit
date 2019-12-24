@@ -156,10 +156,10 @@ ngOnInit() {
     }
 // tslint:disable-next-line: ban-types
     searchresult(name: String, description: String) {
-      this.service.getSearchThings(name , description).subscribe(res => {
-    this.displayList = res;
-    this.showpagi = false;
-       });
+    //   this.service.getSearchThings(name , description).subscribe(res => {
+    // this.displayList = res;
+    // this.showpagi = false;
+    //    });
     }
 // tslint:disable-next-line: ban-types
     onSearchChange(searchValue: string , serchdescription: String) {

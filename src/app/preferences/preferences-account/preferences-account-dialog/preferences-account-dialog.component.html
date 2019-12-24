@@ -25,6 +25,14 @@
           <div class="step" data-target="#test-l-2">
             <button class="step-trigger">
               <span class="bs-stepper-circle">2</span>
+              <span class="bs-stepper-label">Additional Info</span>
+            </button>
+          </div>
+
+          <div class="line"></div>
+          <div class="step" data-target="#test-l-3">
+            <button class="step-trigger">
+              <span class="bs-stepper-circle">3</span>
               <span class="bs-stepper-label">Property Map Info</span>
             </button>
           </div>
@@ -32,9 +40,9 @@
           <div class="line"></div>
 
 
-          <div class="step" data-target="#test-l-3">
+          <div class="step" data-target="#test-l-4">
             <button class="step-trigger">
-              <span class="bs-stepper-circle">3</span>
+              <span class="bs-stepper-circle">4</span>
               <span class="bs-stepper-label">Submit</span>
             </button>
           </div>
@@ -92,94 +100,203 @@
           <div id="test-l-2" class="content">
             <div class="row">
               <div class="col-md-12">
-                <div class ="col-md-3">
+                <div class="col-md-3">
                   <div class="form-check">
-                    <label class ="checkboxnew">
-                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.sms_alert_message_enabled"> <span class="label-text"  ><span style="font-size: 14px;"> Enable Alert </span></span>
+                    <label class="checkboxnew">
+                      <input type="checkbox" name="check" [(ngModel)]="data.sms_alert_message_enabled"> <span
+                        class="label-text"><span style="font-size: 14px;"> Enable Alert </span></span>
                     </label>
                   </div>
-                 
+
                 </div>
-                <div class ="col-md-3">
+                <div class="col-md-3">
                   <div class="form-check">
-                    <label class ="checkboxnew">
-                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.sms_report_message_enabled"> <span class="label-text"  ><span style="font-size: 14px;"> Enable SMS Report</span></span>
+                    <label class="checkboxnew">
+                      <input type="checkbox" name="check" [(ngModel)]="data.sms_report_message_enabled"> <span
+                        class="label-text"><span style="font-size: 14px;"> Enable SMS Report</span></span>
                     </label>
-                  </div> 
+                  </div>
                 </div>
-                <div class ="col-md-3">
+                <div class="col-md-3">
                   <div class="form-check">
-                    <label class ="checkboxnew">
-                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.email_enabled"> <span class="label-text"  ><span style="font-size: 14px;"> Email Enabled</span></span>
+                    <label class="checkboxnew">
+                      <input type="checkbox" name="check" [(ngModel)]="data.email_enabled"> <span
+                        class="label-text"><span style="font-size: 14px;"> Email Enabled</span></span>
                     </label>
-                  </div> 
+                  </div>
                 </div>
-                <div class ="col-md-3">
+                <div class="col-md-3">
                   <div class="form-check">
-                    <label class ="checkboxnew">
-                      <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.absolute_consumption"> <span class="label-text"  ><span style="font-size: 14px;"> Absolute Consumption</span></span>
+                    <label class="checkboxnew">
+                      <input type="checkbox" name="check" [(ngModel)]="data.absolute_consumption"> <span
+                        class="label-text"><span style="font-size: 14px;"> Absolute Consumption</span></span>
                     </label>
-                  </div> 
+                  </div>
                 </div>
               </div>
             </div>
-            <div class ="row">
-                <div class ="col-md-6">
-                    <div class="form-group col-md-6" style="    margin-top: 20px;" >
-                        <div class="form-check">
-                            <label class ="checkboxnew">
-                              <input type="checkbox" name="check"    [(ngModel)]="data.propertyMap.alert_enable"> <span class="label-text"  ><span style="font-size: 14px;"> Alert Enabled</span></span>
-                            </label>
-                          </div> 
-                      </div>
-                    <div class="form-group col-md-6" >
-                        <label for="exampleInputPassword1">Max Allowed Reading</label>
-                        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Reading Validator" name="Reading"
-                          [(ngModel)]="data.propertyMap.max_allowed_reading"   />
-                        
-                      </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group col-md-6" style="    margin-top: 20px;">
+                  <div class="form-check">
+                    <label class="checkboxnew">
+                      <input type="checkbox" name="check" [(ngModel)]="data.alert_enable"> <span
+                        class="label-text"><span style="font-size: 14px;"> Alert Enabled</span></span>
+                    </label>
                   </div>
-            
-              <div class ="col-md-6">
-                  <div class="form-group col-md-6" >
-                      <label for="exampleInputPassword1">Reading Validator</label>
-                      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Reading Validator" name="Reading"
-                        [(ngModel)]="data.propertyMap.reading_validator_mf"   />
-                      
-                    </div>
-                <div class="form-group col-md-6"  *ngIf ="data.propertyMap.sms_report_message_enabled">
-                  <label for="exampleInputPassword1">SMS Report Time</label>
-                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Report To" name="Report"
-                    [(ngModel)]="data.propertyMap.sms_reporting_time"   />
-                  
                 </div>
-              
+                <div class="form-group col-md-6">
+                  <label for="exampleInputPassword1">Max Allowed Reading</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Reading Validator"
+                    name="Reading" [(ngModel)]="data.max_allowed_reading" />
+
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group col-md-6">
+                  <label for="exampleInputPassword1">Reading Validator</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Reading Validator"
+                    name="Reading" [(ngModel)]="data.reading_validator_mf" />
+
+                </div>
+                <div class="form-group col-md-6" *ngIf="data.sms_report_message_enabled">
+                  <label for="exampleInputPassword1">SMS Report Time</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Report To"
+                    name="Report" [(ngModel)]="data.sms_reporting_time" />
+
+                </div>
+
 
               </div>
-            </div> 
-            <div class ="row">
-                <div class ="col-md-6" *ngIf ="data.propertyMap.sms_alert_message_enabled">
-                    <div class="form-group col-md-6">
-                      <label for="exampleInputPassword1">Alert From*</label>
-                      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Alert From" name="Alert"
-                        [(ngModel)]="data.propertyMap.sms_alert_time_from"   />
-                      
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="exampleInputPassword1">Alert To*</label>
-                      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Alert To" name="AlertTo"
-                        [(ngModel)]="data.propertyMap.sms_alert_time_to"   />
-                      
-                    </div>
-                    
-                  </div>
-                
+            </div>
+            <div class="row">
+              <div class="col-md-6" *ngIf="data.sms_alert_message_enabled">
+                <div class="form-group col-md-6">
+                  <label for="exampleInputPassword1">Alert From*</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Alert From"
+                    name="Alert" [(ngModel)]="data.sms_alert_time_from" />
+
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="exampleInputPassword1">Alert To*</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Alert To"
+                    name="AlertTo" [(ngModel)]="data.sms_alert_time_to" />
+
+                </div>
+
               </div>
+              <div class ="col-md-12">
+                  <mat-form-field class="example-chip-list" appearance="outline" style="width: 100%;">
+                      <mat-label>Allowed Alarms Notification</mat-label>
+
+                      <mat-chip-list #chipList aria-label="Allowed Alarms Notification" style="width: 100%">
+                        <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                                 [removable]="removable" (removed)="remove(fruit)">
+                          {{fruit.name}}
+                          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input placeholder="New Notification"
+                               [matChipInputFor]="chipList"
+                               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                               [matChipInputAddOnBlur]="addOnBlur"
+                               (matChipInputTokenEnd)="add($event)">
+                      </mat-chip-list>
+                    </mat-form-field>
+                    
+              </div>
+            </div>
             <button (click)="next(heroForm)" class="btn btn-primary">Next</button>
           </div>
 
-
           <div id="test-l-3" class="content  ">
+            <div class="row" style="max-height: 400px;
+            overflow-y: auto;">
+          
+              <div class="col-md-12" *ngFor ="let list of additionalProperty;let i=index" style="    border: 1px solid;">
+                  <span style ="position: absolute;
+                  left: 10%;
+                    top:  -6px  ;                  background-color: #e9ecef;
+                  z-index: 999;">   
+                      <label for="text" class="control-label"><span class ="red">*</span>Additional Property {{i}} </label>
+                    </span>
+                <div class="col-md-4" style="    padding-left: 2px;
+                padding-right: 2px;">
+                    <label for="exampleInputPassword1">Name</label>
+
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Reading Validator"
+                    name="additionalProperty+{{i}}" [(ngModel)]="list['additionalProperty'+i].name" />
+                </div>
+                <div class="col-md-4"  style="    padding-left: 2px;
+                padding-right: 2px;">
+                                      <label for="lastname" class="control-label"   >Data Type:</label>
+                                      <select class="form-control" id="sel1"  name="datatype+{{i}}" [(ngModel)]="list['additionalProperty'+i].datatype" >
+                                         <option value ="" selected>Data Type</option> 
+                                       <option value ="INTEGER" >INTEGER</option>
+                                       <option value ="STRING" >STRING</option>
+                                       <option value ="DECIMAL" >DECIMAL</option>
+                                       <option value ="BOOLEAN" >BOOLEAN</option>
+               
+                                      </select>
+               
+                    
+                  </div>
+                  <div class="col-md-2"  style="    padding-left: 2px;
+                  padding-right: 2px;">
+                      <label for="unit">Unit</label>
+
+                      <input type="text" class="form-control" id="unit" placeholder="Unit"
+                      name="unit+{{i}}" [(ngModel)]="list['additionalProperty'+i].unit" />
+                    </div>
+                    <div class="col-md-2"  style="    padding-left: 2px;
+                    padding-right: 2px;">
+                     
+
+                        <label for="unit">Value</label>
+
+                        <input type="text" class="form-control" id="value" placeholder="value"
+                        name="value+{{i}}" [(ngModel)]="list['additionalProperty'+i].value" />
+                      </div>
+                      <div class="col-md-4"  style="    padding-left: 2px;
+                      padding-right: 2px;">
+                           <label for="lastname" class="control-label"   >Validation Rule:</label>
+                          <select class="form-control" id="sel1"  name="validationRule+{{i}}" [(ngModel)]="list['additionalProperty'+i].validationRule"  >
+                             <option value ="" selected>Validation Rule</option> 
+                           <option value ="anyrule" >Any Rule</option>
+    
+                          </select>
+                         
+                        </div>
+                        <div class="col-md-4"  style="    padding-left: 2px;
+                        padding-right: 2px;">
+                            <label for="category">Category</label>
+
+                            <input type="text" class="form-control" id="category" placeholder="Category"
+                            name="category+{{i}}" [(ngModel)]="list['additionalProperty'+i].category" />
+                          </div>
+                          <div class="col-md-2"  style="  margin-top: 29px;">
+                              <div class="form-check">
+                                  <label class="checkboxnew">
+                                    <input type="checkbox" name="check+{{i}}" [(ngModel)]="list['additionalProperty'+i].Editable"> <span
+                                      class="label-text"><span style="font-size: 14px;"> Editable</span></span>
+                                  </label>
+                                </div>
+                            </div>
+                            <div class="col-md-2"  style="margin-top:21px" *ngIf ="i ==additionalProperty.length -1 ">
+                                <button class="btn" (click)="RemoveUser(i)"style ="color: red;
+                                border-color: red;" ><i class="fa fa-trash"></i></button> 
+                                <!-- <button (click)="RemoveUser(i)"  *ngIf ="contactUser.length >1"class="btn btn-primary" style="margin:10px">Remove Property</button> --> 
+                              </div>
+
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button (click)="AddUsernext()" class="btn btn-primary" style="margin:10px">Add New Property</button>
+                </div>
+</div>
+          </div>
+          <div id="test-l-4" class="content  ">
             <button class="btn btn-primary" style="margin:10px" (click)="submitData(heroForm)"
               *ngIf="title == 'false'">Submit</button>
             <button class="btn btn-primary" style="margin:10px" (click)="updateData(heroForm)"
@@ -190,7 +307,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn theme_table_button" (click) ="close()">Close</button>
+      <button type="button" class="btn theme_table_button" (click)="close()">Close</button>
     </div>
   </form>
 </div>

@@ -226,11 +226,14 @@ export class AlertDialogComponent implements OnInit {
        this.onClose.next(true);
 
       this._bsModalRef.hide();
-      this.AuthService.suceesAlertDialog('Alert has been successfully Updated.' );
+      this.AuthService.suceesAlertDialog('Alert has been successfully Created.' );
 
 
     })
      
+  }
+  close(){
+    this._bsModalRef.hide();
   }
   UpdateAlert(){
     this.data.whenToExecute ={};

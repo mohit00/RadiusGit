@@ -44,22 +44,102 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { AssignUnassignAlertDialogComponent } from './assign-unassign-alert-dialog/assign-unassign-alert-dialog.component';
 import { PreferencesThingsDialogComponent } from './preferences/preferences-things/preferences-things-dialog/preferences-things-dialog.component';
 import { PreferencesAccountDialogComponent } from './preferences/preferences-account/preferences-account-dialog/preferences-account-dialog.component';
-import {MatSelectModule,MatFormFieldModule  } from '@angular/material';
+  import { AssignAccountPreferenceDialogComponent } from './assign-account-preference-dialog/assign-account-preference-dialog.component';
+import { AssignThingPreferenceDialogComponent } from './assign-thing-preference-dialog/assign-thing-preference-dialog.component';
+import {
+  MatCardModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatRippleModule,
+  MatExpansionModule,
+  MatButtonToggleModule,
+  MatChipsModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatNativeDateModule,
+  MatTreeModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatDividerModule
+} from "@angular/material";
+
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatGridListModule,
+  MatCheckboxModule,
+  MatListModule
+} from "@angular/material";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 @NgModule({
   imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
-    FormsModule,
+    FormsModule, 
     RouterModule,
-    HttpClientModule,MatSelectModule,MatFormFieldModule,
-    NavbarModule, 
+    HttpClientModule,  
+    NavbarModule,  
     FooterModule,ScrollEventModule,
     SidebarModule, TabsModule.forRoot(),CalendarModule,  // <--- Determines the data type of the model
      
     NgMultiSelectDropDownModule.forRoot(),
     AppRoutingModule,ScrollEventModule, 
   ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-  ModalModule.forRoot(), AlertModule.forRoot(), BsDatepickerModule.forRoot()
+  ModalModule.forRoot(), AlertModule.forRoot(), BsDatepickerModule.forRoot(),
+  MatCardModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatRippleModule,
+  MatExpansionModule,
+  MatButtonToggleModule,
+  MatChipsModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatNativeDateModule,
+  MatTreeModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatDividerModule,
+  MatButtonModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatGridListModule,
+  MatCheckboxModule,
+  MatListModule,
+  MatMomentDateModule
   ],
   declarations: [
     AppComponent, AccountDialogComponent,
@@ -76,10 +156,10 @@ import {MatSelectModule,MatFormFieldModule  } from '@angular/material';
       MigrateAccountComponent, RoleDialogComponent,
        UserAddDialogComponent, AssignDialogComponent, 
        AccountTreeComponent, AlertDialogComponent, AssignUnassignAlertDialogComponent, 
-       PreferencesThingsDialogComponent, PreferencesAccountDialogComponent 
+       PreferencesThingsDialogComponent, PreferencesAccountDialogComponent, AssignAccountPreferenceDialogComponent, AssignThingPreferenceDialogComponent 
 
   ],
-  entryComponents: [PreferencesThingsDialogComponent,PreferencesAccountDialogComponent,RoleDialogComponent, UserAddDialogComponent,AlertDialogComponent,AssignUnassignAlertDialogComponent,
+  entryComponents: [AssignAccountPreferenceDialogComponent,AssignThingPreferenceDialogComponent,PreferencesThingsDialogComponent,PreferencesAccountDialogComponent,RoleDialogComponent, UserAddDialogComponent,AlertDialogComponent,AssignUnassignAlertDialogComponent,
     DeviceDialogComponent, AccountDialogComponent, AccountTreeComponent,
     DeviceProvisioningDialogComponent, AttributeDialogComponent,
     EventDialogComponent, CommandDialogComponent,

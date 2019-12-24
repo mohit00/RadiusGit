@@ -202,10 +202,10 @@ export class PreferencesThingsComponent implements OnInit {
          if(this.showpagi){
        let id =    this.service.getSplitId(data._links.self.href);
    
-          this.service.setId(this.WebserModel.Sevice.BASE_URL+'attributeTemplates/'+id , 'Properties/Prototype/detail');
+          this.service.setId( id , 'preference/Things/Detail');
   
         }else{
-          this.service.setId(this.WebserModel.Sevice.BASE_URL+'attributeTemplates/'+data.id , 'Properties/Prototype/detail');
+          this.service.setId(data.id , 'preference/Things/Detail');
   
         }
       }
