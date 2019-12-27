@@ -20,7 +20,7 @@ data:any;
    }
   accountList:any =[];
    getAccountTree(data){
-      this.service.getAccountTree(data.accountId).subscribe(res=>{
+       this.service.getAccountTree(data.accountId).subscribe(res=>{
         for(var i =0 ;i<res.length ;i++){
           res[i].check = false;
         
