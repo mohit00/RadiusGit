@@ -84,7 +84,9 @@ title: any;
   
    return false;}
   if (this.selectedList.length > 0 ) {
-    this.Service.updateThing( this.selectedList[0]._links.self.href.split("/")[4], this.data).subscribe(res => {
+    sessionStorage.setItem('setUserAccount',this.data.account.accountId)
+    console.log(JSON.stringify(this.data))
+    this.Service.updateThing( this.data._links.self.href.split("/")[4], this.data).subscribe(res => {
       this.onCloseEdit.next(true);
       this._bsModalRef.hide();
       this.Service.suceesAlertDialog('Things/Provisioning');

@@ -345,9 +345,12 @@ headerJson:any;
        .catch(this.handleError);
        }
        updateThing( id: any, data: any): Observable < any > {
-
-        return this._http.put(  'thing-service/createThingFromTemplate/' + id, data ,{
-          headers:this.headerJson
+         let customheader = {
+          'x-account': sessionStorage.getItem('setUserAccount'),
+          'x-user':'admin'
+        }
+        return this._http.put(  'things/' + id, data ,{
+          headers:customheader
        })
        .map(res => res as any)
        .catch(this.handleError);

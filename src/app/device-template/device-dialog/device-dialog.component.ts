@@ -194,7 +194,7 @@ for (let i = 0 ; i < this.commandselectedList.length ; i ++) {
       }
     }
 
-    this.data.tenantId = 'radius-PF';
+    // this.data.tenantId = 'radius-PF';
     this.AuthService.updatedeviceTemplate(this.data, this.WebserModel.Sevice.BASE_URL + 'thingTemplates/' + this.id).subscribe(res => {
       this.onCloseEdit.next(true);
 
