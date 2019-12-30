@@ -72,7 +72,7 @@ export class AddFieldDialogComponent implements OnInit {
   sessionStorage.setItem("setUserAccount",this.data.account.accountId);
 
   
-    this.Service.addMetaData(this.data._links.self.href.split('/')[4], this.metadata).subscribe(res => {
+    this.Service.addMetaData(this.data.thingId, this.metadata).subscribe(res => {
       this._bsModalRef.hide();
       this.Service.suceesAlertDialog('Metadata Successfully added.');
 

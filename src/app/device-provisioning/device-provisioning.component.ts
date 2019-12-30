@@ -6,12 +6,10 @@ import { AuthService } from '../auth.service';
 import { DatePipe } from '@angular/common';
 import { AccountService } from '../Account/account.service';
 import { ScrollEvent } from 'ngx-scroll-event';
-
 declare interface TableData {
   headerRow: any;
   dataRows: string[][];
 }
-
 @Component({
   selector: 'app-device-provisioning',
   templateUrl: '../table/table.html',

@@ -45,7 +45,7 @@ export class ChangeStatusComponent implements OnInit {
   statusChange(data) {
      
      sessionStorage.setItem("setUserAccount",this.data.account.accountId);
-    this.AuthService.deviceLifestateChange(this.data._links.self.href.split('/')[4], data).subscribe(res => {
+    this.AuthService.deviceLifestateChange(this.data.thingId, data).subscribe(res => {
       this._bsModalRef.hide();
       this.onClose.next(true)
       this.AuthService.suceesAlertDialog(' Life State Update Successfully' )
@@ -55,7 +55,7 @@ export class ChangeStatusComponent implements OnInit {
   statusChangeOpp(data) {
     sessionStorage.setItem("setUserAccount",this.data.account.accountId);
 
-    this.AuthService.deviceOperationstateChange(this.data._links.self.href.split('/')[4], data).subscribe(res => {
+    this.AuthService.deviceOperationstateChange(this.data.thingId, data).subscribe(res => {
       this._bsModalRef.hide();
       this.onClose.next(true)
 
